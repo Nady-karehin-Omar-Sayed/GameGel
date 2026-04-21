@@ -1,0 +1,22 @@
+.games{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+.game-box{
+  width: 85%;
+  height: max-content;
+  border: 2px solid var(--border-yellow-color);
+  border-radius: 5px;
+  display: flex;
+  padding: 2%;
+  gap: 3%;
+
+}
+
+.game-box h1{
+    font-family: monospace;
+    font-size: 2rem;
+}
