@@ -1,0 +1,24 @@
+[
+        {
+            "title": "Fallout 4 : Game Of The Year Edition",
+            "description": "Fallout 4 is a 2015 action role-playing game developed by Bethesda Game Studios and published by Bethesda Softworks.",
+            "developer": "Bethesda Game Studios",
+            "platforms": "PlayStation 5, PlayStation 4, Xbox One, Windows PC",
+            "genres": "Action role-playing game, Fighting game, Third-person shooter",
+            "price": "$27.99 on Steam",
+            "image": "../assets/images/fallout.jpg",
+            "buyLink": "https://store.steampowered.com/sub/199943/"
+        },
+        {
+           
+            "title": "The Witcher 3: Wild Hunt",
+            "description": "The Witcher 3: Wild Hunt is a 2015 action role-playing game developed and published by CD Projekt.",
+            "developer": "CD Projekt RED, CD Projekt",
+            "platforms": "PlayStation 5, PlayStation 4, Xbox One, Windows PC",
+            "genres": "Action role-playing game, Fighting game, Action-adventure game, Nonlinear gameplay",
+            "price": "$29.99 on Steam",
+            "image": "../assets/images/witcher.jpg",
+            "buyLink": "https://store.steampowered.com/app/292030/The_Witcher_3_Wild_Hunt/"
+         
+        }
+    ]

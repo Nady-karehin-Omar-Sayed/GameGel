@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@200..700&display=swap');
 
+html {
+  scroll-behavior: smooth;
+}
+
 body{
   display: flex;
   flex-direction: column;
@@ -9,7 +13,8 @@ body{
   width: screen;
   height: screen;
   background-color: black;
-
+  padding-top: 80px;
+  
 }
 
 .logo{
@@ -116,6 +121,7 @@ color: #08CB00;
     padding-bottom: 15;
     border-bottom: 1px solid #08CB00;
     border-radius: 10%;
+    margin-bottom: 0;
     
 }
 
@@ -141,6 +147,7 @@ footer{
     }
     .container h1{
         margin-bottom: 0;
+        margin-top: 0;
     }
     .container p{
         font-size: 1.5rem;
