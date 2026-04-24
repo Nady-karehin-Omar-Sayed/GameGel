@@ -11,8 +11,11 @@
 <body>
     <!-- Navbar -->
     <div class="navbar">
-    <h1 class="logo"><span style="color: rgb(229, 255, 0);">G</span>ame<span style="color: rgb(229, 255, 0);">G</span>el</h1>
-     <ul class="head-font green">
+<h1 class="logo"><span style="color: rgb(229, 255, 0);">G</span>ame<span style="color: rgb(229, 255, 0);">G</span>el</h1>
+     <div class="search-wrapper">
+         <input type="text" id="searchInput" placeholder="Search games..." class="search-input">
+     </div>
+      <ul class="head-font green">
         <a href="./index.html"><li>Home</li></a>
         <a href="./pages/games.html"><li >Games</li></a>
         <a href="./pages/login.html"><li >Login</li></a>
@@ -100,8 +103,17 @@
     </div>
 </div>
 </div>
-     <footer>
-        <p class="head-font green">© 2026 GameGel. All rights reserved.</p>
-     </footer>
+<footer>
+         <p class="head-font green">© 2026 GameGel. All rights reserved.</p>
+      </footer>
+      <script src="./assets/js/search.js"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const response = await fetch('./assets/js/games.json');
+            const allGames = await response.json();
+            Search.init('#searchInput', allGames, null, { showDropdown: true });
+            Search.fullGamesList = allGames;
+        });
+      </script>
 </body>
 </html>

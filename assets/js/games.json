@@ -20,5 +20,218 @@
             "image": "../assets/images/witcher.jpg",
             "buyLink": "https://store.steampowered.com/app/292030/The_Witcher_3_Wild_Hunt/"
          
-        }
+        },
+        {
+            "title": "Red Dead Redemption 2",
+            "description": "An epic tale of life in America’s unforgiving heartland. The game's vast and atmospheric world also provides the foundation for a brand new online multiplayer experience.",
+            "developer": "Rockstar Games",
+            "platforms": "PlayStation 4, Xbox One, Windows PC",
+            "genres": "Action-adventure game, Western, Open world",
+            "price": "$59.99 on Steam",
+            "image": "../assets/images/rdr2.jpg",
+            "buyLink": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/"
+        },
+        {
+            "title": "Minecraft",
+            "description": "Explore infinite worlds and build everything from the simplest of homes to the grandest of castles. Play in creative mode with unlimited resources or mine deep into the world in survival mode.",
+            "developer": "Mojang Studios",
+            "platforms": "Windows PC, PlayStation, Xbox, Nintendo Switch, Mobile",
+            "genres": "Sandbox, Survival, Adventure",
+            "price": "$29.99 on Microsoft Store",
+            "image": "../assets/images/minecraft.jpeg",
+            "buyLink": "https://www.minecraft.net/en-us/store/minecraft-deluxe-collection-pc"
+        },
+        {
+            "title": "Grand Theft Auto V",
+            "description": "When a young street hustler, a retired bank robber, and a terrifying psychopath find themselves entangled with the criminal underworld, they must pull off a series of dangerous heists.",
+            "developer": "Rockstar North",
+            "platforms": "PlayStation 5, Xbox Series X/S, Windows PC",
+            "genres": "Action-adventure game, Open world, Third-person shooter",
+            "price": "$29.99 on Steam",
+            "image": "../assets/images/gta5.jpg",
+            "buyLink": "https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/"
+        },
+        {
+            "title": "Elden Ring",
+            "description": "Rise, Tarnished, and be guided by grace to brandish the power of the Elden Ring and become an Elden Lord in the Lands Between.",
+            "developer": "FromSoftware Inc.",
+            "platforms": "PlayStation 5, Xbox Series X/S, Windows PC",
+            "genres": "Action role-playing game, Open world, Soulslike",
+            "price": "$59.99 on Steam",
+            "image": "../assets/images/elden_ring.jpg",
+            "buyLink": "https://store.steampowered.com/app/1245620/ELDEN_RING/"
+        },
+        {
+            "title": "Cyberpunk 2077",
+            "description": "An open-world, action-adventure RPG set in the megalopolis of Night City, where you play as a cyberpunk mercenary wrapped up in a fight for survival.",
+            "developer": "CD Projekt RED",
+            "platforms": "PlayStation 5, Xbox Series X/S, Windows PC",
+            "genres": "Action role-playing game, First-person shooter",
+            "price": "$59.99 on Steam",
+            "image": "../assets/images/cyberpunk.jpg",
+            "buyLink": "https://store.steampowered.com/app/1091500/Cyberpunk_2077/"
+        },
+       
+        {
+            "title": "God of War Ragnarök",
+            "description": "Kratos and Atreus must journey to each of the Nine Realms in search of answers as Asgardian forces prepare for a prophesied battle.",
+            "developer": "Santa Monica Studio",
+            "platforms": "PlayStation 5, Windows PC",
+            "genres": "Action-adventure game, Hack and slash",
+            "price": "$59.99 on Steam",
+            "image": "../assets/images/gow_ragnarok.png",
+            "buyLink": "https://store.steampowered.com/app/2322010/God_of_War_Ragnarok/"
+        },
+        {
+            "title": "Ghost of Tsushima",
+            "description": "In the late 13th century, the Mongol empire has laid waste to entire nations. Jin Sakai must go beyond samurai traditions to protect what's left.",
+            "developer": "Sucker Punch Productions",
+            "platforms": "PlayStation 5, Windows PC",
+            "genres": "Action-adventure game, Stealth, Open world",
+            "price": "$59.99 on Steam",
+            "image": "../assets/images/ghost_of_tsushima.jpg",
+            "buyLink": "https://store.steampowered.com/app/2215430/Ghost_of_Tsushima_Directors_Cut/"
+        },
+        {
+            "title": "Terraria",
+            "description": "Dig, fight, explore, build! Nothing is impossible in this action-packed adventure game. The world is your canvas and the ground itself is your paint.",
+            "developer": "Re-Logic",
+            "platforms": "Windows PC, PlayStation, Xbox, Nintendo Switch",
+            "genres": "Sandbox, Adventure, Survival",
+            "price": "$9.99 on Steam",
+            "image": "../assets/images/terraria.jpg",
+            "buyLink": "https://store.steampowered.com/app/105600/Terraria/"
+        },
+        {
+            "title": "Hollow Knight",
+            "description": "Forge your own path in Hollow Knight! An epic action adventure through a vast ruined kingdom of insects and heroes.",
+            "developer": "Team Cherry",
+            "platforms": "PC, PlayStation, Xbox, Nintendo Switch",
+            "genres": "Metroidvania, Indie, Action",
+            "price": "$14.99 on Steam",
+            "image": "../assets/images/hollow_knight.jpg",
+            "buyLink": "https://store.steampowered.com/app/367520/Hollow_Knight/"
+        },
+
+        {
+            "title": "Forza Horizon 5",
+            "description": "Your ultimate Horizon adventure awaits! Explore the vibrant and ever-evolving open world landscapes of Mexico with limitless driving action.",
+            "developer": "Playground Games",
+            "platforms": "Xbox, Windows PC",
+            "genres": "Racing game, Open world, Simulation",
+            "price": "$59.99 on Steam",
+            "image": "../assets/images/forza_horizon_5.jpg",
+            "buyLink": "https://store.steampowered.com/app/1551360/Forza_Horizon_5/"
+        },
+        {
+            "title": "Sekiro: Shadows Die Twice",
+            "description": "Explore late 1500s Sengoku Japan as you come face to face with larger than life foes in a dark and twisted world.",
+            "developer": "FromSoftware Inc.",
+            "platforms": "PlayStation 4, Xbox One, Windows PC",
+            "genres": "Action-adventure game, Soulslike",
+            "price": "$59.99 on Steam",
+            "image": "../assets/images/sekiro.jpg",
+            "buyLink": "https://store.steampowered.com/app/814380/Sekiro_Shadows_Die_Twice__GOTY_Edition/"
+        },
+        {
+            "title": "Resident Evil 4",
+            "description": "Survival is just the beginning. Six years have passed since the biological disaster in Raccoon City. Leon S. Kennedy tracks the president's kidnapped daughter to a secluded European village.",
+            "developer": "CAPCOM Co., Ltd.",
+            "platforms": "PlayStation 5, Xbox Series X/S, Windows PC",
+            "genres": "Survival horror, Action-adventure",
+            "price": "$59.99 on Steam",
+            "image": "../assets/images/resident_evil_4.jpg",
+            "buyLink": "https://store.steampowered.com/app/2050650/Resident_Evil_4/"
+        },
+        {
+            "title": "Counter-Strike 2",
+            "description": "For over two decades, Counter-Strike has offered an elite competitive experience. Now the next chapter of the CS saga begins with Counter-Strike 2.",
+            "developer": "Valve",
+            "platforms": "Windows PC",
+            "genres": "First-person shooter, Multiplayer",
+            "price": "Free to Play",
+            "image": "../assets/images/cs2.jpg",
+            "buyLink": "https://store.steampowered.com/app/730/CounterStrike_2/"
+        },
+        {
+        "title": "It Takes Two",
+        "description": "Embark on the craziest journey of your life in It Takes Two, a genre-bending platform adventure created purely for co-op.",
+        "developer": "Hazelight Studios",
+        "platforms": "PC, PlayStation, Xbox, Nintendo Switch",
+        "genres": "Action-adventure, Platformer, Co-op",
+        "price": "$39.99 on Steam",
+        "image": "../assets/images/it_takes_two.png",
+        "buyLink": "https://store.steampowered.com/app/1426210/It_Takes_Two/"
+    },
+    {
+        "title": "Marvel's Spider-Man Remastered",
+        "description": "Peter Parker’s worlds collide in an original action-packed story. Play as an experienced Spider-Man, fighting big crime in Marvel’s New York.",
+        "developer": "Insomniac Games",
+        "platforms": "PlayStation 5, Windows PC",
+        "genres": "Action-adventure game, Superhero",
+        "price": "$59.99 on Steam",
+        "image": "../assets/images/spider_man.jpg",
+        "buyLink": "https://store.steampowered.com/app/1817070/Marvels_SpiderMan_Remastered/"
+    },
+    {
+        "title": "Street Fighter 6",
+        "description": "Powered by Capcom’s proprietary RE ENGINE, the Street Fighter 6 experience spans across three distinct game modes: World Tour, Fighting Ground and Battle Hub.",
+        "developer": "Capcom",
+        "platforms": "PlayStation 5, Xbox Series X/S, Windows PC",
+        "genres": "Fighting game",
+        "price": "$59.99 on Steam",
+        "image": "../assets/images/sf6.jpg",
+        "buyLink": "https://store.steampowered.com/app/1364780/Street_Fighter_6/"
+    },
+    {
+        "title": "EA Sports FC 26",
+        "description": "The latest installment in the world's game, featuring more realism, updated rosters, and the new Career Mode enhancements.",
+        "developer": "EA Vancouver",
+        "platforms": "PS5, Xbox Series X/S, Windows PC, Nintendo Switch",
+        "genres": "Sports game, Simulation",
+        "price": "$69.99 on EA App",
+        "image": "../assets/images/fc26.jpg",
+        "buyLink": "https://www.ea.com/games/ea-sports-fc/fc-26"
+    },
+    {
+        "title": "Fortnite",
+        "description": "The ultimate battle royale and social hub. Build, fight, and create in a constantly evolving world that includes racing, music festivals, and LEGO adventures.",
+        "developer": "Epic Games",
+        "platforms": "PC, PlayStation, Xbox, Switch, Mobile",
+        "genres": "Battle Royale, Sandbox",
+        "price": "Free to Play",
+        "image": "../assets/images/fortnite.jpg",
+        "buyLink": "https://www.fortnite.com/"
+    },
+    {
+        "title": "Assassin's Creed Odyssey",
+        "description": "Choose your fate in Ancient Greece and evolve from an outcast to a legendary Spartan hero.",
+        "developer": "Ubisoft Quebec",
+        "platforms": "Windows PC, PlayStation 4, Xbox One",
+        "genres": "Action role-playing game, Stealth, Open world",
+        "price": "$59.99 on Steam",
+        "image": "../assets/images/ac_odyssey.jpeg",
+        "buyLink": "https://store.steampowered.com/app/812140/Assassins_Creed_Odyssey/"
+    },
+    {
+        "title": "Batman: Arkham City",
+        "description": "Become the Dark Knight in a sprawling open-world prison, fighting against Gotham's most notorious criminals.",
+        "developer": "Rocksteady Studios",
+        "platforms": "Windows PC, PlayStation, Xbox",
+        "genres": "Action-adventure game, Stealth",
+        "price": "$19.99 on Steam",
+        "image": "../assets/images/arkham_city.jpg",
+        "buyLink": "https://store.steampowered.com/app/200260/Batman_Arkham_City_Game_of_the_Year_Edition/"
+    },
+    {
+        "title": "Dark Souls III",
+        "description": "A challenging action RPG set in a dark, dying world where survival depends on precise combat and exploration.",
+        "developer": "FromSoftware Inc.",
+        "platforms": "PlayStation 4, Xbox One, Windows PC",
+        "genres": "Action role-playing game, Soulslike",
+        "price": "$59.99 on Steam",
+        "image": "../assets/images/dark_souls_3.jpg",
+        "buyLink": "https://store.steampowered.com/app/374320/DARK_SOULS_III/"
+    }
+
     ]

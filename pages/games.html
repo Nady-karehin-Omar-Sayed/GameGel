@@ -25,6 +25,10 @@
 
 
 <!-- Search bar' -->
+<!--EDITED HERE-->
+<div class="search-container" style="position: relative; display: flex; justify-content: center; align-items: center; gap: 10px;">
+<input type="text" id="searchInput" placeholder="Search games..." class="search-input">
+</div>
 <!-- Games -->
 <div class="games" id="gameDiv">
 
@@ -36,7 +40,27 @@
     <p class="head-font green">© 2026 GameGel. All rights reserved.</p>
 </footer>
 
-
-<script src="../assets/js/games.js"></script>
+<!--EDITED HERE-->
+<script src="../assets/js/search.js"></script>
+<script>
+  async function initSearch() {
+    const response = await fetch('../assets/js/games.json');
+    const allGames = await response.json();
+    
+    const params = new URLSearchParams(window.location.search);
+    const gameTitle = params.get('game');
+    
+    let games = allGames;
+    if (gameTitle) {
+      games = allGames.filter(game => game.title.toLowerCase() === gameTitle.toLowerCase());
+      document.getElementById('searchInput').value = gameTitle;
+    }
+    
+    Search.init('#searchInput', games, '#gameDiv');
+    Search.fullGamesList = allGames;
+    Search.renderGames(games);
+  }
+  initSearch();
+</script>
 </body>
 </html>
