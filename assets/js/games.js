@@ -46,3 +46,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     gamesContainer.innerHTML = gamesHTML || '<p class="green text-font">No games available.</p>';
 });
+  async function initSearch() {
+    const response = await fetch('../assets/js/games.json');
+    const allGames = await response.json();
+    
+    const params = new URLSearchParams(window.location.search);
+    const gameTitle = params.get('game');
+    
+    let games = allGames;
+    if (gameTitle) {
+      games = allGames.filter(game => game.title.toLowerCase() === gameTitle.toLowerCase());
+      document.getElementById('searchInput').value = gameTitle;
+    }
+    
+    Search.init('#searchInput', games, '#gameDiv');
+    Search.fullGamesList = allGames;
+    Search.renderGames(games);
+  }
+  initSearch();

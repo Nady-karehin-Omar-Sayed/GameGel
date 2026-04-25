@@ -162,10 +162,21 @@ color: #08CB00;
     border: 2px solid #08CB00;
     border-top: none;
     border-radius: 0 0 6px 6px;
-    max-height: 250px;
+    max-height: 300px;
     overflow-y: auto;
     display: none;
     z-index: 1001;
+    width: 100%;
+    min-width: 300px;
+}
+
+.navbar .search-results .search-result-item img {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+    background-color: #1a1a1a;
 }
 
 .navbar .search-results.active {
@@ -392,6 +403,9 @@ footer{
     height: 40px;
     object-fit: cover;
     border-radius: 4px;
+    display: block;
+    background-color: #1a1a1a;
+    min-width: 60px;
 }
 
 .search-result-item .title {
@@ -537,4 +551,95 @@ footer{
     accent-color: #08CB00;
     margin-right: 8px;
 }
+
+/* ==========================================
+   👤 USER WELCOME SECTION (Blog Page)
+   ========================================== */
+.user-welcome {
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.user-greeting {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    border: 2px solid #08CB00;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(8, 203, 0, 0.2);
+}
+
+.greeting-text {
+    font-family: "Bungee", sans-serif;
+    font-size: 1rem;
+    color: #eeeeee;
+}
+
+.greeting-text strong {
+    color: #08CB00;
+}
+
+.greeting-text a {
+    color: #F8DE22;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.greeting-text a:hover {
+    text-decoration: underline;
+}
+
+.logout-btn {
+    padding: 8px 16px;
+    font-family: "Bungee", sans-serif;
+    font-size: 0.8rem;
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.logout-btn:hover {
+    background-color: #b71c1c;
+    transform: scale(1.05);
+}
+
+/* Blog container */
+.blog-container {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* Remember Me checkbox */
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Bungee", sans-serif;
+    font-size: 0.75rem;
+    color: #08CB00;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #08CB00;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: black;
+    border: 2px solid #08CB00;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+}
+
 

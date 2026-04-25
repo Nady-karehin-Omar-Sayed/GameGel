@@ -7,6 +7,7 @@
             "genres": "Action role-playing game, Fighting game, Third-person shooter",
             "price": "$27.99 on Steam",
             "image": "../assets/images/fallout.jpg",
+            "lsimg": "./assets/images/fallout.jpg",
             "buyLink": "https://store.steampowered.com/sub/199943/"
         },
         {
@@ -18,6 +19,7 @@
             "genres": "Action role-playing game, Fighting game, Action-adventure game, Nonlinear gameplay",
             "price": "$29.99 on Steam",
             "image": "../assets/images/witcher.jpg",
+            "lsimg": "./assets/images/witcher.jpg",
             "buyLink": "https://store.steampowered.com/app/292030/The_Witcher_3_Wild_Hunt/"
          
         },
@@ -29,6 +31,7 @@
             "genres": "Action-adventure game, Western, Open world",
             "price": "$59.99 on Steam",
             "image": "../assets/images/rdr2.jpg",
+            "lsimg": "./assets/images/rdr2.jpg",
             "buyLink": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/"
         },
         {
@@ -39,6 +42,7 @@
             "genres": "Sandbox, Survival, Adventure",
             "price": "$29.99 on Microsoft Store",
             "image": "../assets/images/minecraft.jpeg",
+            "lsimg": "./assets/images/minecraft.jpeg",
             "buyLink": "https://www.minecraft.net/en-us/store/minecraft-deluxe-collection-pc"
         },
         {
@@ -49,6 +53,7 @@
             "genres": "Action-adventure game, Open world, Third-person shooter",
             "price": "$29.99 on Steam",
             "image": "../assets/images/gta5.jpg",
+            "lsimg": "./assets/images/gta5.jpg",
             "buyLink": "https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/"
         },
         {
@@ -59,6 +64,7 @@
             "genres": "Action role-playing game, Open world, Soulslike",
             "price": "$59.99 on Steam",
             "image": "../assets/images/elden_ring.jpg",
+            "lsimg": "./assets/images/elden_ring.jpg",
             "buyLink": "https://store.steampowered.com/app/1245620/ELDEN_RING/"
         },
         {
@@ -69,6 +75,7 @@
             "genres": "Action role-playing game, First-person shooter",
             "price": "$59.99 on Steam",
             "image": "../assets/images/cyberpunk.jpg",
+            "lsimg": "./assets/images/cyberpunk.jpg",
             "buyLink": "https://store.steampowered.com/app/1091500/Cyberpunk_2077/"
         },
        
@@ -80,6 +87,7 @@
             "genres": "Action-adventure game, Hack and slash",
             "price": "$59.99 on Steam",
             "image": "../assets/images/gow_ragnarok.png",
+            "lsimg": "./assets/images/gow_ragnarok.png",
             "buyLink": "https://store.steampowered.com/app/2322010/God_of_War_Ragnarok/"
         },
         {
@@ -90,6 +98,7 @@
             "genres": "Action-adventure game, Stealth, Open world",
             "price": "$59.99 on Steam",
             "image": "../assets/images/ghost_of_tsushima.jpg",
+            "lsimg": "./assets/images/ghost_of_tsushima.jpg",
             "buyLink": "https://store.steampowered.com/app/2215430/Ghost_of_Tsushima_Directors_Cut/"
         },
         {
@@ -100,6 +109,7 @@
             "genres": "Sandbox, Adventure, Survival",
             "price": "$9.99 on Steam",
             "image": "../assets/images/terraria.jpg",
+            "lsimg": "./assets/images/terraria.jpg",
             "buyLink": "https://store.steampowered.com/app/105600/Terraria/"
         },
         {
@@ -110,6 +120,7 @@
             "genres": "Metroidvania, Indie, Action",
             "price": "$14.99 on Steam",
             "image": "../assets/images/hollow_knight.jpg",
+            "lsimg": "./assets/images/hollow_knight.jpg",
             "buyLink": "https://store.steampowered.com/app/367520/Hollow_Knight/"
         },
 
@@ -121,6 +132,7 @@
             "genres": "Racing game, Open world, Simulation",
             "price": "$59.99 on Steam",
             "image": "../assets/images/forza_horizon_5.jpg",
+            "lsimg": "./assets/images/forza_horizon_5.jpg",
             "buyLink": "https://store.steampowered.com/app/1551360/Forza_Horizon_5/"
         },
         {
@@ -131,6 +143,7 @@
             "genres": "Action-adventure game, Soulslike",
             "price": "$59.99 on Steam",
             "image": "../assets/images/sekiro.jpg",
+            "lsimg": "./assets/images/sekiro.jpg",
             "buyLink": "https://store.steampowered.com/app/814380/Sekiro_Shadows_Die_Twice__GOTY_Edition/"
         },
         {
@@ -141,6 +154,7 @@
             "genres": "Survival horror, Action-adventure",
             "price": "$59.99 on Steam",
             "image": "../assets/images/resident_evil_4.jpg",
+            "lsimg": "./assets/images/resident_evil_4.jpg",
             "buyLink": "https://store.steampowered.com/app/2050650/Resident_Evil_4/"
         },
         {
@@ -151,6 +165,7 @@
             "genres": "First-person shooter, Multiplayer",
             "price": "Free to Play",
             "image": "../assets/images/cs2.jpg",
+            "lsimg": "./assets/images/cs2.jpg",
             "buyLink": "https://store.steampowered.com/app/730/CounterStrike_2/"
         },
         {
@@ -161,6 +176,7 @@
         "genres": "Action-adventure, Platformer, Co-op",
         "price": "$39.99 on Steam",
         "image": "../assets/images/it_takes_two.png",
+        "lsimg": "./assets/images/it_takes_two.png",
         "buyLink": "https://store.steampowered.com/app/1426210/It_Takes_Two/"
     },
     {
@@ -171,6 +187,7 @@
         "genres": "Action-adventure game, Superhero",
         "price": "$59.99 on Steam",
         "image": "../assets/images/spider_man.jpg",
+        "lsimg": "./assets/images/spider_man.jpg",
         "buyLink": "https://store.steampowered.com/app/1817070/Marvels_SpiderMan_Remastered/"
     },
     {
@@ -181,6 +198,7 @@
         "genres": "Fighting game",
         "price": "$59.99 on Steam",
         "image": "../assets/images/sf6.jpg",
+        "lsimg": "./assets/images/sf6.jpg",
         "buyLink": "https://store.steampowered.com/app/1364780/Street_Fighter_6/"
     },
     {
@@ -191,6 +209,7 @@
         "genres": "Sports game, Simulation",
         "price": "$69.99 on EA App",
         "image": "../assets/images/fc26.jpg",
+        "lsimg": "./assets/images/fc26.jpg",
         "buyLink": "https://www.ea.com/games/ea-sports-fc/fc-26"
     },
     {
@@ -201,6 +220,7 @@
         "genres": "Battle Royale, Sandbox",
         "price": "Free to Play",
         "image": "../assets/images/fortnite.jpg",
+        "lsimg": "./assets/images/fortnite.jpg",
         "buyLink": "https://www.fortnite.com/"
     },
     {
@@ -211,6 +231,7 @@
         "genres": "Action role-playing game, Stealth, Open world",
         "price": "$59.99 on Steam",
         "image": "../assets/images/ac_odyssey.jpeg",
+        "lsimg": "./assets/images/ac_odyssey.jpeg",
         "buyLink": "https://store.steampowered.com/app/812140/Assassins_Creed_Odyssey/"
     },
     {
@@ -221,6 +242,7 @@
         "genres": "Action-adventure game, Stealth",
         "price": "$19.99 on Steam",
         "image": "../assets/images/arkham_city.jpg",
+        "lsimg": "./assets/images/arkham_city.jpg",
         "buyLink": "https://store.steampowered.com/app/200260/Batman_Arkham_City_Game_of_the_Year_Edition/"
     },
     {
@@ -231,6 +253,7 @@
         "genres": "Action role-playing game, Soulslike",
         "price": "$59.99 on Steam",
         "image": "../assets/images/dark_souls_3.jpg",
+        "lsimg": "./assets/images/dark_souls_3.jpg",
         "buyLink": "https://store.steampowered.com/app/374320/DARK_SOULS_III/"
     }
 

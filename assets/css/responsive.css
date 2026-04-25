@@ -33,6 +33,128 @@ body {
         padding: 8px 12px;
         font-size: 0.9rem;
     }
+
+    /* Container responsive */
+    .container {
+        padding: 20px 10px;
+    }
+    
+    .container h1 {
+        font-size: 1.8rem;
+    }
+    
+    .container p {
+        font-size: 1.1rem;
+    }
+
+    /* Carousel responsive */
+    .carousel-wrapper {
+        width: 95%;
+        padding: 10px 0;
+    }
+    
+    .carousel-slide {
+        width: 220px;
+    }
+    
+    .carousel-slide img {
+        height: 140px;
+    }
+    
+    .slide-label {
+        font-size: 0.75rem;
+        padding: 8px;
+    }
+
+    /* Search results dropdown */
+    .navbar .search-results {
+        width: 100%;
+        min-width: unset;
+        max-height: 200px;
+    }
+    
+    .search-result-item {
+        padding: 8px 10px;
+        gap: 10px;
+    }
+    
+    .search-result-item img {
+        width: 50px;
+        height: 35px;
+        min-width: 50px;
+    }
+    
+    .search-result-item .title {
+        font-size: 0.8rem;
+    }
+    
+    .search-result-item .genre,
+    .search-result-item .price {
+        font-size: 0.7rem;
+    }
+
+    /* Top selling section */
+    .top-sell {
+        padding: 10px;
+    }
+    
+    .row-text {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .row-text h1 {
+        font-size: 1.5rem;
+    }
+    
+    .row-text p {
+        font-size: 1rem;
+    }
+
+    /* Login/Register forms */
+    .login, .register {
+        width: 90%;
+        max-width: 400px;
+        padding: 20px;
+    }
+    
+    .login input, .register input {
+        width: 100%;
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+    
+    .login button, .register button {
+        width: 100%;
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    /* Blog page */
+    .blog-container {
+        padding: 20px 15px;
+    }
+    
+    .user-greeting {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 15px;
+    }
+    
+    .greeting-text {
+        font-size: 0.85rem;
+        text-align: center;
+    }
+
+    /* Footer */
+    footer {
+        padding: 15px;
+    }
+    
+    footer p {
+        font-size: 0.8rem;
+    }
 }
 
 /* Mobile devices (screens smaller than 480px) */
@@ -54,12 +176,164 @@ body {
     }
     
     .navbar ul {
-        gap: 10px;
+        gap: 8px;
         width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     
     .navbar ul li {
-        padding: 6px 10px;
+        padding: 5px 8px;
+        font-size: 0.75rem;
+    }
+
+    /* Search input */
+    .navbar .search-input {
+        width: 120px;
+        font-size: 0.7rem;
+    }
+    
+    .navbar .search-input:focus {
+        width: 150px;
+    }
+
+    /* Container */
+    .container {
+        padding: 15px 10px;
+    }
+    
+    .container h1 {
+        font-size: 1.4rem;
+    }
+    
+    .container p {
+        font-size: 0.95rem;
+    }
+    
+    .btn {
+        padding: 10px 20px;
         font-size: 0.85rem;
+    }
+
+    /* Carousel */
+    .carousel-wrapper {
+        width: 100%;
+        padding: 8px 0;
+        border-width: 1px;
+    }
+    
+    .carousel-slide {
+        width: 180px;
+    }
+    
+    .carousel-slide img {
+        height: 110px;
+    }
+    
+    .slide-label {
+        font-size: 0.65rem;
+        padding: 6px;
+    }
+
+    /* Search results */
+    .navbar .search-results {
+        max-height: 180px;
+    }
+    
+    .search-result-item {
+        padding: 6px 8px;
+        gap: 8px;
+    }
+    
+    .search-result-item img {
+        width: 40px;
+        height: 30px;
+        min-width: 40px;
+    }
+    
+    .search-result-item .title {
+        font-size: 0.75rem;
+    }
+    
+    .search-result-item .genre,
+    .search-result-item .price {
+        font-size: 0.65rem;
+    }
+
+    /* Top selling */
+    .row-text h1 {
+        font-size: 1.2rem;
+    }
+    
+    .row-text p {
+        font-size: 0.9rem;
+    }
+
+    /* Login/Register */
+    .login, .register {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .login input, .register input {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+    
+    .login button, .register button {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    /* Blog page */
+    .blog-container h2 {
+        font-size: 1.2rem;
+    }
+    
+    .blog-container p {
+        font-size: 0.9rem;
+    }
+    
+    .user-greeting {
+        padding: 10px 12px;
+    }
+    
+    .greeting-text {
+        font-size: 0.8rem;
+    }
+    
+    .logout-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+
+    /* Footer */
+    footer p {
+        font-size: 0.7rem;
+    }
+
+    /* Remember me checkbox */
+    .remember-me {
+        font-size: 0.7rem;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 320px) {
+    .navbar ul {
+        gap: 5px;
+    }
+    
+    .navbar ul li {
+        padding: 4px 6px;
+        font-size: 0.7rem;
+    }
+    
+    .carousel-slide {
+        width: 150px;
+    }
+    
+    .carousel-slide img {
+        height: 90px;
     }
 }

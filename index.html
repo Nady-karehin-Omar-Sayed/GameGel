@@ -22,7 +22,6 @@
         <a href="./pages/register.html"><li >Register</li></a>
         <a href="./pages/blog.html"><li>Check Our Blog</li></a>
         <a href="./pages/contact.html"><li>Contact Us</li></a>
-
       </ul> 
      </div>
         <div class="container">
@@ -39,69 +38,24 @@
                 <p class="text-font green">New and featured games</p>
 </div>
 <div class="carousel-wrapper text-font">
-    <div class="carousel-track">
-      
-      <a href="page1.html" class="carousel-slide">
-        <img src="https://placehold.co/280x180/111/08CB00?text=Page+1" alt="Page 1">
-        <span class="slide-label">Page 1</span>
-      </a>
-      <a href="page2.html" class="carousel-slide">
-        <img src="https://placehold.co/280x180/111/08CB00?text=Page+2" alt="Page 2">
-        <span class="slide-label">Page 2</span>
-      </a>
-      <a href="page3.html" class="carousel-slide">
-        <img src="https://placehold.co/280x180/111/08CB00?text=Page+3" alt="Page 3">
-        <span class="slide-label">Page 3</span>
-      </a>
-      <a href="page4.html" class="carousel-slide">
-        <img src="https://placehold.co/280x180/111/08CB00?text=Page+4" alt="Page 4">
-        <span class="slide-label">Page 4</span>
-      </a>
-
-      <a href="page1.html" class="carousel-slide">
-        <img src="https://placehold.co/280x180/111/08CB00?text=Page+1" alt="Page 1">
-        <span class="slide-label">Page 1</span>
-      </a>
-      <a href="page2.html" class="carousel-slide">
-        <img src="https://placehold.co/280x180/111/08CB00?text=Page+2" alt="Page 2">
-        <span class="slide-label">Page 2</span>
-      </a>
-      <a href="page3.html" class="carousel-slide">
-        <img src="https://placehold.co/280x180/111/08CB00?text=Page+3" alt="Page 3">
-        <span class="slide-label">Page 3</span>
-      </a>
-      <a href="page4.html" class="carousel-slide">
-        <img src="https://placehold.co/280x180/111/08CB00?text=Page+4" alt="Page 4">
-        <span class="slide-label">Page 4</span>
-      </a>
-
+    <div class="carousel-track" id="new-releases-track">
+      <!-- Games will be loaded dynamically -->
     </div>
   </div>
 
         </div>
 <!--  -->
 
-<div class="top-sell ">
+<div class="top-sell text-font">
     <div class="row-text">
         <h1 class="green head-font">Top Selling This Week !</h1>
         <p class="green text-font">Recently Trending Games</p>
     </div>
     <div class="carousel-wrapper">
-        <div class="row-text">
-         <a href="page1.html" class="carousel-slide">
-        <img src="https://placehold.co/280x180/111/08CB00?text=Page+1" alt="Page 1">
-        <span class="slide-label">Page 1</span>
-      </a>
-      <a href="page2.html" class="carousel-slide">
-        <img src="https://placehold.co/280x180/111/08CB00?text=Page+2" alt="Page 2">
-        <span class="slide-label">Page 2</span>
-      </a>
-      <a href="page3.html" class="carousel-slide">
-        <img src="https://placehold.co/280x180/111/08CB00?text=Page+3" alt="Page 3">
-        <span class="slide-label">Page 3</span>
-      </a>
+        <div class="carousel-track" id="top-sellers-track">
+          <!-- Games will be loaded dynamically -->
+        </div>
     </div>
-</div>
 </div>
 <footer>
          <p class="head-font green">© 2026 GameGel. All rights reserved.</p>
@@ -113,6 +67,36 @@
             const allGames = await response.json();
             Search.init('#searchInput', allGames, null, { showDropdown: true });
             Search.fullGamesList = allGames;
+
+            // Populate carousels with games
+            const newReleasesTrack = document.getElementById('new-releases-track');
+            const topSellersTrack = document.getElementById('top-sellers-track');
+
+            // Function to create carousel slide HTML
+            function createCarouselSlide(game) {
+                return `
+                    <a href="./pages/game-details.html?game=${encodeURIComponent(game.title)}" class="carousel-slide">
+                        <img src="${game.lsimg}" alt="${game.title}" onerror="this.src='https://placehold.co/280x180/111/08CB00?text=No+Image'">
+                        <span class="slide-label">${game.title}</span>
+                    </a>
+                `;
+            }
+
+            // Populate New Releases (first 6 games, duplicated for infinite scroll effect)
+            if (newReleasesTrack) {
+                const newReleases = allGames.slice(0, 6);
+                const trackContent = newReleases.map(game => createCarouselSlide(game)).join('') +
+                                     newReleases.map(game => createCarouselSlide(game)).join('');
+                newReleasesTrack.innerHTML = trackContent;
+            }
+
+            // Populate Top Selling (different 6 games, duplicated for infinite scroll effect)
+            if (topSellersTrack) {
+                const topSellers = allGames.slice(6, 9);
+                const trackContent = topSellers.map(game => createCarouselSlide(game)).join('') +
+                                     topSellers.map(game => createCarouselSlide(game)).join('');
+                topSellersTrack.innerHTML = trackContent;
+            }
         });
       </script>
 </body>

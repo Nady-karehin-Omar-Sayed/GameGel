@@ -5,6 +5,8 @@
     <meta name="viewport" content="width= , initial-scale=1.0">
     <title>Login to GameGel</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/variables.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -20,9 +22,26 @@
 
       </ul> 
      </div>
+
+<div class="login">
+
+<form id="login-form" novalidate >
+  <input type="email" id="login-email" placeholder="Email" required>
+  <input type="password" id="login-password" placeholder="Password" required>
+  <label class="remember-me">
+    <input type="checkbox" id="remember-me">
+    Remember Me
+  </label>
+  <button type="submit" id="login-submit">Login</button>
+  <div id="login-message"></div>
+</form>
+
+</div>
           <footer>
         <p class="head-font green">© 2026 GameGel. All rights reserved.</p>
      </footer>
+
+     <script src="../assets/js/auth.js"></script>
 
 </body>
 </html>

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width= , initial-scale=1.0">
     <title>Register to GameGel</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/variables.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -20,10 +22,26 @@
 
       </ul> 
      </div>
+<div class="register">
+     <form id="register-form" novalidate>
+  <input type="email" id="reg-email" placeholder="Email" required>
+  <input type="password" id="reg-password" placeholder="Password" required>
+  <input type="password" id="reg-confirm-password" placeholder="Confirm Password" required>
+  <button type="submit" id="reg-submit">Register</button>
+  <div id="reg-message"></div> <!-- 🔸 Auto-styled by JS -->
+</form>
+
+</div>
+
+
+
+
 
           <footer>
         <p class="head-font green">© 2026 GameGel. All rights reserved.</p>
      </footer>
+
+     <script src="../assets/js/auth.js"></script>
 
 </body>
 </html>

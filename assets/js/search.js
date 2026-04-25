@@ -186,7 +186,7 @@ const Search = {
       this.container.innerHTML = '<p class="green text-font">No games found</p>';
       return;
     }
-
+// Cards
     this.container.innerHTML = games.map(game => `
       <div class="game-box">
         <div class="game-content">
@@ -269,7 +269,7 @@ const Search = {
     } else {
       this.resultsContainer.innerHTML = games.map((game, index) => `
         <div class="search-result-item${index === this.activeIndex ? ' active' : ''}" data-title="${game.title}">
-          <img src="${game.image}" alt="${game.title}">
+          <img src="${game.image}" alt="${game.title}" onerror="this.src='${game.lsimg}'">
           <div class="result-info">
             <div class="title">${game.title}</div>
             <div class="genre">${game.genres}</div>
