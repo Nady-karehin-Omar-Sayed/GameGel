@@ -16,10 +16,9 @@
   display: flex;
   flex-direction: column;
   padding: 0.5%;
-
-
-
+  
 }
+
 
 .game-content{
   display: flex;
