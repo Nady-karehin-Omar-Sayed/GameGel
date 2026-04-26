@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - GameGel</title>
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <style>
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1 class="logo"><span style="color: rgb(229, 255, 0);">G</span>ame<span style="color: rgb(229, 255, 0);">G</span>el</h1>
+        <ul class="head-font green">
+            <a href="../index.html"><li>Home</li></a>
+            <a href="./games.html"><li>Games</li></a>
+            <a href="./dashboard.html"><li>Dashboard</li></a>
+            <a href="./login.html"><li>Login</li></a>
+            <a href="./register.html"><li>Register</li></a>
+            <a href="./blog.html"><li>Check Our Blog</li></a>
+            <a href="./contact.html"><li>Contact Us</li></a>
+        </ul> 
+    </div>
+
+    <div class="dashboard-container">
+        <!-- User Welcome -->
+        <div id="user-welcome" class="user-welcome"></div>
+
+        <!-- User Dashboard (Wishlist) -->
+        <div id="user-dashboard" class="dashboard-section text-font" style="display: none;">
+            <h2>My Wishlist <span class="role-badge user-badge">User</span></h2>
+            <div class="add-game-form">
+                <input type="text" id="gameTitleInput" placeholder="Enter game title to add...">
+                <button onclick="addToWishlist()">Add to Wishlist</button>
+            </div>
+            <div id="wishlist-container" class="wishlist-grid"></div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="admin-dashboard" class="dashboard-section text-font" style="display: none;">
+            <h2 class="head-font">Admin Dashboard <span class="role-badge admin-badge ">Admin</span></h2>
+            
+            <!-- User Management -->
+            <h3  style="color: #fff; margin-top: 20px;">User Management</h3>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Registered</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="users-table-body"></tbody>
+            </table>
+
+            <!-- Game Management -->
+            <h3 style="color: #fff; margin-top: 30px;">Game Management</h3>
+            <div class="add-game-form">
+                <input type="text" id="newGameTitle" placeholder="Game Title">
+                <input type="text" id="newGameDesc" placeholder="Description">
+                <input type="text" id="newGameDev" placeholder="Developer">
+                <input type="text" id="newGamePlatforms" placeholder="Platforms">
+                <input type="text" id="newGameGenres" placeholder="Genres">
+                <input type="text" id="newGamePrice" placeholder="Price">
+                <input type="text" id="newGameImage" placeholder="Image URL">
+                <button onclick="addNewGame()">Add Game</button>
+            </div>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Developer</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="games-table-body"></tbody>
+            </table>
+        </div>
+
+        <!-- Guest Message -->
+        <div id="guest-message" class="dashboard-section" style="display: none;">
+            <h2 style="color: #e5ff00;">Welcome to GameGel Dashboard</h2>
+            <p style="color: #fff;">Please <a href="./login.html" style="color: #e5ff00;">login</a> or <a href="./register.html" style="color: #e5ff00;">register</a> to access your personal dashboard.</p>
+        </div>
+    </div>
+
+    <script src="../assets/js/auth.js"></script>
+    <script>
+        // ==========================================
+        // 🎮 WISHLIST FUNCTIONS (User Dashboard)
+        // ==========================================
+        function getWishlist() {
+            return JSON.parse(localStorage.getItem('user_wishlist') || '[]');
+        }
+
+        function saveWishlist(wishlist) {
+            localStorage.setItem('user_wishlist', JSON.stringify(wishlist));
+        }
+
+        function addToWishlist() {
+            const title = document.getElementById('gameTitleInput').value.trim();
+            if (!title) return alert('Please enter a game title');
+            
+            const wishlist = getWishlist();
+            if (wishlist.some(g => g.title.toLowerCase() === title.toLowerCase())) {
+                return alert('Game already in wishlist');
+            }
+            
+            wishlist.push({ title: title, addedAt: new Date().toISOString() });
+            saveWishlist(wishlist);
+            document.getElementById('gameTitleInput').value = '';
+            renderWishlist();
+        }
+
+        function removeFromWishlist(index) {
+            const wishlist = getWishlist();
+            wishlist.splice(index, 1);
+            saveWishlist(wishlist);
+            renderWishlist();
+        }
+
+        function renderWishlist() {
+            const wishlist = getWishlist();
+            const container = document.getElementById('wishlist-container');
+            
+            if (wishlist.length === 0) {
+                container.innerHTML = '<p class="no-items">Your wishlist is empty. Add some games!</p>';
+                return;
+            }
+            
+            container.innerHTML = wishlist.map((game, index) => `
+                <div class="wishlist-item">
+                    <img src="https://placehold.co/80x60/111/08CB00?text=Game" alt="${game.title}">
+                    <div class="wishlist-item-info">
+                        <h3>${game.title}</h3>
+                        <p>Added: ${new Date(game.addedAt).toLocaleDateString()}</p>
+                    </div>
+                    <button class="remove-btn" onclick="removeFromWishlist(${index})">Remove</button>
+                </div>
+            `).join('');
+        }
+
+        // ==========================================
+        // 👑 ADMIN FUNCTIONS
+        // ==========================================
+        function getUsers() {
+            return JSON.parse(localStorage.getItem('app_users') || '{}');
+        }
+
+        function getGames() {
+            return JSON.parse(localStorage.getItem('app_games') || '[]');
+        }
+
+        function saveGames(games) {
+            localStorage.setItem('app_games', JSON.stringify(games));
+        }
+
+        function removeUser(email) {
+            if (!confirm('Are you sure you want to remove user: ' + email + '?')) return;
+            const users = getUsers();
+            delete users[email];
+            localStorage.setItem('app_users', JSON.stringify(users));
+            renderUsersTable();
+        }
+
+        function addNewGame() {
+            const title = document.getElementById('newGameTitle').value.trim();
+            const description = document.getElementById('newGameDesc').value.trim();
+            const developer = document.getElementById('newGameDev').value.trim();
+            const platforms = document.getElementById('newGamePlatforms').value.trim();
+            const genres = document.getElementById('newGameGenres').value.trim();
+            const price = document.getElementById('newGamePrice').value.trim();
+            const image = document.getElementById('newGameImage').value.trim() || '../assets/images/placeholder.jpg';
+
+            if (!title) return alert('Please enter a game title');
+
+            const games = getGames();
+            if (games.some(g => g.title.toLowerCase() === title.toLowerCase())) {
+                return alert('Game already exists');
+            }
+
+            games.push({
+                title, description, developer, platforms, genres, price,
+                image: image,
+                lsimg: image,
+                buyLink: '#'
+            });
+            saveGames(games);
+            
+            // Clear form
+            document.getElementById('newGameTitle').value = '';
+            document.getElementById('newGameDesc').value = '';
+            document.getElementById('newGameDev').value = '';
+            document.getElementById('newGamePlatforms').value = '';
+            document.getElementById('newGameGenres').value = '';
+            document.getElementById('newGamePrice').value = '';
+            document.getElementById('newGameImage').value = '';
+            
+            renderGamesTable();
+            alert('Game added successfully!');
+        }
+
+        function removeGame(index) {
+            if (!confirm('Are you sure you want to remove this game?')) return;
+            const games = getGames();
+            games.splice(index, 1);
+            saveGames(games);
+            renderGamesTable();
+        }
+
+        function renderUsersTable() {
+            const users = getUsers();
+            const tbody = document.getElementById('users-table-body');
+            
+            const userList = Object.entries(users);
+            if (userList.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="3" class="no-items">No registered users</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = userList.map(([email, data]) => `
+                <tr>
+                    <td>${email}</td>
+                    <td>${data.createdAt ? new Date(data.createdAt).toLocaleDateString() : 'N/A'}</td>
+                    <td>
+                        <button class="action-btn delete-btn" onclick="removeUser('${email}')">Remove</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderGamesTable() {
+            const games = getGames();
+            const tbody = document.getElementById('games-table-body');
+            
+            // Load from JSON if no games in localStorage
+            if (games.length === 0) {
+                fetch('../assets/js/games.json')
+                    .then(res => res.json())
+                    .then(jsonGames => {
+                        tbody.innerHTML = jsonGames.map((game, index) => `
+                            <tr>
+                                <td>${game.title}</td>
+                                <td>${game.developer}</td>
+                                <td>${game.price}</td>
+                                <td>
+                                    <button class="action-btn delete-btn" onclick="removeGame(${index})">Remove</button>
+                                </td>
+                            </tr>
+                        `).join('');
+                    });
+                return;
+            }
+
+            tbody.innerHTML = games.map((game, index) => `
+                <tr>
+                    <td>${game.title}</td>
+                    <td>${game.developer || 'N/A'}</td>
+                    <td>${game.price || 'N/A'}</td>
+                    <td>
+                        <button class="action-btn delete-btn" onclick="removeGame(${index})">Remove</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // ==========================================
+        // 🚪 LOGOUT
+        // ==========================================
+        window.logout = function() {
+            sessionStorage.removeItem('app_session');
+            localStorage.removeItem('app_session');
+            window.location.href = './login.html';
+        };
+
+        // ==========================================
+        // 📋 INITIALIZE DASHBOARD
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', async () => {
+            const role = window.getUserRole();
+            const email = window.getCurrentUser();
+            
+            const welcomeDiv = document.getElementById('user-welcome');
+            const userDash = document.getElementById('user-dashboard');
+            const adminDash = document.getElementById('admin-dashboard');
+            const guestMsg = document.getElementById('guest-message');
+
+            if (role === 'admin') {
+                // Admin view
+                welcomeDiv.innerHTML = `
+                    <div class="user-greeting">
+                        <span class="greeting-text">Welcome back, Admin <strong>${email}</strong>!</span>
+                        <button onclick="logout()" class="logout-btn">Logout</button>
+                    </div>
+                `;
+                adminDash.style.display = 'block';
+                renderUsersTable();
+                renderGamesTable();
+            } else if (role === 'user') {
+                // User view
+                welcomeDiv.innerHTML = `
+                    <div class="user-greeting">
+                        <span class="greeting-text">Welcome back, <strong>${email}</strong>!</span>
+                        <button onclick="logout()" class="logout-btn">Logout</button>
+                    </div>
+                `;
+                userDash.style.display = 'block';
+                renderWishlist();
+            } else {
+                // Guest view
+                welcomeDiv.innerHTML = `
+                    <div class="user-greeting">
+                        <span class="greeting-text">Hello, Guest! <a href="./login.html">Login</a> or <a href="./register.html">Register</a> to get personalized features.</span>
+                    </div>
+                `;
+                guestMsg.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+</html>

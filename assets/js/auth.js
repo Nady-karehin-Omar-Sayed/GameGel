@@ -96,24 +96,28 @@ function mockHash(password) {
   // ==========================================
   // 🔐 LOGIN LOGIC
   // ==========================================
-  loginForm?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    setLoading(loginSubmitBtn, true);
-    loginMessage.textContent = '';
+loginForm?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  setLoading(loginSubmitBtn, true);
+  loginMessage.textContent = '';
 
-    const email = loginEmail.value.trim();
-    const password = loginPassword.value;
+  const email = loginEmail.value.trim();
+  const password = loginPassword.value;
 
-    if (!isValidEmail(email)) {
-      showMessage(loginMessage, 'Please enter a valid email address.', 'error');
-      setLoading(loginSubmitBtn, false);
-      return;
-    }
+  if (!isValidEmail(email)) {
+    showMessage(loginMessage, 'Please enter a valid email address.', 'error');
+    setLoading(loginSubmitBtn, false);
+    return;
+  }
 
-    // 🌐 Simulate network delay
-    await new Promise(res => setTimeout(res, 600));
+  await new Promise(res => setTimeout(res, 600));
 
-    const users = JSON.parse(localStorage.getItem('app_users') || '{}');
+  // 🔧 FIX 1: Define users here (was missing in login scope)
+  const users = JSON.parse(localStorage.getItem('app_users') || '{}');
+
+  const isAdminAccount = ADMIN_CREDENTIALS[email] !== undefined && ADMIN_CREDENTIALS[email] === password;
+  
+  if (!isAdminAccount) {
     if (!users[email]) {
       showMessage(loginMessage, 'Account not found. Please register first.', 'error');
       setLoading(loginSubmitBtn, false);
@@ -125,26 +129,26 @@ function mockHash(password) {
       setLoading(loginSubmitBtn, false);
       return;
     }
+  }
 
-    // ✅ Create frontend session (use localStorage if Remember Me is checked)
-    const storage = rememberMeCheckbox?.checked ? localStorage : sessionStorage;
-    storage.setItem('app_session', JSON.stringify({
-      email: email,
-      loggedInAt: new Date().toISOString()
-    }));
+  const storage = rememberMeCheckbox?.checked ? localStorage : sessionStorage;
+  storage.setItem('app_session', JSON.stringify({
+    email: email,
+    role: isAdminAccount ? 'admin' : 'user',
+    loggedInAt: new Date().toISOString()
+  }));
 
-    showMessage(loginMessage, 'Login successful! Redirecting...', 'success');
-    loginForm.reset();
+  // ✅ Now these run ONLY after successful login:
+  showMessage(loginMessage, 'Login successful! Redirecting...', 'success');
+  loginForm.reset();
 
-    // 🔀 Redirect after login
-    setTimeout(() => {
-      window.location.href = './blog.html'; // Fixed path for local structure
-    }, 1500);
+  setTimeout(() => {
+    window.location.href = './dashboard.html';
+  }, 1500);
 
-    setLoading(loginSubmitBtn, false);
-  });
-
-  // ==========================================
+  setLoading(loginSubmitBtn, false);
+  
+}); // 🔧 FIX 2: Move closing brace HERE, at the end of the handler  // ==========================================
   // 🔄 AUTO-LOGIN CHECK (checks both sessionStorage and localStorage)
   // ==========================================
   function getStoredSession() {
@@ -182,5 +186,32 @@ function mockHash(password) {
       session = JSON.parse(localStorage.getItem('app_session') || 'null');
     }
     return session ? session.email : null;
+  };
+
+  // ==========================================
+  // 👑 ADMIN CONFIGURATION
+  // ==========================================
+  const ADMIN_CREDENTIALS = {
+    'admin@gamegel.com': 'Admin123',
+    'admin2@gamegel.com': 'Admin456'
+  };
+
+  window.isAdmin = function() {
+    const email = window.getCurrentUser();
+    return email && ADMIN_CREDENTIALS[email] !== undefined;
+  };
+
+  window.getUserRole = function() {
+    // Check session for role first
+    let session = JSON.parse(sessionStorage.getItem('app_session') || 'null');
+    if (!session) {
+      session = JSON.parse(localStorage.getItem('app_session') || 'null');
+    }
+    if (session && session.role) return session.role;
+    
+    // Fallback to checking admin credentials
+    if (window.isAdmin()) return 'admin';
+    const email = window.getCurrentUser();
+    return email ? 'user' : 'guest';
   };
 });

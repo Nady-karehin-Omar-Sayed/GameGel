@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     function generateGameHTML(game) {
         return `
-  <div class="game-box">
+  <div class="game-box" id="${game.title}">
      <div class="game-content">
        <img src="${game.image}" alt="${game.title}" width="200">
        <div class="game-text">

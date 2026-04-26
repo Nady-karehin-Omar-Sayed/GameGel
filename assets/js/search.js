@@ -260,7 +260,10 @@ const Search = {
   },
 
   selectGame(game) {
-    window.location.href = `../pages/games.html?game=${encodeURIComponent(game.title)}`;
+    // Determine correct path based on current page location
+    const isGamesPage = window.location.pathname.includes('/pages/');
+    const basePath = isGamesPage ? './' : './pages/';
+    window.location.href = `${basePath}games.html?game=${encodeURIComponent(game.title)}`;
   },
 
   renderResults(games) {

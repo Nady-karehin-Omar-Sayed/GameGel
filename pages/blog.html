@@ -15,6 +15,7 @@
      <ul class="head-font green">
         <a href="../index.html"><li>Home</li></a>
         <a href="./games.html"><li >Games</li></a>
+        <a href="./dashboard.html"><li>Dashboard</li></a>
         <a href="./login.html"><li >Login</li></a>
         <a href="./register.html"><li >Register</li></a>
         <a href="./blog.html"><li>Check Our Blog</li></a>
@@ -22,9 +23,6 @@
 
       </ul> 
      </div>
-
-    <!-- User Welcome Section -->
-    <div id="user-welcome" class="user-welcome"></div>
 
     <!-- Blog Content -->
     <div class="blog-container">
@@ -95,29 +93,6 @@
           <footer>
         <p class="head-font green">© 2026 GameGel. All rights reserved.</p>
      </footer>
-
-     <script src="../assets/js/auth.js"></script>
-     <script>
-        // Display user greeting on blog page
-        document.addEventListener('DOMContentLoaded', () => {
-            const userEmail = window.getCurrentUser();
-            const welcomeDiv = document.getElementById('user-welcome');
-            if (userEmail) {
-                welcomeDiv.innerHTML = `
-                    <div class="user-greeting">
-                        <span class="greeting-text">Welcome back, <strong>${userEmail}</strong>!</span>
-                        <button onclick="logout()" class="logout-btn">Logout</button>
-                    </div>
-                `;
-            } else {
-                welcomeDiv.innerHTML = `
-                    <div class="user-greeting">
-                        <span class="greeting-text">Hello, Guest! <a href="./login.html">Login</a> or <a href="./register.html">Register</a> to get personalized features.</span>
-                    </div>
-                `;
-            }
-        });
-     </script>
 
 </body>
 </html>
