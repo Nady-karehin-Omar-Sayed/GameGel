@@ -2,28 +2,951 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width= , initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Details</title>
+    <link rel="stylesheet" href="../assets/css/variables.css">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <style>
+        .game-details-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        .breadcrumb a {
+            color: #08CB00;
+            text-decoration: none;
+        }
+        .breadcrumb span {
+            color: #F8DE22;
+        }
+
+        .game-hero {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #08CB00;
+            margin-bottom: 30px;
+        }
+        .game-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .game-hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 20px 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.95));
+        }
+        .game-hero-overlay h1 {
+            font-family: "Bungee", sans-serif;
+            color: #F8DE22;
+            font-size: 2.2rem;
+            margin: 0 0 8px 0;
+        }
+        .game-hero-overlay .developer-tag {
+            color: #08CB00;
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        .game-layout {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .game-main {
+            flex: 1;
+            min-width: 0;
+        }
+        .game-sidebar {
+            width: 300px;
+            flex-shrink: 0;
+        }
+
+        .game-section {
+            background: #1a1a1a;
+            border: 1px solid #253900;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .game-section h2 {
+            font-family: "Bungee", sans-serif;
+            color: #F8DE22;
+            font-size: 1.3rem;
+            margin: 0 0 15px 0;
+            border-bottom: 1px solid #253900;
+            padding-bottom: 10px;
+        }
+
+        .game-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .game-tag {
+            padding: 5px 12px;
+            background: rgba(8, 203, 0, 0.1);
+            border: 1px solid #08CB00;
+            border-radius: 20px;
+            color: #08CB00;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        .game-description {
+            color: #eeeeee;
+            font-family: monospace;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .buy-card {
+            background: #1a1a1a;
+            border: 2px solid #08CB00;
+            border-radius: 12px;
+            padding: 25px;
+            position: sticky;
+            top: 100px;
+        }
+        .buy-price {
+            font-family: "Bungee", sans-serif;
+            font-size: 2rem;
+            color: #F8DE22;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .buy-price.free {
+            color: #08CB00;
+        }
+
+        .btn-buy {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            font-family: "Bungee", sans-serif;
+            font-size: 1rem;
+            background: #08CB00;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .btn-buy:hover {
+            background: #06a000;
+            transform: scale(1.02);
+        }
+        .btn-demo {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            font-family: "Bungee", sans-serif;
+            font-size: 0.85rem;
+            background: transparent;
+            color: #F8DE22;
+            border: 2px solid #F8DE22;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: background 0.2s;
+        }
+        .btn-demo:hover {
+            background: rgba(248, 222, 34, 0.1);
+        }
+        .btn-cart {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            font-family: "Bungee", sans-serif;
+            font-size: 0.85rem;
+            background: transparent;
+            color: #08CB00;
+            border: 2px solid #08CB00;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: background 0.2s;
+        }
+        .btn-cart:hover {
+            background: rgba(8, 203, 0, 0.1);
+        }
+
+        .sidebar-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .sidebar-actions button {
+            flex: 1;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            background: transparent;
+            color: #08CB00;
+            border: 1px solid #08CB00;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .sidebar-actions button:hover {
+            background: rgba(8, 203, 0, 0.1);
+        }
+        .sidebar-actions button.wishlisted {
+            background: rgba(8, 203, 0, 0.2);
+            color: #F8DE22;
+            border-color: #F8DE22;
+        }
+        .sidebar-actions button.in-cart {
+            background: rgba(8, 203, 0, 0.2);
+            pointer-events: none;
+        }
+
+        .sidebar-info {
+            margin-top: 20px;
+            border-top: 1px solid #253900;
+            padding-top: 15px;
+        }
+        .sidebar-info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 0.85rem;
+        }
+        .sidebar-info-row .label {
+            color: #888;
+            font-family: monospace;
+        }
+        .sidebar-info-row .value {
+            color: #eeeeee;
+            font-family: monospace;
+        }
+
+        .share-row {
+            margin-top: 15px;
+            border-top: 1px solid #253900;
+            padding-top: 15px;
+            text-align: center;
+        }
+        .share-row p {
+            color: #888;
+            font-family: monospace;
+            font-size: 0.75rem;
+            margin: 0 0 8px 0;
+            text-transform: uppercase;
+        }
+        .share-buttons {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+        .share-btn {
+            padding: 8px 14px;
+            background: transparent;
+            color: #08CB00;
+            border: 1px solid #08CB00;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: monospace;
+            font-size: 0.75rem;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .share-btn:hover {
+            background: rgba(8, 203, 0, 0.1);
+        }
+
+        .rating-summary {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .rating-number {
+            font-family: "Bungee", sans-serif;
+            font-size: 2rem;
+            color: #F8DE22;
+        }
+        .stars {
+            display: flex;
+            gap: 3px;
+        }
+        .star {
+            font-size: 1.3rem;
+            color: #333;
+            cursor: pointer;
+            transition: color 0.15s;
+        }
+        .star.filled {
+            color: #F8DE22;
+        }
+        .star.hovered {
+            color: #F8DE22;
+        }
+        .review-count {
+            color: #888;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+
+        .review-form {
+            background: #111;
+            border: 1px solid #253900;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .review-form.visible {
+            display: block;
+        }
+        .review-form h3 {
+            font-family: "Bungee", sans-serif;
+            color: #F8DE22;
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+        }
+        .review-form input,
+        .review-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: black;
+            border: 1px solid #253900;
+            border-radius: 6px;
+            color: #08CB00;
+            font-family: monospace;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+        }
+        .review-form input:focus,
+        .review-form textarea:focus {
+            outline: none;
+            border-color: #08CB00;
+        }
+        .review-form textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .review-form button {
+            padding: 10px 20px;
+            background: #08CB00;
+            color: black;
+            border: none;
+            border-radius: 6px;
+            font-family: "Bungee", sans-serif;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .review-form button:hover {
+            background: #06a000;
+        }
+
+        .review-item {
+            background: #111;
+            border: 1px solid #253900;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .review-author {
+            color: #08CB00;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+        .review-date {
+            color: #666;
+            font-family: monospace;
+            font-size: 0.75rem;
+        }
+        .review-title {
+            color: #F8DE22;
+            font-family: monospace;
+            font-size: 1rem;
+            margin: 0 0 5px 0;
+        }
+        .review-body {
+            color: #eeeeee;
+            font-family: monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .no-reviews {
+            color: #666;
+            font-family: monospace;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .related-games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+        }
+        .related-game-card {
+            background: #1a1a1a;
+            border: 1px solid #253900;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .related-game-card:hover {
+            transform: scale(1.03);
+            border-color: #08CB00;
+        }
+        .related-game-card img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+        }
+        .related-game-card .card-info {
+            padding: 10px;
+        }
+        .related-game-card h4 {
+            color: #F8DE22;
+            font-family: "Bungee", sans-serif;
+            font-size: 0.75rem;
+            margin: 0 0 5px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .related-game-card .card-price {
+            color: #08CB00;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        .not-found {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .not-found h1 {
+            font-family: "Bungee", sans-serif;
+            color: #F8DE22;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .not-found p {
+            color: #888;
+            font-family: monospace;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        .not-found a {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #08CB00;
+            color: black;
+            font-family: "Bungee", sans-serif;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .not-found a:hover {
+            background: #06a000;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #1a1a1a;
+            border: 2px solid #08CB00;
+            color: #08CB00;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            z-index: 9999;
+            animation: toastIn 0.3s ease, toastOut 0.3s ease 2.7s forwards;
+        }
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes toastOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(20px); }
+        }
+
+        .download-progress {
+            display: none;
+            margin-top: 10px;
+        }
+        .download-progress.visible {
+            display: block;
+        }
+        .progress-bar-bg {
+            width: 100%;
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: #08CB00;
+            width: 0%;
+            transition: width 0.3s;
+            border-radius: 4px;
+        }
+        .progress-text {
+            color: #08CB00;
+            font-family: monospace;
+            font-size: 0.75rem;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .game-layout {
+                flex-direction: column;
+            }
+            .game-sidebar {
+                width: 100%;
+            }
+            .buy-card {
+                position: static;
+            }
+            .game-hero {
+                height: 250px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
     <div class="navbar">
-    <h1 class="logo"><span style="color: rgb(229, 255, 0);">G</span>ame<span style="color: rgb(229, 255, 0);">G</span>el</h1>
-     <ul class="head-font green">
-        <a href="../index.html"><li>Home</li></a>
-        <a href="./games.html"><li >Games</li></a>
-        <a href="./dashboard.html"><li>Dashboard</li></a>
-        <a href="./login.html"><li >Login</li></a>
-        <a href="./register.html"><li >Register</li></a>
-        <a href="./blog.html"><li>Check Our Blog</li></a>
-        <a href="./contact.html"><li>Contact Us</li></a>
+        <h1 class="logo"><span style="color: rgb(229, 255, 0);">G</span>ame<span style="color: rgb(229, 255, 0);">G</span>el</h1>
+        <ul class="head-font green">
+            <a href="../index.html"><li>Home</li></a>
+            <a href="./games.html"><li>Games</li></a>
+            <a href="./cart.html"><li>Cart</li></a>
+            <a href="./dashboard.html"><li>Dashboard</li></a>
+            <a href="./login.html"><li>Login</li></a>
+            <a href="./register.html"><li>Register</li></a>
+            <a href="./blog.html"><li>Check Our Blog</li></a>
+            <a href="./contact.html"><li>Contact Us</li></a>
+        </ul>
+    </div>
 
-      </ul> 
-     </div>
-          <footer>
+    <div class="game-details-container" id="game-details-container">
+        <div class="flex-center" style="height:60vh; color: #08CB00; font-family: monospace;">Loading...</div>
+    </div>
+
+    <footer>
         <p class="head-font green">© 2026 GameGel. All rights reserved.</p>
-     </footer>
+    </footer>
 
+    <script src="../assets/js/cart.js"></script>
+    <script>
+        let currentGame = null;
+        let hoveredRating = 0;
+        let selectedRating = 0;
+
+        function getWishlist() {
+            return JSON.parse(localStorage.getItem('gamegel_wishlist') || '[]');
+        }
+        function saveWishlist(list) {
+            localStorage.setItem('gamegel_wishlist', JSON.stringify(list));
+        }
+        function isInWishlist(title) {
+            return getWishlist().some(t => t === title);
+        }
+        function toggleWishlist(title) {
+            let list = getWishlist();
+            const idx = list.indexOf(title);
+            if (idx > -1) {
+                list.splice(idx, 1);
+                Cart.showToast('Removed from wishlist');
+            } else {
+                list.push(title);
+                Cart.showToast('Added to wishlist!');
+            }
+            saveWishlist(list);
+            updateWishlistButton();
+        }
+
+        function getCompareList() {
+            return JSON.parse(localStorage.getItem('gamegel_compare') || '[]');
+        }
+        function saveCompareList(list) {
+            localStorage.setItem('gamegel_compare', JSON.stringify(list));
+        }
+        function addToCompare(title) {
+            let list = getCompareList();
+            if (list.length >= 3) {
+                Cart.showToast('Max 3 games for comparison!');
+                return;
+            }
+            if (list.includes(title)) {
+                Cart.showToast('Already in compare list!');
+                return;
+            }
+            list.push(title);
+            saveCompareList(list);
+            Cart.showToast('Added to compare!');
+        }
+
+        function getReviews(gameTitle) {
+            const all = JSON.parse(localStorage.getItem('gamegel_reviews') || '{}');
+            return all[gameTitle] || [];
+        }
+        function saveReviews(gameTitle, reviews) {
+            const all = JSON.parse(localStorage.getItem('gamegel_reviews') || '{}');
+            all[gameTitle] = reviews;
+            localStorage.setItem('gamegel_reviews', JSON.stringify(all));
+        }
+        function submitReview(gameTitle) {
+            const titleInput = document.getElementById('review-title-input');
+            const bodyInput = document.getElementById('review-body-input');
+            if (!selectedRating) {
+                Cart.showToast('Please select a rating!');
+                return;
+            }
+            if (!titleInput.value.trim() || !bodyInput.value.trim()) {
+                Cart.showToast('Please fill in all fields!');
+                return;
+            }
+            const session = JSON.parse(sessionStorage.getItem('app_session') || localStorage.getItem('app_session') || 'null');
+            const author = session ? session.email.split('@')[0] : 'Anonymous';
+
+            const reviews = getReviews(gameTitle);
+            reviews.unshift({
+                author,
+                rating: selectedRating,
+                title: titleInput.value.trim(),
+                body: bodyInput.value.trim(),
+                date: new Date().toISOString()
+            });
+            saveReviews(gameTitle, reviews);
+            titleInput.value = '';
+            bodyInput.value = '';
+            selectedRating = 0;
+            renderReviews(gameTitle);
+            Cart.showToast('Review submitted!');
+        }
+
+        function renderStarsHTML(rating) {
+            let html = '';
+            for (let i = 1; i <= 5; i++) {
+                html += `<span class="star ${i <= rating ? 'filled' : ''}">&#9733;</span>`;
+            }
+            return html;
+        }
+
+        function renderReviews(gameTitle) {
+            const reviews = getReviews(gameTitle);
+            const container = document.getElementById('reviews-list');
+            if (reviews.length === 0) {
+                container.innerHTML = '<p class="no-reviews">No reviews yet. Be the first to review!</p>';
+                return;
+            }
+            container.innerHTML = reviews.map(r => `
+                <div class="review-item">
+                    <div class="review-header">
+                        <span class="review-author">${r.author}</span>
+                        <span class="review-date">${new Date(r.date).toLocaleDateString()}</span>
+                    </div>
+                    <div class="stars">${renderStarsHTML(r.rating)}</div>
+                    <h4 class="review-title">${r.title}</h4>
+                    <p class="review-body">${r.body}</p>
+                </div>
+            `).join('');
+        }
+
+        function getAverageRating(gameTitle) {
+            const reviews = getReviews(gameTitle);
+            if (reviews.length === 0) return 0;
+            return reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
+        }
+
+        function updateCartButton() {
+            const btn = document.getElementById('btn-add-cart');
+            if (!btn || !currentGame) return;
+            if (Cart.isInCart(currentGame.title)) {
+                btn.textContent = 'In Cart';
+                btn.classList.add('in-cart');
+            } else {
+                btn.textContent = 'Add to Cart';
+                btn.classList.remove('in-cart');
+            }
+        }
+
+        function updateWishlistButton() {
+            const btn = document.getElementById('btn-wishlist');
+            if (!btn || !currentGame) return;
+            if (isInWishlist(currentGame.title)) {
+                btn.textContent = 'Wishlisted';
+                btn.classList.add('wishlisted');
+            } else {
+                btn.textContent = 'Wishlist';
+                btn.classList.remove('wishlisted');
+            }
+        }
+
+        function mockDownload(type) {
+            const progressDiv = document.getElementById('download-progress');
+            const barFill = document.getElementById('progress-fill');
+            const text = document.getElementById('progress-text');
+            progressDiv.classList.add('visible');
+            let pct = 0;
+            const interval = setInterval(() => {
+                pct += Math.floor(Math.random() * 15) + 5;
+                if (pct >= 100) {
+                    pct = 100;
+                    clearInterval(interval);
+                    text.textContent = type === 'demo' ? 'Demo downloaded successfully!' : 'Download complete!';
+                    setTimeout(() => progressDiv.classList.remove('visible'), 2000);
+                } else {
+                    text.textContent = `Downloading... ${pct}%`;
+                }
+                barFill.style.width = pct + '%';
+            }, 300);
+        }
+
+        async function init() {
+            const container = document.getElementById('game-details-container');
+            const params = new URLSearchParams(window.location.search);
+            const gameTitle = params.get('game');
+
+            if (!gameTitle) {
+                container.innerHTML = `
+                    <div class="not-found">
+                        <h1>Game Not Found</h1>
+                        <p>This game doesn't exist or may have been removed.</p>
+                        <a href="./games.html">Browse Games</a>
+                    </div>
+                `;
+                return;
+            }
+
+            const response = await fetch('../assets/js/games.json');
+            const allGames = await response.json();
+            const game = allGames.find(g => g.title.toLowerCase() === gameTitle.toLowerCase());
+
+            if (!game) {
+                container.innerHTML = `
+                    <div class="not-found">
+                        <h1>Game Not Found</h1>
+                        <p>This game doesn't exist or may have been removed.</p>
+                        <a href="./games.html">Browse Games</a>
+                    </div>
+                `;
+                return;
+            }
+
+            currentGame = game;
+            document.title = `${game.title} - GameGel`;
+
+            const avgRating = getAverageRating(game.title);
+            const reviewCount = getReviews(game.title).length;
+            const genres = game.genres ? game.genres.split(',').map(g => g.trim()) : [];
+            const platforms = game.platforms ? game.platforms.split(',').map(p => p.trim()) : [];
+            const tags = [...genres.slice(0, 3), ...platforms.slice(0, 2)];
+
+            const relatedGames = allGames
+                .filter(g => g.title.toLowerCase() !== game.title.toLowerCase() &&
+                    g.genres && genres.some(tag => g.genres.toLowerCase().includes(tag.toLowerCase())))
+                .slice(0, 4);
+
+            const session = JSON.parse(sessionStorage.getItem('app_session') || localStorage.getItem('app_session') || 'null');
+            const isLoggedIn = !!session;
+
+            container.innerHTML = `
+                <!-- Breadcrumb -->
+                <div class="breadcrumb">
+                    <a href="../index.html">Home</a> &rsaquo;
+                    <a href="./games.html">Games</a> &rsaquo;
+                    <span>${game.title}</span>
+                </div>
+
+                <!-- Hero Banner -->
+                <div class="game-hero">
+                    <img src="${game.image}" alt="${game.title}" onerror="this.src='https://placehold.co/1100x400/111/08CB00?text=${encodeURIComponent(game.title)}'">
+                    <div class="game-hero-overlay">
+                        <h1>${game.title}</h1>
+                        <span class="developer-tag">by ${game.developer}</span>
+                    </div>
+                </div>
+
+                <!-- Main Layout -->
+                <div class="game-layout">
+                    <!-- Main Content -->
+                    <div class="game-main">
+                        <!-- Tags -->
+                        <div class="game-tags">
+                            ${tags.map(t => `<span class="game-tag">${t}</span>`).join('')}
+                        </div>
+
+                        <!-- Rating Summary -->
+                        <div class="rating-summary">
+                            <span class="rating-number">${avgRating > 0 ? avgRating.toFixed(1) : 'N/A'}</span>
+                            <div class="stars">${renderStarsHTML(Math.round(avgRating))}</div>
+                            <span class="review-count">(${reviewCount} reviews)</span>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="game-section">
+                            <h2>About This Game</h2>
+                            <p class="game-description">${game.description}</p>
+                        </div>
+
+                        <!-- Features -->
+                        <div class="game-section">
+                            <h2>Game Features</h2>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <div style="color: #eeeeee; font-family: monospace;"><span style="color: #08CB00;">Developer:</span> ${game.developer}</div>
+                                <div style="color: #eeeeee; font-family: monospace;"><span style="color: #08CB00;">Platforms:</span> ${game.platforms}</div>
+                                <div style="color: #eeeeee; font-family: monospace;"><span style="color: #08CB00;">Genres:</span> ${game.genres}</div>
+                                <div style="color: #eeeeee; font-family: monospace;"><span style="color: #08CB00;">Price:</span> ${game.price}</div>
+                            </div>
+                        </div>
+
+                        <!-- Reviews Section -->
+                        <div class="game-section">
+                            <h2>Reviews</h2>
+                            ${isLoggedIn ? `
+                                <button onclick="toggleReviewForm()" style="background: #08CB00; color: black; border: none; padding: 8px 16px; border-radius: 6px; font-family: monospace; cursor: pointer; margin-bottom: 15px;">Write a Review</button>
+                                <div class="review-form" id="review-form">
+                                    <h3>Rate this game</h3>
+                                    <div class="stars" id="star-widget" style="margin-bottom: 10px;">
+                                        ${[1,2,3,4,5].map(n => `<span class="star" data-rating="${n}" onclick="setRating(${n})" onmouseover="hoverRating(${n})" onmouseout="unhoverRating()">&#9733;</span>`).join('')}
+                                    </div>
+                                    <input type="text" id="review-title-input" placeholder="Review title...">
+                                    <textarea id="review-body-input" placeholder="Share your experience..."></textarea>
+                                    <button onclick="submitReview('${game.title.replace(/'/g, "\\'")}')">Submit Review</button>
+                                </div>
+                            ` : `
+                                <p style="color: #888; font-family: monospace; font-size: 0.85rem; margin-bottom: 15px;">
+                                    <a href="./login.html" style="color: #08CB00;">Login</a> to write a review.
+                                </p>
+                            `}
+                            <div id="reviews-list"></div>
+                        </div>
+
+                        <!-- Related Games -->
+                        ${relatedGames.length > 0 ? `
+                            <div class="game-section">
+                                <h2>More Like This</h2>
+                                <div class="related-games-grid">
+                                    ${relatedGames.map(g => `
+                                        <a href="./game-details.html?game=${encodeURIComponent(g.title)}" class="related-game-card">
+                                            <img src="${g.image}" alt="${g.title}" onerror="this.src='https://placehold.co/220x130/111/08CB00?text=${encodeURIComponent(g.title)}'">
+                                            <div class="card-info">
+                                                <h4>${g.title}</h4>
+                                                <span class="card-price">${g.price}</span>
+                                            </div>
+                                        </a>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+                    </div>
+
+                    <!-- Sidebar -->
+                    <aside class="game-sidebar">
+                        <div class="buy-card">
+                            <div class="buy-price ${game.price.toLowerCase().includes('free') ? 'free' : ''}">${game.price}</div>
+
+                            <a href="${game.buyLink}" target="_blank" class="btn-buy">Buy Now</a>
+                            <button class="btn-demo" onclick="mockDownload('demo')">Download Demo</button>
+                            <button class="btn-cart" id="btn-add-cart" onclick="Cart.addToCart(currentGame)">Add to Cart</button>
+                            <div class="download-progress" id="download-progress">
+                                <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
+                                <div class="progress-text" id="progress-text">Downloading... 0%</div>
+                            </div>
+
+                            <div class="sidebar-actions">
+                                <button id="btn-wishlist" onclick="toggleWishlist('${game.title.replace(/'/g, "\\'")}')">Wishlist</button>
+                                <button onclick="addToCompare('${game.title.replace(/'/g, "\\'")}')">Compare</button>
+                            </div>
+
+                            <div class="sidebar-info">
+                                <div class="sidebar-info-row"><span class="label">Developer</span><span class="value">${game.developer}</span></div>
+                                <div class="sidebar-info-row"><span class="label">Platforms</span><span class="value">${game.platforms}</span></div>
+                                <div class="sidebar-info-row"><span class="label">Genre</span><span class="value">${game.genres}</span></div>
+                            </div>
+
+                            <div class="share-row">
+                                <p>Share this game</p>
+                                <div class="share-buttons">
+                                    <a class="share-btn" href="https://twitter.com/intent/tweet?text=Check out ${encodeURIComponent(game.title)} on GameGel!&url=${encodeURIComponent(window.location.href)}" target="_blank">Twitter</a>
+                                    <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank">Facebook</a>
+                                    <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href); Cart.showToast('Link copied!')">Copy Link</button>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            `;
+
+            renderReviews(game.title);
+            updateCartButton();
+            updateWishlistButton();
+        }
+
+        function toggleReviewForm() {
+            const form = document.getElementById('review-form');
+            form.classList.toggle('visible');
+        }
+
+        function setRating(n) {
+            selectedRating = n;
+            document.querySelectorAll('#star-widget .star').forEach((star, i) => {
+                star.classList.toggle('filled', i < n);
+            });
+        }
+
+        function hoverRating(n) {
+            hoveredRating = n;
+            document.querySelectorAll('#star-widget .star').forEach((star, i) => {
+                star.classList.toggle('hovered', i < n);
+            });
+        }
+
+        function unhoverRating() {
+            hoveredRating = 0;
+            document.querySelectorAll('#star-widget .star').forEach((star, i) => {
+                star.classList.remove('hovered');
+                star.classList.toggle('filled', i < selectedRating);
+            });
+        }
+
+        init();
+    </script>
 </body>
 </html>

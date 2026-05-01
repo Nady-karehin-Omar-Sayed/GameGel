@@ -16,6 +16,7 @@
         <ul class="head-font green">
             <a href="../index.html"><li>Home</li></a>
             <a href="./games.html"><li>Games</li></a>
+            <a href="./cart.html"><li>Cart</li></a>
             <a href="./dashboard.html"><li>Dashboard</li></a>
             <a href="./login.html"><li>Login</li></a>
             <a href="./register.html"><li>Register</li></a>
@@ -30,7 +31,10 @@
 
         <!-- User Dashboard (Wishlist) -->
         <div id="user-dashboard" class="dashboard-section text-font" style="display: none;">
-            <h2>My Wishlist <span class="role-badge user-badge">User</span></h2>
+            <h2>My Library <span class="role-badge user-badge">User</span></h2>
+            <div id="library-container" class="wishlist-grid"></div>
+
+            <h2 style="margin-top: 30px;">My Wishlist</h2>
             <div class="add-game-form">
                 <input type="text" id="gameTitleInput" placeholder="Enter game title to add...">
                 <button onclick="addToWishlist()">Add to Wishlist</button>
@@ -87,6 +91,7 @@
         </div>
     </div>
 
+    <script src="../assets/js/cart.js"></script>
     <script src="../assets/js/auth.js"></script>
     <script>
         // ==========================================
@@ -139,6 +144,30 @@
                         <p>Added: ${new Date(game.addedAt).toLocaleDateString()}</p>
                     </div>
                     <button class="remove-btn" onclick="removeFromWishlist(${index})">Remove</button>
+                </div>
+            `).join('');
+        }
+
+        // ==========================================
+        // 📚 LIBRARY FUNCTIONS (Purchased Games)
+        // ==========================================
+        function renderLibrary() {
+            const purchased = Cart ? Cart.getPurchased() : JSON.parse(localStorage.getItem('gamegel_purchased') || '[]');
+            const container = document.getElementById('library-container');
+            
+            if (purchased.length === 0) {
+                container.innerHTML = '<p class="no-items">No purchased games yet. Visit the <a href="./games.html" style="color:#08CB00;">Games</a> page to buy some!</p>';
+                return;
+            }
+            
+            container.innerHTML = purchased.map((game) => `
+                <div class="wishlist-item">
+                    <img src="${game.image}" alt="${game.title}" onerror="this.src='https://placehold.co/80x60/111/08CB00?text=Game'">
+                    <div class="wishlist-item-info">
+                        <h3>${game.title}</h3>
+                        <p>Purchased: ${new Date(game.purchasedAt).toLocaleDateString()}</p>
+                        <p>Order: ${game.orderNumber}</p>
+                    </div>
                 </div>
             `).join('');
         }
@@ -308,6 +337,7 @@
                     </div>
                 `;
                 userDash.style.display = 'block';
+                renderLibrary();
                 renderWishlist();
             } else {
                 // Guest view

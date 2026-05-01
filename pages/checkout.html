@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - GameGel</title>
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <style>
+        .checkout-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .checkout-header {
+            margin-bottom: 30px;
+        }
+        .checkout-header h1 {
+            font-family: "Bungee", sans-serif;
+            color: #F8DE22;
+            font-size: 2rem;
+            margin: 0 0 5px 0;
+        }
+        .checkout-header p {
+            color: #888;
+            font-family: monospace;
+            margin: 0;
+        }
+
+        .checkout-layout {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .checkout-form-section {
+            flex: 1;
+            min-width: 0;
+        }
+        .checkout-summary {
+            width: 320px;
+            flex-shrink: 0;
+        }
+
+        .checkout-section {
+            background: #1a1a1a;
+            border: 1px solid #253900;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .checkout-section h2 {
+            font-family: "Bungee", sans-serif;
+            color: #F8DE22;
+            font-size: 1.1rem;
+            margin: 0 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #253900;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .form-group {
+            flex: 1;
+        }
+        .form-group label {
+            display: block;
+            color: #08CB00;
+            font-family: monospace;
+            font-size: 0.8rem;
+            margin-bottom: 6px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            background: black;
+            border: 1px solid #253900;
+            border-radius: 6px;
+            color: #eeeeee;
+            font-family: monospace;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #08CB00;
+        }
+        .form-group input.error {
+            border-color: #d32f2f;
+        }
+        .form-group .error-msg {
+            color: #d32f2f;
+            font-size: 0.75rem;
+            margin-top: 4px;
+            display: none;
+        }
+        .form-group .error-msg.visible {
+            display: block;
+        }
+
+        .summary-items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #253900;
+        }
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        .summary-item .name {
+            color: #eeeeee;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+        .summary-item .price {
+            color: #08CB00;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0 0 0;
+            border-top: 2px solid #08CB00;
+            margin-top: 10px;
+        }
+        .summary-total .label {
+            font-family: "Bungee", sans-serif;
+            color: #F8DE22;
+        }
+        .summary-total .value {
+            font-family: "Bungee", sans-serif;
+            color: #08CB00;
+            font-size: 1.3rem;
+        }
+
+        .btn-place-order {
+            width: 100%;
+            padding: 14px;
+            font-family: "Bungee", sans-serif;
+            font-size: 1rem;
+            background: #08CB00;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 20px;
+        }
+        .btn-place-order:hover {
+            background: #06a000;
+        }
+        .btn-place-order:disabled {
+            background: #555;
+            cursor: not-allowed;
+        }
+
+        .order-success {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .order-success .check {
+            width: 80px;
+            height: 80px;
+            background: #08CB00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            color: black;
+        }
+        .order-success h2 {
+            font-family: "Bungee", sans-serif;
+            color: #F8DE22;
+            margin: 0 0 10px 0;
+        }
+        .order-success p {
+            color: #888;
+            font-family: monospace;
+            margin: 0 0 5px 0;
+        }
+        .order-success .order-number {
+            color: #08CB00;
+            font-size: 1.2rem;
+            margin: 15px 0 25px;
+        }
+        .order-success a {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #08CB00;
+            color: black;
+            font-family: "Bungee", sans-serif;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.2s;
+            margin: 0 5px;
+        }
+        .order-success a:hover {
+            background: #06a000;
+        }
+        .order-success a.outline {
+            background: transparent;
+            border: 2px solid #F8DE22;
+            color: #F8DE22;
+        }
+        .order-success a.outline:hover {
+            background: rgba(248, 222, 34, 0.1);
+        }
+
+        .cart-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #1a1a1a;
+            border: 2px solid #08CB00;
+            color: #08CB00;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            z-index: 9999;
+            animation: toastIn 0.3s ease, toastOut 0.3s ease 2.7s forwards;
+        }
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes toastOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(20px); }
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0,0,0,0.3);
+            border-top-color: #000;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .checkout-layout {
+                flex-direction: column-reverse;
+            }
+            .checkout-summary {
+                width: 100%;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1 class="logo"><span style="color: rgb(229, 255, 0);">G</span>ame<span style="color: rgb(229, 255, 0);">G</span>el</h1>
+        <ul class="head-font green">
+            <a href="../index.html"><li>Home</li></a>
+            <a href="./games.html"><li>Games</li></a>
+            <a href="./dashboard.html"><li>Dashboard</li></a>
+            <a href="./login.html"><li>Login</li></a>
+            <a href="./register.html"><li>Register</li></a>
+            <a href="./blog.html"><li>Check Our Blog</li></a>
+            <a href="./contact.html"><li>Contact Us</li></a>
+        </ul>
+    </div>
+
+    <div class="checkout-container" id="checkout-container">
+        <div style="height:60vh; text-align:center; color:#08CB00; font-family:monospace;">Loading...</div>
+    </div>
+
+    <footer>
+        <p class="head-font green">© 2026 GameGel. All rights reserved.</p>
+    </footer>
+
+    <script src="../assets/js/cart.js"></script>
+    <script>
+        let cartItems = [];
+
+        function renderCheckout() {
+            const container = document.getElementById('checkout-container');
+            cartItems = Cart.getCart();
+
+            if (cartItems.length === 0) {
+                container.innerHTML = `
+                    <div class="order-success">
+                        <div class="icon" style="font-size:4rem; margin-bottom:15px;">🛒</div>
+                        <h2>Your Cart is Empty</h2>
+                        <p>Add some games before checking out.</p>
+                        <a href="./games.html">Browse Games</a>
+                    </div>
+                `;
+                return;
+            }
+
+            const subtotal = Cart.getCartTotal();
+            const total = subtotal;
+
+            container.innerHTML = `
+                <div class="checkout-header">
+                    <h1>Checkout</h1>
+                    <p>Complete your purchase</p>
+                </div>
+
+                <div class="checkout-layout">
+                    <div class="checkout-form-section">
+                        <div class="checkout-section">
+                            <h2>Billing Information</h2>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" id="checkout-name" placeholder="John Doe">
+                                    <div class="error-msg" id="error-name">Please enter your name</div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" id="checkout-email" placeholder="john@example.com">
+                                    <div class="error-msg" id="error-email">Please enter a valid email</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="checkout-section">
+                            <h2>Payment Details</h2>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Card Number</label>
+                                    <input type="text" id="checkout-card" placeholder="1234 5678 9012 3456" maxlength="19">
+                                    <div class="error-msg" id="error-card">Enter a valid 16-digit card number</div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Expiry Date</label>
+                                    <input type="text" id="checkout-expiry" placeholder="MM/YY" maxlength="5">
+                                    <div class="error-msg" id="error-expiry">Enter a valid expiry date</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>CVV</label>
+                                    <input type="text" id="checkout-cvv" placeholder="123" maxlength="3">
+                                    <div class="error-msg" id="error-cvv">Enter a valid CVV</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn-place-order" id="place-order-btn" onclick="placeOrder()">
+                            Place Order
+                        </button>
+                    </div>
+
+                    <div class="checkout-summary">
+                        <div class="checkout-section">
+                            <h2>Order Summary</h2>
+                            <div class="summary-items">
+                                ${cartItems.map(item => `
+                                    <div class="summary-item">
+                                        <span class="name">${item.title}</span>
+                                        <span class="price">${item.price}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div class="summary-total">
+                                <span class="label">Total</span>
+                                <span class="value">${Cart.formatPrice(total)}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            formatCardInput();
+            formatExpiryInput();
+        }
+
+        function formatCardInput() {
+            const cardInput = document.getElementById('checkout-card');
+            if (!cardInput) return;
+            cardInput.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                value = value.substring(0, 16);
+                let formatted = value.replace(/(.{4})/g, '$1 ').trim();
+                e.target.value = formatted;
+            });
+        }
+
+        function formatExpiryInput() {
+            const expiryInput = document.getElementById('checkout-expiry');
+            if (!expiryInput) return;
+            expiryInput.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                value = value.substring(0, 4);
+                if (value.length >= 2) {
+                    value = value.substring(0, 2) + '/' + value.substring(2);
+                }
+                e.target.value = value;
+            });
+        }
+
+        function validateForm() {
+            let valid = true;
+
+            const name = document.getElementById('checkout-name').value.trim();
+            const email = document.getElementById('checkout-email').value.trim();
+            const card = document.getElementById('checkout-card').value.replace(/\s/g, '');
+            const expiry = document.getElementById('checkout-expiry').value.trim();
+            const cvv = document.getElementById('checkout-cvv').value.trim();
+
+            if (!name || name.length < 2) {
+                document.getElementById('checkout-name').classList.add('error');
+                document.getElementById('error-name').classList.add('visible');
+                valid = false;
+            } else {
+                document.getElementById('checkout-name').classList.remove('error');
+                document.getElementById('error-name').classList.remove('visible');
+            }
+
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('checkout-email').classList.add('error');
+                document.getElementById('error-email').classList.add('visible');
+                valid = false;
+            } else {
+                document.getElementById('checkout-email').classList.remove('error');
+                document.getElementById('error-email').classList.remove('visible');
+            }
+
+            if (!card || card.length !== 16) {
+                document.getElementById('checkout-card').classList.add('error');
+                document.getElementById('error-card').classList.add('visible');
+                valid = false;
+            } else {
+                document.getElementById('checkout-card').classList.remove('error');
+                document.getElementById('error-card').classList.remove('visible');
+            }
+
+            if (!expiry || !/^\d{2}\/\d{2}$/.test(expiry)) {
+                document.getElementById('checkout-expiry').classList.add('error');
+                document.getElementById('error-expiry').classList.add('visible');
+                valid = false;
+            } else {
+                document.getElementById('checkout-expiry').classList.remove('error');
+                document.getElementById('error-expiry').classList.remove('visible');
+            }
+
+            if (!cvv || !/^\d{3}$/.test(cvv)) {
+                document.getElementById('checkout-cvv').classList.add('error');
+                document.getElementById('error-cvv').classList.add('visible');
+                valid = false;
+            } else {
+                document.getElementById('checkout-cvv').classList.remove('error');
+                document.getElementById('error-cvv').classList.remove('visible');
+            }
+
+            return valid;
+        }
+
+        function placeOrder() {
+            if (!validateForm()) return;
+
+            const btn = document.getElementById('place-order-btn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner"></span> Processing...';
+
+            setTimeout(() => {
+                const orderNumber = Cart.addToPurchased(cartItems);
+                Cart.clearCart();
+                Cart.updateCartBadges();
+                showSuccess(orderNumber);
+            }, 2500);
+        }
+
+        function showSuccess(orderNumber) {
+            const container = document.getElementById('checkout-container');
+            container.innerHTML = `
+                <div class="order-success">
+                    <div class="check">✓</div>
+                    <h2>Order Successful!</h2>
+                    <p>Thank you for your purchase.</p>
+                    <p>Your games are ready to download.</p>
+                    <p class="order-number">Order Number: ${orderNumber}</p>
+                    <a href="./dashboard.html">Go to Dashboard</a>
+                    <a class="outline" href="./games.html">Browse Games</a>
+                </div>
+            `;
+        }
+
+        renderCheckout();
+    </script>
+</body>
+</html>

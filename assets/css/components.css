@@ -43,24 +43,23 @@
 .price{
   text-align: center;
   width: 100%;
-  font-size: 1.5rem;
-  transition: scale .2s ease-in-out;
   position: relative;
   align-self: flex-start;
-  }
-
-.price a{
-  color: rgb(248, 39, 39);
-    transition:  .2s ease-in-out;
-
 }
-
-.price:hover{
-  scale: 1.1;
+.price a{
+  color: #08CB00;
+  font-size: 1.8rem;
+  padding: 2px 4px;
+  border: 2px solid #08CB00;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 .price a:hover{
-  color: var(--yellow-color);
-
+  color: #fff;
+  background: #e60000;
+  border-color: #e60000;
 }
 .login{
   display: flex;

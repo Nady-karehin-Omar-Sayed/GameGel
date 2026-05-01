@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - GameGel</title>
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <style>
+        .cart-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .cart-header h1 {
+            font-family: "Bungee", sans-serif;
+            color: #F8DE22;
+            font-size: 2rem;
+            margin: 0;
+        }
+        .cart-header .item-count {
+            color: #08CB00;
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #1a1a1a;
+            border: 1px solid #253900;
+            border-radius: 10px;
+            padding: 15px;
+            transition: border-color 0.2s;
+        }
+        .cart-item:hover {
+            border-color: #08CB00;
+        }
+        .cart-item-img {
+            width: 120px;
+            height: 80px;
+            border-radius: 6px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .cart-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .cart-item-info h3 {
+            font-family: "Bungee", sans-serif;
+            color: #F8DE22;
+            font-size: 1rem;
+            margin: 0 0 5px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .cart-item-info p {
+            color: #888;
+            font-family: monospace;
+            font-size: 0.8rem;
+            margin: 0;
+        }
+        .cart-item-price {
+            font-family: "Bungee", sans-serif;
+            color: #08CB00;
+            font-size: 1.2rem;
+            white-space: nowrap;
+        }
+        .cart-item-remove {
+            background: transparent;
+            border: 1px solid #d32f2f;
+            color: #d32f2f;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: monospace;
+            font-size: 0.8rem;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+        .cart-item-remove:hover {
+            background: rgba(211, 47, 47, 0.15);
+        }
+
+        .cart-summary {
+            background: #1a1a1a;
+            border: 2px solid #08CB00;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        .cart-summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-family: monospace;
+            color: #eeeeee;
+        }
+        .cart-summary-row.total {
+            border-top: 1px solid #253900;
+            margin-top: 10px;
+            padding-top: 15px;
+        }
+        .cart-summary-row.total .label {
+            font-family: "Bungee", sans-serif;
+            color: #F8DE22;
+            font-size: 1.2rem;
+        }
+        .cart-summary-row.total .value {
+            font-family: "Bungee", sans-serif;
+            color: #08CB00;
+            font-size: 1.5rem;
+        }
+
+        .cart-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .btn-checkout {
+            flex: 1;
+            padding: 14px;
+            font-family: "Bungee", sans-serif;
+            font-size: 1rem;
+            background: #08CB00;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-checkout:hover {
+            background: #06a000;
+        }
+        .btn-continue {
+            flex: 1;
+            padding: 14px;
+            font-family: "Bungee", sans-serif;
+            font-size: 1rem;
+            background: transparent;
+            color: #F8DE22;
+            border: 2px solid #F8DE22;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .btn-continue:hover {
+            background: rgba(248, 222, 34, 0.1);
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .cart-empty .icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+        .cart-empty h2 {
+            font-family: "Bungee", sans-serif;
+            color: #F8DE22;
+            margin: 0 0 10px 0;
+        }
+        .cart-empty p {
+            color: #888;
+            font-family: monospace;
+            margin: 0 0 25px 0;
+        }
+        .cart-empty a {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #08CB00;
+            color: black;
+            font-family: "Bungee", sans-serif;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .cart-empty a:hover {
+            background: #06a000;
+        }
+
+        .cart-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #1a1a1a;
+            border: 2px solid #08CB00;
+            color: #08CB00;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            z-index: 9999;
+            animation: toastIn 0.3s ease, toastOut 0.3s ease 2.7s forwards;
+        }
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes toastOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(20px); }
+        }
+
+        @media (max-width: 600px) {
+            .cart-item {
+                flex-wrap: wrap;
+            }
+            .cart-item-price {
+                width: 100%;
+                order: 3;
+            }
+            .cart-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1 class="logo"><span style="color: rgb(229, 255, 0);">G</span>ame<span style="color: rgb(229, 255, 0);">G</span>el</h1>
+        <ul class="head-font green">
+            <a href="../index.html"><li>Home</li></a>
+            <a href="./games.html"><li>Games</li></a>
+            <a href="./dashboard.html"><li>Dashboard</li></a>
+            <a href="./login.html"><li>Login</li></a>
+            <a href="./register.html"><li>Register</li></a>
+            <a href="./blog.html"><li>Check Our Blog</li></a>
+            <a href="./contact.html"><li>Contact Us</li></a>
+        </ul>
+    </div>
+
+    <div class="cart-container" id="cart-container">
+        <div style="height:60vh; text-align:center; color:#08CB00; font-family:monospace;">Loading cart...</div>
+    </div>
+
+    <footer>
+        <p class="head-font green">© 2026 GameGel. All rights reserved.</p>
+    </footer>
+
+    <script src="../assets/js/cart.js"></script>
+    <script>
+        function renderCart() {
+            const container = document.getElementById('cart-container');
+            const cart = Cart.getCart();
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="cart-empty">
+                        <div class="icon">🛒</div>
+                        <h2>Your Cart is Empty</h2>
+                        <p>Looks like you haven't added any games yet.</p>
+                        <a href="./games.html">Browse Games</a>
+                    </div>
+                `;
+                return;
+            }
+
+            const subtotal = Cart.getCartTotal();
+            const total = subtotal;
+
+            container.innerHTML = `
+                <div class="cart-header">
+                    <h1>Your Cart</h1>
+                    <span class="item-count">${cart.length} item${cart.length > 1 ? 's' : ''}</span>
+                </div>
+
+                <div class="cart-items">
+                    ${cart.map((item, index) => `
+                        <div class="cart-item">
+                            <img class="cart-item-img" src="${item.image}" alt="${item.title}" onerror="this.src='https://placehold.co/120x80/111/08CB00?text=Game'">
+                            <div class="cart-item-info">
+                                <h3>${item.title}</h3>
+                                <p>Added ${new Date(item.addedAt).toLocaleDateString()}</p>
+                            </div>
+                            <div class="cart-item-price">${item.price}</div>
+                            <button class="cart-item-remove" onclick="removeItem(${index})">Remove</button>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="cart-summary">
+                    <div class="cart-summary-row">
+                        <span class="label">Items</span>
+                        <span class="value">${cart.length}</span>
+                    </div>
+                    <div class="cart-summary-row total">
+                        <span class="label">Total</span>
+                        <span class="value">${Cart.formatPrice(total)}</span>
+                    </div>
+                </div>
+
+                <div class="cart-actions">
+                    <button class="btn-checkout" onclick="goToCheckout()">Proceed to Checkout</button>
+                    <a href="./games.html" class="btn-continue">Continue Shopping</a>
+                </div>
+            `;
+        }
+
+        function removeItem(index) {
+            const cart = Cart.getCart();
+            const title = cart[index].title;
+            Cart.removeFromCart(index);
+            Cart.showToast(`Removed "${title}" from cart`);
+            renderCart();
+            Cart.updateCartBadges();
+        }
+
+        function goToCheckout() {
+            window.location.href = './checkout.html';
+        }
+
+        renderCart();
+    </script>
+</body>
+</html>
