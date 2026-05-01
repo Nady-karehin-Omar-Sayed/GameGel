@@ -32,7 +32,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <p class="green text-font">Price : <span class="yellow">${game.price}</span></p>
                 </div>
             </div>
-            <div class="price head-font"><a target="_blank" href="${game.buyLink}">BUY</a></div>
+            <div class="price head-font" style="display:flex;gap:10px;align-items:center;">
+                <a class="btn-buy-card" target="_blank" href="${game.buyLink}">BUY</a>
+                <a href="./game-details.html?game=${encodeURIComponent(game.title)}" style="color:#F8DE22;font-size:0.8rem;padding:4px 10px;border:1px solid #F8DE22;border-radius:4px;">View Details</a>
+            </div>
         </div>
         `;
     }

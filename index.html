@@ -15,15 +15,17 @@
      <div class="search-wrapper">
          <input type="text" id="searchInput" placeholder="Search games..." class="search-input">
      </div>
-      <ul class="head-font green">
-        <a href="./index.html"><li>Home</li></a>
-        <a href="./pages/games.html"><li >Games</li></a>
-        <a href="./pages/dashboard.html"><li>Dashboard</li></a>
-        <a href="./pages/login.html"><li >Login</li></a>
-        <a href="./pages/register.html"><li >Register</li></a>
-        <a href="./pages/blog.html"><li>Check Our Blog</li></a>
-        <a href="./pages/contact.html"><li>Contact Us</li></a>
-      </ul> 
+       <ul class="head-font green">
+         <a href="./index.html"><li>Home</li></a>
+         <a href="./pages/games.html"><li>Games</li></a>
+         <a href="./pages/cart.html"><li>Cart</li></a>
+         <a href="./pages/dashboard.html"><li>Dashboard</li></a>
+         <a href="./pages/login.html"><li>Login</li></a>
+         <a href="./pages/register.html"><li>Register</li></a>
+         <a href="./pages/blog.html"><li>Check Our Blog</li></a>
+         <a href="./pages/contact.html"><li>Contact Us</li></a>
+         <a href="./pages/forums.html"><li>Forums</li></a>
+       </ul>
      </div>
         <div class="container">
             <h1 class="head-font green">Welcome to GameGel !</h1>
@@ -76,7 +78,7 @@
             // Function to create carousel slide HTML
             function createCarouselSlide(game) {
                 return `
-                    <a href="./pages/games.html?game=${encodeURIComponent(game.title)}" class="carousel-slide">
+                    <a href="./pages/game-details.html?game=${encodeURIComponent(game.title)}" class="carousel-slide">
                         <img src="${game.lsimg}" alt="${game.title}" onerror="this.src='https://placehold.co/280x180/111/08CB00?text=No+Image'">
                         <span class="slide-label">${game.title}</span>
                     </a>
