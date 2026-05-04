@@ -20,6 +20,7 @@
          <a href="./pages/games.html"><li>Games</li></a>
          <a href="./pages/cart.html"><li>Cart</li></a>
          <a href="./pages/dashboard.html"><li>Dashboard</li></a>
+         <a href="./pages/leaderboard.html"><li>Leaderboard</li></a>
          <a href="./pages/login.html"><li>Login</li></a>
          <a href="./pages/register.html"><li>Register</li></a>
          <a href="./pages/blog.html"><li>Check Our Blog</li></a>
@@ -32,6 +33,15 @@
             <p class="text-font green">Your <span class="yellow">ultimate destination</span> for gaming news, reviews, and community.</p>
             <a href="./pages/games.html" class="btn head-font yellow">Explore Games</a>
 
+        </div>
+
+        <!-- Ad Banner -->
+        <div class="ad-section">
+            <p class="ad-label">◆ Explore Deals ◆</p>
+            <div class="ad-banner">
+                <img id="ad-image" src="./assets/images/ad-early-bird.jpg" alt="Advertisement"
+                     onerror="this.src='https://placehold.co/900x220/111/08CB00?text=Advertisement'">
+            </div>
         </div>
 
         <!-- Carousel -->
@@ -75,7 +85,6 @@
             const newReleasesTrack = document.getElementById('new-releases-track');
             const topSellersTrack = document.getElementById('top-sellers-track');
 
-            // Function to create carousel slide HTML
             function createCarouselSlide(game) {
                 return `
                     <a href="./pages/game-details.html?game=${encodeURIComponent(game.title)}" class="carousel-slide">
@@ -85,7 +94,6 @@
                 `;
             }
 
-            // Populate New Releases (first 6 games, duplicated for infinite scroll effect)
             if (newReleasesTrack) {
                 const newReleases = allGames.slice(0, 6);
                 const trackContent = newReleases.map(game => createCarouselSlide(game)).join('') +
@@ -93,13 +101,51 @@
                 newReleasesTrack.innerHTML = trackContent;
             }
 
-            // Populate Top Selling (different 6 games, duplicated for infinite scroll effect)
             if (topSellersTrack) {
                 const topSellers = allGames.slice(6, 9);
                 const trackContent = topSellers.map(game => createCarouselSlide(game)).join('') +
                                      topSellers.map(game => createCarouselSlide(game)).join('');
                 topSellersTrack.innerHTML = trackContent;
             }
+
+            // Ad banner setup
+            const adImages = [
+                './assets/images/ad-early-bird.jpg',
+                './assets/images/ad-big-games.jpg',
+                './assets/images/ad-fc26.jpg'
+            ];
+
+            let currentAdIndex = 0;
+            let adTimer = null;
+            const adImg = document.getElementById('ad-image');
+
+            function showAd(index) {
+                adImg.style.opacity = '0';
+                setTimeout(() => {
+                    adImg.src = adImages[index];
+                    adImg.style.opacity = '1';
+                }, 400);
+                currentAdIndex = index;
+            }
+
+            function startAdRotation() {
+                if (adTimer) clearInterval(adTimer);
+                adTimer = setInterval(() => {
+                    showAd((currentAdIndex + 1) % adImages.length);
+                }, 5000);
+            }
+
+            showAd(0);
+            startAdRotation();
+
+            // Clicking any game card shows a random ad
+            document.querySelectorAll('.carousel-wrapper').forEach(wrapper => {
+                wrapper.addEventListener('click', () => {
+                    const randomIndex = Math.floor(Math.random() * adImages.length);
+                    showAd(randomIndex);
+                    startAdRotation();
+                });
+            });
         });
       </script>
 </body>

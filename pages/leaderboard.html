@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - GameGel</title>
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <style>
+        /* ── Page Header ── */
+        .lb-page-header { text-align: center; padding: 40px 20px 10px; }
+        .lb-title { font-size: 2.8rem; margin: 0; letter-spacing: 3px; text-shadow: 0 0 24px rgba(8,203,0,0.35); }
+
+        /* ── Podium ── */
+        .lb-podium { display: flex; justify-content: center; align-items: flex-end; gap: 16px; padding: 32px 20px 24px; max-width: 700px; margin: 0 auto; }
+        .lb-podium-card { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 22px 28px; border-radius: 10px; border: 2px solid; min-width: 160px; transition: transform 0.2s; }
+        .lb-podium-card:hover { transform: translateY(-5px); }
+        .lb-podium-card.gold   { border-color: #F8DE22; background: rgba(248,222,34,0.06); order: 2; }
+        .lb-podium-card.silver { border-color: #b0b0b0; background: rgba(176,176,176,0.04); order: 1; }
+        .lb-podium-card.bronze { border-color: #cd7f32; background: rgba(205,127,50,0.05);  order: 3; }
+        .lb-podium-medal { font-size: 2rem; line-height: 1; }
+        .lb-podium-avatar { width: 62px; height: 62px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: "Bungee", sans-serif; font-size: 1.25rem; color: #000; border: 3px solid; }
+        .lb-podium-card.gold   .lb-podium-avatar { border-color: #F8DE22; background: #F8DE22; }
+        .lb-podium-card.silver .lb-podium-avatar { border-color: #b0b0b0; background: #b0b0b0; }
+        .lb-podium-card.bronze .lb-podium-avatar { border-color: #cd7f32; background: #cd7f32; }
+        .lb-podium-name  { color: #eee; font-size: 0.88rem; text-align: center; }
+        .lb-podium-score { font-family: "Bungee", sans-serif; font-size: 1.6rem; }
+        .lb-podium-card.gold   .lb-podium-score { color: #F8DE22; }
+        .lb-podium-card.silver .lb-podium-score { color: #b0b0b0; }
+        .lb-podium-card.bronze .lb-podium-score { color: #cd7f32; }
+        .lb-podium-label { font-size: 0.7rem; color: #666; }
+
+        /* ── Controls ── */
+        .lb-controls { display: flex; align-items: center; gap: 14px; max-width: 1100px; margin: 0 auto 14px; padding: 0 20px; flex-wrap: wrap; }
+        .lb-search-input { background: #000; border: 1.5px solid #08CB00; color: #eee; padding: 8px 16px; border-radius: 6px; font-family: monospace; font-size: 0.9rem; outline: none; min-width: 220px; transition: border-color 0.2s, box-shadow 0.2s; }
+        .lb-search-input:focus { border-color: #F8DE22; box-shadow: 0 0 8px rgba(248,222,34,0.3); }
+        .lb-search-input::placeholder { color: #444; }
+        .lb-sort-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .lb-sort-btn { background: transparent; border: 1.5px solid #253900; color: #555; padding: 6px 14px; border-radius: 20px; font-family: monospace; font-size: 0.82rem; cursor: pointer; transition: all 0.2s; }
+        .lb-sort-btn:hover  { border-color: #08CB00; color: #08CB00; }
+        .lb-sort-btn.active { background: #08CB00; border-color: #08CB00; color: #000; font-weight: bold; }
+
+        /* ── Table ── */
+        .lb-container { max-width: 1100px; margin: 0 auto; padding: 0 20px 60px; }
+        .lb-table-header { display: grid; grid-template-columns: 110px 220px 1fr 1fr 1fr 130px; padding: 10px 20px; color: #444; font-size: 0.78rem; border-bottom: 1px solid #1a1a1a; text-transform: uppercase; letter-spacing: 0.6px; align-items: center; }
+        .lb-col-rank  { text-align: center; }
+        .lb-col-stat  { display: flex; align-items: center; gap: 6px; }
+        .lb-col-total { text-align: right; }
+        .lb-cat-dot   { display: inline-block; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+        /* ── Rows ── */
+        .lb-row { display: grid; grid-template-columns: 110px 220px 1fr 1fr 1fr 130px; align-items: center; padding: 14px 20px; border-bottom: 1px solid #111; border-left: 4px solid transparent; transition: background 0.15s; }
+        .lb-row:hover  { background: rgba(8,203,0,0.04); }
+        .lb-row.rank-1 { background: rgba(248,222,34,0.04);  border-left-color: #F8DE22; }
+        .lb-row.rank-2 { background: rgba(176,176,176,0.03); border-left-color: #b0b0b0; }
+        .lb-row.rank-3 { background: rgba(205,127,50,0.04);  border-left-color: #cd7f32; }
+
+        .lb-rank-cell  { display: flex; justify-content: center; align-items: center; }
+        .lb-rank-badge { display: inline-flex; align-items: center; gap: 5px; padding: 5px 12px; border-radius: 20px; font-family: "Bungee", sans-serif; font-size: 0.78rem; white-space: nowrap; }
+        .lb-rank-badge.gold   { background: rgba(248,222,34,0.12); color: #F8DE22; border: 1px solid rgba(248,222,34,0.35); }
+        .lb-rank-badge.silver { background: rgba(176,176,176,0.10); color: #c0c0c0; border: 1px solid rgba(176,176,176,0.3); }
+        .lb-rank-badge.bronze { background: rgba(205,127,50,0.10);  color: #cd7f32; border: 1px solid rgba(205,127,50,0.3); }
+        .lb-rank-badge.normal { color: #555; font-family: monospace; font-size: 0.9rem; }
+
+        .lb-name-cell   { display: flex; align-items: center; gap: 12px; }
+        .lb-avatar      { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: "Bungee", sans-serif; font-size: 0.9rem; color: #000; flex-shrink: 0; border: 2px solid #253900; }
+        .lb-player-info { display: flex; flex-direction: column; gap: 2px; }
+        .lb-player-name { color: #eee; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; }
+        .lb-you-badge   { background: #F8DE22; color: #000; font-family: "Bungee", sans-serif; font-size: 0.62rem; padding: 2px 7px; border-radius: 10px; }
+
+        .lb-stat-cell  { display: flex; flex-direction: column; gap: 5px; padding-right: 18px; }
+        .lb-stat-top   { display: flex; align-items: center; justify-content: space-between; }
+        .lb-stat-count { font-family: "Bungee", sans-serif; font-size: 0.88rem; color: #eee; }
+        .lb-stat-pill  { display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 18px; padding: 0 6px; border-radius: 9px; font-family: "Bungee", sans-serif; font-size: 0.68rem; color: #000; }
+        .lb-bar-track  { height: 5px; background: #1a1a1a; border-radius: 3px; overflow: hidden; border: 1px solid #253900; }
+        .lb-bar-fill   { height: 100%; border-radius: 3px; transition: width 0.7s cubic-bezier(0.4,0,0.2,1); }
+
+        .lb-total-cell  { text-align: right; display: flex; flex-direction: column; align-items: flex-end; }
+        .lb-total-count { font-family: "Bungee", sans-serif; font-size: 1.7rem; color: #eee; line-height: 1; }
+        .lb-total-label { font-family: monospace; font-size: 0.68rem; color: #444; margin-top: 2px; }
+        .lb-empty       { text-align: center; color: #444; padding: 60px 20px; font-size: 1rem; }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .lb-table-header { display: none; }
+            .lb-row { grid-template-columns: 80px 1fr; grid-template-rows: auto auto; gap: 10px; padding: 16px; }
+            .lb-stat-cell  { grid-column: 1 / -1; padding-right: 0; }
+            .lb-total-cell { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 8px; }
+            .lb-total-count { font-size: 1.3rem; }
+        }
+        @media (max-width: 600px) {
+            .lb-podium { flex-direction: column; align-items: center; }
+            .lb-podium-card { order: unset !important; width: 100%; max-width: 240px; }
+            .lb-controls { flex-direction: column; align-items: stretch; }
+            .lb-search-input { min-width: unset; width: 100%; box-sizing: border-box; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1 class="logo"><span style="color: rgb(229, 255, 0);">G</span>ame<span style="color: rgb(229, 255, 0);">G</span>el</h1>
+        <ul class="head-font green">
+            <a href="../index.html"><li>Home</li></a>
+            <a href="./games.html"><li>Games</li></a>
+            <a href="./cart.html"><li>Cart</li></a>
+            <a href="./dashboard.html"><li>Dashboard</li></a>
+            <a href="./leaderboard.html"><li>Leaderboard</li></a>
+            <a href="./login.html"><li>Login</li></a>
+            <a href="./register.html"><li>Register</li></a>
+            <a href="./blog.html"><li>Check Our Blog</li></a>
+            <a href="./contact.html"><li>Contact Us</li></a>
+            <a href="./forums.html"><li>Forums</li></a>
+        </ul>
+    </div>
+
+    <!-- Page Header -->
+    <div class="lb-page-header">
+        <h1 class="head-font green lb-title">&#127942; Leaderboard</h1>
+        <p class="text-font" style="color: #aaa; margin: 6px 0 0;">Top players ranked by total badges earned across all categories</p>
+    </div>
+
+    <!-- Top 3 Podium -->
+    <div class="lb-podium" id="lb-podium"></div>
+
+    <!-- Controls -->
+    <div class="lb-controls">
+        <input type="text" id="lb-search" class="lb-search-input" placeholder="Search players...">
+        <div class="lb-sort-group text-font">
+            <span style="color:#aaa; font-size:0.85rem;">Sort by:</span>
+            <button class="lb-sort-btn active" data-sort="total">Total Badges</button>
+            <button class="lb-sort-btn" data-sort="arcade">Arcade</button>
+            <button class="lb-sort-btn" data-sort="trivia">Trivia</button>
+            <button class="lb-sort-btn" data-sort="skill">Skill</button>
+        </div>
+    </div>
+
+    <!-- Leaderboard Table -->
+    <div class="lb-container">
+        <!-- Table Header -->
+        <div class="lb-table-header text-font">
+            <div class="lb-col-rank">Rank</div>
+            <div class="lb-col-name">Name</div>
+            <div class="lb-col-stat">
+                <span class="lb-cat-dot" style="background:#F8DE22;"></span>
+                Arcade Games
+            </div>
+            <div class="lb-col-stat">
+                <span class="lb-cat-dot" style="background:#08CB00;"></span>
+                Trivia Games
+            </div>
+            <div class="lb-col-stat">
+                <span class="lb-cat-dot" style="background:#a855f7;"></span>
+                Skill Badges
+            </div>
+            <div class="lb-col-total">&#11088; Total Badges</div>
+        </div>
+
+        <!-- Rows rendered by JS -->
+        <div id="lb-rows"></div>
+
+        <div id="lb-empty" class="lb-empty text-font" style="display:none;">No players match your search.</div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-font" style="text-align:center; padding:24px; color:var(--green); border-top:1px solid var(--green); margin-top:48px; font-size:0.85rem;">
+        &copy; 2026 GameGel. All rights reserved.
+    </footer>
+
+    <script src="../assets/js/leaderboard.js"></script>
+</body>
+</html>

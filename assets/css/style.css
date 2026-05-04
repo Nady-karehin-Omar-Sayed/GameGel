@@ -642,4 +642,39 @@ footer{
     position: relative;
 }
 
+/* Ad Section */
+.ad-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 900px;
+}
+
+.ad-label {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    opacity: 0.45;
+    margin: 0 0 6px 0;
+    color: #08CB00;
+    font-family: monospace;
+}
+
+.ad-banner {
+    width: 100%;
+    border: 2px solid #08CB00;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(8, 203, 0, 0.15);
+}
+
+.ad-banner img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.4s ease;
+}
+
 

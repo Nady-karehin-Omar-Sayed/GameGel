@@ -545,6 +545,58 @@
                 height: 250px;
             }
         }
+
+        /* Small floating ad */
+        .small-ad {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 260px;
+            background: #111;
+            border: 2px solid #08CB00;
+            border-radius: 10px;
+            overflow: hidden;
+            z-index: 900;
+            box-shadow: 0 4px 20px rgba(8, 203, 0, 0.2);
+            animation: adSlideIn 0.45s ease forwards;
+            opacity: 0;
+        }
+        @keyframes adSlideIn {
+            from { transform: translateY(30px); opacity: 0; }
+            to   { transform: translateY(0);    opacity: 1; }
+        }
+        .small-ad-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 8px;
+            background: #1a1a1a;
+        }
+        .small-ad-label {
+            font-family: monospace;
+            font-size: 0.55rem;
+            letter-spacing: 2px;
+            color: #08CB00;
+            opacity: 0.5;
+        }
+        .small-ad-close {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 0.8rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0 2px;
+            transition: color 0.2s;
+        }
+        .small-ad-close:hover { color: #fff; }
+        .small-ad img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.4s ease;
+        }
     </style>
 </head>
 <body>
@@ -556,6 +608,7 @@
             <a href="./games.html"><li>Games</li></a>
             <a href="./cart.html"><li>Cart</li></a>
             <a href="./dashboard.html"><li>Dashboard</li></a>
+            <a href="./leaderboard.html"><li>Leaderboard</li></a>
             <a href="./login.html"><li>Login</li></a>
             <a href="./register.html"><li>Register</li></a>
             <a href="./blog.html"><li>Check Our Blog</li></a>
@@ -570,6 +623,16 @@
     <footer>
         <p class="head-font green">© 2026 GameGel. All rights reserved.</p>
     </footer>
+
+    <!-- Small floating ad -->
+    <div class="small-ad" id="small-ad" style="display:none;">
+        <div class="small-ad-header">
+            <span class="small-ad-label">◆ AD ◆</span>
+            <button class="small-ad-close" onclick="document.getElementById('small-ad').style.display='none'" title="Close">✕</button>
+        </div>
+        <img id="small-ad-img" src="../assets/images/ad-early-bird.jpg" alt="Advertisement"
+             onerror="this.src='https://placehold.co/260x100/111/08CB00?text=Ad'">
+    </div>
 
     <script src="../assets/js/cart.js"></script>
     <script>
@@ -947,6 +1010,37 @@
         }
 
         init();
+
+        // Small ad rotation
+        (function () {
+            const adImages = [
+                '../assets/images/ad-early-bird.jpg',
+                '../assets/images/ad-big-games.jpg',
+                '../assets/images/ad-fc26.jpg'
+            ];
+            let adIndex = Math.floor(Math.random() * adImages.length);
+            const adEl  = document.getElementById('small-ad');
+            const adImg = document.getElementById('small-ad-img');
+
+            function showAd(index) {
+                adImg.style.opacity = '0';
+                setTimeout(() => {
+                    adImg.src = adImages[index];
+                    adImg.style.opacity = '1';
+                }, 400);
+                adIndex = index;
+            }
+
+            // Appear after 1.5 s so it doesn't pop up instantly
+            setTimeout(() => {
+                adEl.style.display = 'block';
+                adImg.src = adImages[adIndex];
+            }, 1500);
+
+            setInterval(() => {
+                showAd((adIndex + 1) % adImages.length);
+            }, 5000);
+        })();
     </script>
 </body>
 </html>
