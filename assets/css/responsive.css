@@ -27,9 +27,10 @@ img {
     }
     
     .navbar {
-        flex-direction: column;
-        padding: 10px;
-        gap: 15px;
+        flex-direction: row;
+        padding: 10px 12px;
+        gap: 10px;
+        justify-content: space-between;
     }
     
     .navbar h1 {
@@ -38,11 +39,15 @@ img {
         position: static;
     }
     
-    .navbar ul {
-        gap: 15px;
-        width: 100%;
+    .navbar .desktop-nav {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: inline-flex;
+        align-items: center;
         justify-content: center;
-        padding: 0 8px;
+        flex-shrink: 0;
     }
     
     .navbar ul li {
@@ -180,9 +185,11 @@ img {
     }
     
     .navbar {
-        flex-direction: column;
-        padding: 8px;
-        gap: 12px;
+        flex-direction: row;
+        padding: 8px 10px;
+        gap: 8px;
+        justify-content: space-between;
+        flex-wrap: nowrap;
     }
     
     .navbar h1 {
@@ -191,11 +198,8 @@ img {
         position: static;
     }
     
-    .navbar ul {
-        gap: 8px;
-        width: 100%;
-        flex-wrap: wrap;
-        justify-content: center;
+    .navbar .desktop-nav {
+        display: none;
     }
     
     .navbar ul li {
@@ -205,12 +209,12 @@ img {
 
     /* Search input */
     .navbar .search-input {
-        width: 120px;
+        width: 140px;
         font-size: 0.7rem;
     }
     
     .navbar .search-input:focus {
-        width: 150px;
+        width: 160px;
     }
 
     /* Container */
