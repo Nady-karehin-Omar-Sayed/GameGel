@@ -1,14 +1,14 @@
 // ── Player data ──────────────────────────────────────────────────
 // arcadeGames / triviaGames / skillBadges are out of 15 / 10 / 5
 const PLAYERS = [
-    { id: 1,  name: "Ali Ehab",  initials: "AE", color: "#F8DE22", arcadeGames: 15, triviaGames: 10, skillBadges: 5 },
+    { id: 1,  name: "Abdelrahman Hisham",  initials: "AH", color: "#F8DE22", arcadeGames: 15, triviaGames: 10, skillBadges: 5 },
     { id: 2,  name: "Omar Sayed",  initials: "OS", color: "var(--accent-blue)", arcadeGames: 12, triviaGames: 8,  skillBadges: 4 },
     { id: 3,  name: "Omar Ahmed",   initials: "OA", color: "#cd7f32", arcadeGames: 10, triviaGames: 7,  skillBadges: 3 },
-    { id: 4,  name: "Omar Hamdy",  initials: "OH", color: "#a855f7", arcadeGames: 8,  triviaGames: 6,  skillBadges: 2 },
-    { id: 5,  name: "Abdelrahman Hesham",    initials: "AH", color: "#3b82f6", arcadeGames: 9,  triviaGames: 5,  skillBadges: 1 },
+    { id: 4,  name: "Yousif Hafiz",  initials: "YH", color: "#a855f7", arcadeGames: 8,  triviaGames: 6,  skillBadges: 2 },
+    { id: 5,  name: "Ali Ehab",    initials: "AE", color: "#3b82f6", arcadeGames: 9,  triviaGames: 5,  skillBadges: 1 },
     { id: 6,  name: "Fathy Hafez", initials: "FH", color: "#ec4899", arcadeGames: 7,  triviaGames: 4,  skillBadges: 3 },
     { id: 7,  name: "Adam Mohamed",  initials: "AM", color: "#f97316", arcadeGames: 6,  triviaGames: 3,  skillBadges: 1 },
-    { id: 8,  name: "Safwat Walid",  initials: "SW", color: "#06b6d4", arcadeGames: 5,  triviaGames: 2,  skillBadges: 1 },
+    { id: 8,  name: "Omar Hamdy",  initials: "OH", color: "#06b6d4", arcadeGames: 5,  triviaGames: 2,  skillBadges: 1 },
 ];
 
 const MAX = { arcade: 15, trivia: 10, skill: 5 };
