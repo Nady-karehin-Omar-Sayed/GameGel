@@ -28,7 +28,7 @@
 }
 
 .game-box h1{
-    font-family: monospace;
+    font-family: var(--mono-font);
     font-size: 2rem;
 }
 .game-text{
@@ -47,10 +47,10 @@
   align-self: flex-start;
 }
 .price a{
-  color: #08CB00;
+  color: var(--accent-blue);
   font-size: 1.8rem;
   padding: 2px 4px;
-  border: 2px solid #08CB00;
+  border: 2px solid var(--accent-blue);
   border-radius: 8px;
   text-decoration: none;
   display: inline-block;
@@ -78,19 +78,19 @@
 }
 .login form input,label,button{
   font-size: 1.2rem;
-  font-family: monospace;
+  font-family: var(--mono-font);
 }
 .login form input{
   padding: 1%;
   width: 100%;
   border: 2px solid var(--green);
   border-radius: 5px;
-  background-color: black;
+  background-color: var(--surface-bg);
   color: var(--green);
 
 }
 .login form input::placeholder{
-  color: #07cb006e;
+  color: rgba(58, 160, 255, 0.43);
 }
 .login form input:focus{
     outline:  2px solid var(--yellow-color);
@@ -101,7 +101,7 @@
   width: 20%;
   border: 2px solid var(--green);
   border-radius: 5px;
-  background-color: black;
+  background-color: var(--surface-bg);
   color: var(--green);
   cursor: pointer;
   transition: .2s ease-in-out;
@@ -109,10 +109,10 @@
 }
 .login form button:hover{
   background-color: var(--green);
-  color: black;
+  color: var(--base-bg);
 }
 .remember-me input[type="checkbox"]:checked {
-    background-color: #08CB00;
+    background-color: var(--accent-blue);
     transition: .2s ease-in-out;
 }
 
@@ -122,7 +122,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: black;
+    color: var(--base-bg);
     font-size: 12px;
     font-weight: bold;
     
@@ -146,19 +146,19 @@
 }
 .register form input,label,button{
   font-size: 1.2rem;
-  font-family: monospace;
+  font-family: var(--mono-font);
 }
 .register form input{
   padding: 1%;
   width: 100%;
   border: 2px solid var(--green);
   border-radius: 5px;
-  background-color: black;
+  background-color: var(--surface-bg);
   color: var(--green);
 
 }
 .register form input::placeholder{
-  color: #07cb006e;
+  color: rgba(58, 160, 255, 0.43);
 }
 .register form input:focus{
     outline:  2px solid var(--yellow-color);
@@ -169,7 +169,7 @@
   width: 20%;
   border: 2px solid var(--green);
   border-radius: 5px;
-  background-color: black;
+  background-color: var(--surface-bg);
   color: var(--green);
   cursor: pointer;
   transition: .2s ease-in-out;
@@ -177,7 +177,7 @@
 }
 .register form button:hover{
   background-color: var(--green);
-  color: black;
+  color: var(--base-bg);
 }
 .articles{
   display: flex;
@@ -199,7 +199,7 @@
 
 .user-icon svg{
   width: 20px;
-  background-color: black;
+  background-color: var(--surface-bg);
   padding: 3px 5px;
   border: 2px solid var(--border-yellow-color);
   border-radius: 50%;
@@ -232,14 +232,14 @@
 
 /* Contact  Form */
 .form-container {
-            background: black;
+            background: var(--surface-bg);
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 500px;
             color: var(--green);
-            font-family: monospace;
+            font-family: var(--mono-font);
             
         }
 

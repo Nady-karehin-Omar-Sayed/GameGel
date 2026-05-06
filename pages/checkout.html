@@ -18,14 +18,14 @@
             margin-bottom: 30px;
         }
         .checkout-header h1 {
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             color: #F8DE22;
             font-size: 2rem;
             margin: 0 0 5px 0;
         }
         .checkout-header p {
             color: #888;
-            font-family: monospace;
+            font-family: var(--mono-font);
             margin: 0;
         }
 
@@ -45,18 +45,18 @@
 
         .checkout-section {
             background: #1a1a1a;
-            border: 1px solid #253900;
+            border: 1px solid var(--accent-blue-deep);
             border-radius: 10px;
             padding: 25px;
             margin-bottom: 20px;
         }
         .checkout-section h2 {
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             color: #F8DE22;
             font-size: 1.1rem;
             margin: 0 0 20px 0;
             padding-bottom: 10px;
-            border-bottom: 1px solid #253900;
+            border-bottom: 1px solid var(--accent-blue-deep);
         }
 
         .form-row {
@@ -69,8 +69,8 @@
         }
         .form-group label {
             display: block;
-            color: #08CB00;
-            font-family: monospace;
+            color: var(--accent-blue);
+            font-family: var(--mono-font);
             font-size: 0.8rem;
             margin-bottom: 6px;
         }
@@ -78,18 +78,18 @@
         .form-group select {
             width: 100%;
             padding: 10px 12px;
-            background: black;
-            border: 1px solid #253900;
+            background: var(--surface-bg);
+            border: 1px solid var(--accent-blue-deep);
             border-radius: 6px;
             color: #eeeeee;
-            font-family: monospace;
+            font-family: var(--mono-font);
             font-size: 0.9rem;
             box-sizing: border-box;
         }
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #08CB00;
+            border-color: var(--accent-blue);
         }
         .form-group input.error {
             border-color: #d32f2f;
@@ -115,45 +115,45 @@
             justify-content: space-between;
             align-items: center;
             padding: 8px 0;
-            border-bottom: 1px solid #253900;
+            border-bottom: 1px solid var(--accent-blue-deep);
         }
         .summary-item:last-child {
             border-bottom: none;
         }
         .summary-item .name {
             color: #eeeeee;
-            font-family: monospace;
+            font-family: var(--mono-font);
             font-size: 0.85rem;
         }
         .summary-item .price {
-            color: #08CB00;
-            font-family: monospace;
+            color: var(--accent-blue);
+            font-family: var(--mono-font);
             font-size: 0.85rem;
         }
         .summary-total {
             display: flex;
             justify-content: space-between;
             padding: 15px 0 0 0;
-            border-top: 2px solid #08CB00;
+            border-top: 2px solid var(--accent-blue);
             margin-top: 10px;
         }
         .summary-total .label {
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             color: #F8DE22;
         }
         .summary-total .value {
-            font-family: "Bungee", sans-serif;
-            color: #08CB00;
+            font-family: var(--main-font);
+            color: var(--accent-blue);
             font-size: 1.3rem;
         }
 
         .btn-place-order {
             width: 100%;
             padding: 14px;
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             font-size: 1rem;
-            background: #08CB00;
-            color: black;
+            background: var(--accent-blue);
+            color: var(--base-bg);
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -175,36 +175,36 @@
         .order-success .check {
             width: 80px;
             height: 80px;
-            background: #08CB00;
+            background: var(--accent-blue);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
             font-size: 2.5rem;
-            color: black;
+            color: var(--base-bg);
         }
         .order-success h2 {
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             color: #F8DE22;
             margin: 0 0 10px 0;
         }
         .order-success p {
             color: #888;
-            font-family: monospace;
+            font-family: var(--mono-font);
             margin: 0 0 5px 0;
         }
         .order-success .order-number {
-            color: #08CB00;
+            color: var(--accent-blue);
             font-size: 1.2rem;
             margin: 15px 0 25px;
         }
         .order-success a {
             display: inline-block;
             padding: 12px 30px;
-            background: #08CB00;
-            color: black;
-            font-family: "Bungee", sans-serif;
+            background: var(--accent-blue);
+            color: var(--base-bg);
+            font-family: var(--main-font);
             border-radius: 8px;
             text-decoration: none;
             transition: background 0.2s;
@@ -227,11 +227,11 @@
             bottom: 30px;
             right: 30px;
             background: #1a1a1a;
-            border: 2px solid #08CB00;
-            color: #08CB00;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
             padding: 12px 24px;
             border-radius: 8px;
-            font-family: monospace;
+            font-family: var(--mono-font);
             font-size: 0.9rem;
             z-index: 9999;
             animation: toastIn 0.3s ease, toastOut 0.3s ease 2.7s forwards;
@@ -273,6 +273,7 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="../assets/css/responsive.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -291,7 +292,7 @@
     </div>
 
     <div class="checkout-container" id="checkout-container">
-        <div style="height:60vh; text-align:center; color:#08CB00; font-family:monospace;">Loading...</div>
+        <div style="height:60vh; text-align:center; color:var(--accent-blue); font-family:monospace;">Loading...</div>
     </div>
 
     <footer>

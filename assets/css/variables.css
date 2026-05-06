@@ -1,12 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Mogra&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 :root{
-    --yellow-color : #F8DE22;
-    --border-yellow-color : hsla(53, 94%, 55%, 0.669);
-    --text-font: monospace;
-    --green: #08CB00;
+    --yellow-color: #F8DE22;
+    --border-yellow-color: hsla(53, 94%, 55%, 0.669);
 
+    --main-font:  "Ubuntu", sans-serif;
+    --mono-font: monospace;
+    --text-font: var(--mono-font);
 
+    --base-bg: #08111f;
+    --surface-bg: #111b2c;
+    --surface-bg-soft: #16253d;
+
+    --accent-blue: #3aa0ff;
+    --accent-blue-deep: #1d4f8f;
+    --accent-blue-hover: #66b8ff;
+
+    /* Backward-compatible alias used across existing styles */
+    --green: var(--accent-blue);
 }

@@ -2,7 +2,7 @@
 // arcadeGames / triviaGames / skillBadges are out of 15 / 10 / 5
 const PLAYERS = [
     { id: 1,  name: "Ali Ehab",  initials: "AE", color: "#F8DE22", arcadeGames: 15, triviaGames: 10, skillBadges: 5 },
-    { id: 2,  name: "Omar Sayed",  initials: "OS", color: "#08CB00", arcadeGames: 12, triviaGames: 8,  skillBadges: 4 },
+    { id: 2,  name: "Omar Sayed",  initials: "OS", color: "var(--accent-blue)", arcadeGames: 12, triviaGames: 8,  skillBadges: 4 },
     { id: 3,  name: "Omar Ahmed",   initials: "OA", color: "#cd7f32", arcadeGames: 10, triviaGames: 7,  skillBadges: 3 },
     { id: 4,  name: "Omar Hamdy",  initials: "OH", color: "#a855f7", arcadeGames: 8,  triviaGames: 6,  skillBadges: 2 },
     { id: 5,  name: "Abdelrahman Hesham",    initials: "AH", color: "#3b82f6", arcadeGames: 9,  triviaGames: 5,  skillBadges: 1 },
@@ -116,7 +116,7 @@ function renderRows(players, loggedInName) {
                 </div>
             </div>
             ${statCell(p.arcadeGames, MAX.arcade, "#F8DE22", "#F8DE22")}
-            ${statCell(p.triviaGames, MAX.trivia, "#08CB00", "#08CB00")}
+            ${statCell(p.triviaGames, MAX.trivia, "var(--accent-blue)", "var(--accent-blue)")}
             ${statCell(p.skillBadges, MAX.skill,  "#a855f7", "#a855f7")}
             <div class="lb-total-cell">
                 <span class="lb-total-count">${total(p)}</span>

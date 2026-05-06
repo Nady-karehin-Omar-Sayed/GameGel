@@ -21,14 +21,14 @@
             margin-bottom: 30px;
         }
         .cart-header h1 {
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             color: #F8DE22;
             font-size: 2rem;
             margin: 0;
         }
         .cart-header .item-count {
-            color: #08CB00;
-            font-family: monospace;
+            color: var(--accent-blue);
+            font-family: var(--mono-font);
             font-size: 1rem;
         }
 
@@ -43,13 +43,13 @@
             align-items: center;
             gap: 20px;
             background: #1a1a1a;
-            border: 1px solid #253900;
+            border: 1px solid var(--accent-blue-deep);
             border-radius: 10px;
             padding: 15px;
             transition: border-color 0.2s;
         }
         .cart-item:hover {
-            border-color: #08CB00;
+            border-color: var(--accent-blue);
         }
         .cart-item-img {
             width: 120px;
@@ -63,7 +63,7 @@
             min-width: 0;
         }
         .cart-item-info h3 {
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             color: #F8DE22;
             font-size: 1rem;
             margin: 0 0 5px 0;
@@ -73,13 +73,13 @@
         }
         .cart-item-info p {
             color: #888;
-            font-family: monospace;
+            font-family: var(--mono-font);
             font-size: 0.8rem;
             margin: 0;
         }
         .cart-item-price {
-            font-family: "Bungee", sans-serif;
-            color: #08CB00;
+            font-family: var(--main-font);
+            color: var(--accent-blue);
             font-size: 1.2rem;
             white-space: nowrap;
         }
@@ -90,7 +90,7 @@
             padding: 8px 14px;
             border-radius: 6px;
             cursor: pointer;
-            font-family: monospace;
+            font-family: var(--mono-font);
             font-size: 0.8rem;
             transition: background 0.2s;
             flex-shrink: 0;
@@ -101,7 +101,7 @@
 
         .cart-summary {
             background: #1a1a1a;
-            border: 2px solid #08CB00;
+            border: 2px solid var(--accent-blue);
             border-radius: 12px;
             padding: 25px;
             margin-top: 30px;
@@ -110,22 +110,22 @@
             display: flex;
             justify-content: space-between;
             padding: 8px 0;
-            font-family: monospace;
+            font-family: var(--mono-font);
             color: #eeeeee;
         }
         .cart-summary-row.total {
-            border-top: 1px solid #253900;
+            border-top: 1px solid var(--accent-blue-deep);
             margin-top: 10px;
             padding-top: 15px;
         }
         .cart-summary-row.total .label {
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             color: #F8DE22;
             font-size: 1.2rem;
         }
         .cart-summary-row.total .value {
-            font-family: "Bungee", sans-serif;
-            color: #08CB00;
+            font-family: var(--main-font);
+            color: var(--accent-blue);
             font-size: 1.5rem;
         }
 
@@ -137,10 +137,10 @@
         .btn-checkout {
             flex: 1;
             padding: 14px;
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             font-size: 1rem;
-            background: #08CB00;
-            color: black;
+            background: var(--accent-blue);
+            color: var(--base-bg);
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -152,7 +152,7 @@
         .btn-continue {
             flex: 1;
             padding: 14px;
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             font-size: 1rem;
             background: transparent;
             color: #F8DE22;
@@ -176,21 +176,21 @@
             margin-bottom: 15px;
         }
         .cart-empty h2 {
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             color: #F8DE22;
             margin: 0 0 10px 0;
         }
         .cart-empty p {
             color: #888;
-            font-family: monospace;
+            font-family: var(--mono-font);
             margin: 0 0 25px 0;
         }
         .cart-empty a {
             display: inline-block;
             padding: 12px 30px;
-            background: #08CB00;
-            color: black;
-            font-family: "Bungee", sans-serif;
+            background: var(--accent-blue);
+            color: var(--base-bg);
+            font-family: var(--main-font);
             border-radius: 8px;
             text-decoration: none;
             transition: background 0.2s;
@@ -204,11 +204,11 @@
             bottom: 30px;
             right: 30px;
             background: #1a1a1a;
-            border: 2px solid #08CB00;
-            color: #08CB00;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
             padding: 12px 24px;
             border-radius: 8px;
-            font-family: monospace;
+            font-family: var(--mono-font);
             font-size: 0.9rem;
             z-index: 9999;
             animation: toastIn 0.3s ease, toastOut 0.3s ease 2.7s forwards;
@@ -235,6 +235,7 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="../assets/css/responsive.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -253,7 +254,7 @@
     </div>
 
     <div class="cart-container" id="cart-container">
-        <div style="height:60vh; text-align:center; color:#08CB00; font-family:monospace;">Loading cart...</div>
+        <div style="height:60vh; text-align:center; color:var(--accent-blue); font-family:monospace;">Loading cart...</div>
     </div>
 
     <footer>

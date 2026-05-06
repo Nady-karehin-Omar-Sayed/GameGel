@@ -23,7 +23,7 @@
             margin-bottom: 20px;
         }
         .breadcrumb a {
-            color: #08CB00;
+            color: var(--accent-blue);
             text-decoration: none;
         }
         .breadcrumb span {
@@ -36,7 +36,7 @@
             height: 400px;
             border-radius: 12px;
             overflow: hidden;
-            border: 2px solid #08CB00;
+            border: 2px solid var(--accent-blue);
             margin-bottom: 30px;
         }
         .game-hero img {
@@ -53,14 +53,14 @@
             background: linear-gradient(transparent, rgba(0,0,0,0.95));
         }
         .game-hero-overlay h1 {
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             color: #F8DE22;
             font-size: 2.2rem;
             margin: 0 0 8px 0;
         }
         .game-hero-overlay .developer-tag {
-            color: #08CB00;
-            font-family: monospace;
+            color: var(--accent-blue);
+            font-family: var(--mono-font);
             font-size: 1rem;
         }
 
@@ -80,17 +80,17 @@
 
         .game-section {
             background: #1a1a1a;
-            border: 1px solid #253900;
+            border: 1px solid var(--accent-blue-deep);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
         }
         .game-section h2 {
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             color: #F8DE22;
             font-size: 1.3rem;
             margin: 0 0 15px 0;
-            border-bottom: 1px solid #253900;
+            border-bottom: 1px solid var(--accent-blue-deep);
             padding-bottom: 10px;
         }
 
@@ -102,48 +102,48 @@
         }
         .game-tag {
             padding: 5px 12px;
-            background: rgba(8, 203, 0, 0.1);
-            border: 1px solid #08CB00;
+            background: rgba(58, 160, 255, 0.1);
+            border: 1px solid var(--accent-blue);
             border-radius: 20px;
-            color: #08CB00;
-            font-family: monospace;
+            color: var(--accent-blue);
+            font-family: var(--mono-font);
             font-size: 0.8rem;
         }
 
         .game-description {
             color: #eeeeee;
-            font-family: monospace;
+            font-family: var(--mono-font);
             line-height: 1.8;
             font-size: 0.95rem;
         }
 
         .buy-card {
             background: #1a1a1a;
-            border: 2px solid #08CB00;
+            border: 2px solid var(--accent-blue);
             border-radius: 12px;
             padding: 25px;
             position: sticky;
             top: 100px;
         }
         .buy-price {
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             font-size: 2rem;
             color: #F8DE22;
             text-align: center;
             margin-bottom: 15px;
         }
         .buy-price.free {
-            color: #08CB00;
+            color: var(--accent-blue);
         }
 
         .btn-buy {
             display: block;
             width: 100%;
             padding: 14px;
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             font-size: 1rem;
-            background: #08CB00;
-            color: black;
+            background: var(--accent-blue);
+            color: var(--base-bg);
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -160,7 +160,7 @@
             display: block;
             width: 100%;
             padding: 12px;
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             font-size: 0.85rem;
             background: transparent;
             color: #F8DE22;
@@ -179,11 +179,11 @@
             display: block;
             width: 100%;
             padding: 12px;
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             font-size: 0.85rem;
             background: transparent;
-            color: #08CB00;
-            border: 2px solid #08CB00;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
             border-radius: 8px;
             cursor: pointer;
             text-align: center;
@@ -192,7 +192,7 @@
             transition: background 0.2s;
         }
         .btn-cart:hover {
-            background: rgba(8, 203, 0, 0.1);
+            background: rgba(58, 160, 255, 0.1);
         }
 
         .sidebar-actions {
@@ -203,31 +203,31 @@
         .sidebar-actions button {
             flex: 1;
             padding: 10px;
-            font-family: monospace;
+            font-family: var(--mono-font);
             font-size: 0.8rem;
             background: transparent;
-            color: #08CB00;
-            border: 1px solid #08CB00;
+            color: var(--accent-blue);
+            border: 1px solid var(--accent-blue);
             border-radius: 6px;
             cursor: pointer;
             transition: background 0.2s;
         }
         .sidebar-actions button:hover {
-            background: rgba(8, 203, 0, 0.1);
+            background: rgba(58, 160, 255, 0.1);
         }
         .sidebar-actions button.wishlisted {
-            background: rgba(8, 203, 0, 0.2);
+            background: rgba(58, 160, 255, 0.2);
             color: #F8DE22;
             border-color: #F8DE22;
         }
         .sidebar-actions button.in-cart {
-            background: rgba(8, 203, 0, 0.2);
+            background: rgba(58, 160, 255, 0.2);
             pointer-events: none;
         }
 
         .sidebar-info {
             margin-top: 20px;
-            border-top: 1px solid #253900;
+            border-top: 1px solid var(--accent-blue-deep);
             padding-top: 15px;
         }
         .sidebar-info-row {
@@ -238,22 +238,22 @@
         }
         .sidebar-info-row .label {
             color: #888;
-            font-family: monospace;
+            font-family: var(--mono-font);
         }
         .sidebar-info-row .value {
             color: #eeeeee;
-            font-family: monospace;
+            font-family: var(--mono-font);
         }
 
         .share-row {
             margin-top: 15px;
-            border-top: 1px solid #253900;
+            border-top: 1px solid var(--accent-blue-deep);
             padding-top: 15px;
             text-align: center;
         }
         .share-row p {
             color: #888;
-            font-family: monospace;
+            font-family: var(--mono-font);
             font-size: 0.75rem;
             margin: 0 0 8px 0;
             text-transform: uppercase;
@@ -266,17 +266,17 @@
         .share-btn {
             padding: 8px 14px;
             background: transparent;
-            color: #08CB00;
-            border: 1px solid #08CB00;
+            color: var(--accent-blue);
+            border: 1px solid var(--accent-blue);
             border-radius: 6px;
             cursor: pointer;
-            font-family: monospace;
+            font-family: var(--mono-font);
             font-size: 0.75rem;
             text-decoration: none;
             transition: background 0.2s;
         }
         .share-btn:hover {
-            background: rgba(8, 203, 0, 0.1);
+            background: rgba(58, 160, 255, 0.1);
         }
 
         .rating-summary {
@@ -286,7 +286,7 @@
             margin-bottom: 20px;
         }
         .rating-number {
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             font-size: 2rem;
             color: #F8DE22;
         }
@@ -308,13 +308,13 @@
         }
         .review-count {
             color: #888;
-            font-family: monospace;
+            font-family: var(--mono-font);
             font-size: 0.85rem;
         }
 
         .review-form {
             background: #111;
-            border: 1px solid #253900;
+            border: 1px solid var(--accent-blue-deep);
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 20px;
@@ -324,7 +324,7 @@
             display: block;
         }
         .review-form h3 {
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             color: #F8DE22;
             margin: 0 0 10px 0;
             font-size: 1rem;
@@ -334,18 +334,18 @@
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
-            background: black;
-            border: 1px solid #253900;
+            background: var(--surface-bg);
+            border: 1px solid var(--accent-blue-deep);
             border-radius: 6px;
-            color: #08CB00;
-            font-family: monospace;
+            color: var(--accent-blue);
+            font-family: var(--mono-font);
             font-size: 0.9rem;
             box-sizing: border-box;
         }
         .review-form input:focus,
         .review-form textarea:focus {
             outline: none;
-            border-color: #08CB00;
+            border-color: var(--accent-blue);
         }
         .review-form textarea {
             resize: vertical;
@@ -353,11 +353,11 @@
         }
         .review-form button {
             padding: 10px 20px;
-            background: #08CB00;
-            color: black;
+            background: var(--accent-blue);
+            color: var(--base-bg);
             border: none;
             border-radius: 6px;
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             cursor: pointer;
             transition: background 0.2s;
         }
@@ -367,7 +367,7 @@
 
         .review-item {
             background: #111;
-            border: 1px solid #253900;
+            border: 1px solid var(--accent-blue-deep);
             border-radius: 8px;
             padding: 15px;
             margin-bottom: 12px;
@@ -379,31 +379,31 @@
             margin-bottom: 8px;
         }
         .review-author {
-            color: #08CB00;
-            font-family: monospace;
+            color: var(--accent-blue);
+            font-family: var(--mono-font);
             font-size: 0.85rem;
         }
         .review-date {
             color: #666;
-            font-family: monospace;
+            font-family: var(--mono-font);
             font-size: 0.75rem;
         }
         .review-title {
             color: #F8DE22;
-            font-family: monospace;
+            font-family: var(--mono-font);
             font-size: 1rem;
             margin: 0 0 5px 0;
         }
         .review-body {
             color: #eeeeee;
-            font-family: monospace;
+            font-family: var(--mono-font);
             font-size: 0.85rem;
             line-height: 1.6;
             margin: 0;
         }
         .no-reviews {
             color: #666;
-            font-family: monospace;
+            font-family: var(--mono-font);
             text-align: center;
             padding: 20px;
         }
@@ -415,7 +415,7 @@
         }
         .related-game-card {
             background: #1a1a1a;
-            border: 1px solid #253900;
+            border: 1px solid var(--accent-blue-deep);
             border-radius: 8px;
             overflow: hidden;
             transition: transform 0.2s, border-color 0.2s;
@@ -424,7 +424,7 @@
         }
         .related-game-card:hover {
             transform: scale(1.03);
-            border-color: #08CB00;
+            border-color: var(--accent-blue);
         }
         .related-game-card img {
             width: 100%;
@@ -436,7 +436,7 @@
         }
         .related-game-card h4 {
             color: #F8DE22;
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             font-size: 0.75rem;
             margin: 0 0 5px 0;
             white-space: nowrap;
@@ -444,8 +444,8 @@
             text-overflow: ellipsis;
         }
         .related-game-card .card-price {
-            color: #08CB00;
-            font-family: monospace;
+            color: var(--accent-blue);
+            font-family: var(--mono-font);
             font-size: 0.8rem;
         }
 
@@ -454,23 +454,23 @@
             padding: 80px 20px;
         }
         .not-found h1 {
-            font-family: "Bungee", sans-serif;
+            font-family: var(--main-font);
             color: #F8DE22;
             font-size: 2.5rem;
             margin-bottom: 10px;
         }
         .not-found p {
             color: #888;
-            font-family: monospace;
+            font-family: var(--mono-font);
             font-size: 1.1rem;
             margin-bottom: 30px;
         }
         .not-found a {
             display: inline-block;
             padding: 12px 30px;
-            background: #08CB00;
-            color: black;
-            font-family: "Bungee", sans-serif;
+            background: var(--accent-blue);
+            color: var(--base-bg);
+            font-family: var(--main-font);
             border-radius: 8px;
             text-decoration: none;
             transition: background 0.2s;
@@ -484,11 +484,11 @@
             bottom: 30px;
             right: 30px;
             background: #1a1a1a;
-            border: 2px solid #08CB00;
-            color: #08CB00;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
             padding: 12px 24px;
             border-radius: 8px;
-            font-family: monospace;
+            font-family: var(--mono-font);
             font-size: 0.9rem;
             z-index: 9999;
             animation: toastIn 0.3s ease, toastOut 0.3s ease 2.7s forwards;
@@ -518,14 +518,14 @@
         }
         .progress-bar-fill {
             height: 100%;
-            background: #08CB00;
+            background: var(--accent-blue);
             width: 0%;
             transition: width 0.3s;
             border-radius: 4px;
         }
         .progress-text {
-            color: #08CB00;
-            font-family: monospace;
+            color: var(--accent-blue);
+            font-family: var(--mono-font);
             font-size: 0.75rem;
             margin-top: 5px;
             text-align: center;
@@ -553,11 +553,11 @@
             right: 24px;
             width: 260px;
             background: #111;
-            border: 2px solid #08CB00;
+            border: 2px solid var(--accent-blue);
             border-radius: 10px;
             overflow: hidden;
             z-index: 900;
-            box-shadow: 0 4px 20px rgba(8, 203, 0, 0.2);
+            box-shadow: 0 4px 20px rgba(58, 160, 255, 0.2);
             animation: adSlideIn 0.45s ease forwards;
             opacity: 0;
         }
@@ -573,10 +573,10 @@
             background: #1a1a1a;
         }
         .small-ad-label {
-            font-family: monospace;
+            font-family: var(--mono-font);
             font-size: 0.55rem;
             letter-spacing: 2px;
-            color: #08CB00;
+            color: var(--accent-blue);
             opacity: 0.5;
         }
         .small-ad-close {
@@ -598,6 +598,7 @@
             transition: opacity 0.4s ease;
         }
     </style>
+    <link rel="stylesheet" href="../assets/css/responsive.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -617,7 +618,7 @@
     </div>
 
     <div class="game-details-container" id="game-details-container">
-        <div class="flex-center" style="height:60vh; color: #08CB00; font-family: monospace;">Loading...</div>
+        <div class="flex-center" style="height:60vh; color: var(--accent-blue); font-family: var(--mono-font);">Loading...</div>
     </div>
 
     <footer>
@@ -892,10 +893,10 @@
                         <div class="game-section">
                             <h2>Game Features</h2>
                             <div style="display: flex; flex-direction: column; gap: 10px;">
-                                <div style="color: #eeeeee; font-family: monospace;"><span style="color: #08CB00;">Developer:</span> ${game.developer}</div>
-                                <div style="color: #eeeeee; font-family: monospace;"><span style="color: #08CB00;">Platforms:</span> ${game.platforms}</div>
-                                <div style="color: #eeeeee; font-family: monospace;"><span style="color: #08CB00;">Genres:</span> ${game.genres}</div>
-                                <div style="color: #eeeeee; font-family: monospace;"><span style="color: #08CB00;">Price:</span> ${game.price}</div>
+                                <div style="color: #eeeeee; font-family: var(--mono-font);"><span style="color: var(--accent-blue);">Developer:</span> ${game.developer}</div>
+                                <div style="color: #eeeeee; font-family: var(--mono-font);"><span style="color: var(--accent-blue);">Platforms:</span> ${game.platforms}</div>
+                                <div style="color: #eeeeee; font-family: var(--mono-font);"><span style="color: var(--accent-blue);">Genres:</span> ${game.genres}</div>
+                                <div style="color: #eeeeee; font-family: var(--mono-font);"><span style="color: var(--accent-blue);">Price:</span> ${game.price}</div>
                             </div>
                         </div>
 
@@ -903,7 +904,7 @@
                         <div class="game-section">
                             <h2>Reviews</h2>
                             ${isLoggedIn ? `
-                                <button onclick="toggleReviewForm()" style="background: #08CB00; color: black; border: none; padding: 8px 16px; border-radius: 6px; font-family: monospace; cursor: pointer; margin-bottom: 15px;">Write a Review</button>
+                                <button onclick="toggleReviewForm()" style="background: var(--accent-blue); color: var(--base-bg); border: none; padding: 8px 16px; border-radius: 6px; font-family: var(--mono-font); cursor: pointer; margin-bottom: 15px;">Write a Review</button>
                                 <div class="review-form" id="review-form">
                                     <h3>Rate this game</h3>
                                     <div class="stars" id="star-widget" style="margin-bottom: 10px;">
@@ -914,8 +915,8 @@
                                     <button onclick="submitReview('${game.title.replace(/'/g, "\\'")}')">Submit Review</button>
                                 </div>
                             ` : `
-                                <p style="color: #888; font-family: monospace; font-size: 0.85rem; margin-bottom: 15px;">
-                                    <a href="./login.html" style="color: #08CB00;">Login</a> to write a review.
+                                <p style="color: #888; font-family: var(--mono-font); font-size: 0.85rem; margin-bottom: 15px;">
+                                    <a href="./login.html" style="color: var(--accent-blue);">Login</a> to write a review.
                                 </p>
                             `}
                             <div id="reviews-list"></div>

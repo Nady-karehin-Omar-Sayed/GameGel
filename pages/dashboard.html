@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../assets/css/components.css">
     <style>
     </style>
+    <link rel="stylesheet" href="../assets/css/responsive.css">
 </head>
 <body>
     <div class="navbar">
@@ -157,7 +158,7 @@
             const container = document.getElementById('library-container');
             
             if (purchased.length === 0) {
-                container.innerHTML = '<p class="no-items">No purchased games yet. Visit the <a href="./games.html" style="color:#08CB00;">Games</a> page to buy some!</p>';
+                container.innerHTML = '<p class="no-items">No purchased games yet. Visit the <a href="./games.html" style="color:var(--accent-blue);">Games</a> page to buy some!</p>';
                 return;
             }
             
