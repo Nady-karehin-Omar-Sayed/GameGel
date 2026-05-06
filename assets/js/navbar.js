@@ -109,18 +109,24 @@
     });
   }
 
+  let initialized = false;
+
   function initNavbar() {
+    if (initialized) return;
     const navbar = document.querySelector(".navbar");
     if (!navbar) return;
 
     buildNavbar(navbar);
     initDrawer(navbar);
     initSearchFallback();
+    initialized = true;
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initNavbar);
-  } else {
-    initNavbar();
+  // Run immediately so other page scripts bind to the final navbar DOM.
+  initNavbar();
+
+  // Fallback for edge cases where script executes before navbar exists.
+  if (!initialized) {
+    document.addEventListener("DOMContentLoaded", initNavbar, { once: true });
   }
 })();
