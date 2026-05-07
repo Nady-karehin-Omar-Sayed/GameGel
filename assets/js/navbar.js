@@ -125,7 +125,7 @@
     document.addEventListener('click', (e) => {
       if (e.target.id === 'langToggle' || e.target.id === 'mobileLangToggle') {
         const newLang = localStorage.getItem('lang') === 'ar' ? 'en' : 'ar';
-        setLanguage(newLang);
+        if (typeof setLanguage === 'function') setLanguage(newLang);
       }
     });
 

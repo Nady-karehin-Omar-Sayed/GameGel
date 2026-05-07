@@ -34,18 +34,18 @@
        </ul>
      </div>
         <div class="container">
-            <h1 class="head-font green">Welcome to GameGel !</h1>
-            <p class="text-font green">Your <span class="yellow">ultimate destination</span> for gaming news, reviews, and community.</p>
+            <h1 class="head-font green" data-key="welcome">Welcome to GameGel !</h1>
+            <p class="text-font green"><span data-key="hero_prefix">Your</span> <span class="yellow" data-key="hero_highlight">ultimate destination</span> <span data-key="hero_suffix">for gaming news, reviews, and community.</span></p>
             <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
-                <a href="./pages/games.html" class="btn head-font yellow">Explore Games</a>
-                <a href="./pages/lobby.html" class="btn head-font green" style="background:#08CB00;color:#000;">Join Lobby</a>
+                <a href="./pages/games.html" class="btn head-font yellow" data-key="Explore Games">Explore Games</a>
+                <a href="./pages/lobby.html" class="btn head-font green" style="background:#08CB00;color:#000;" data-key="join_lobby">Join Lobby</a>
             </div>
 
         </div>
 
         <!-- Ad Banner -->
         <div class="ad-section">
-            <p class="ad-label">◆ Explore Deals ◆</p>
+            <p class="ad-label">◆ <span data-key="Explore Deals">Explore Deals</span> ◆</p>
             <div class="ad-banner">
                 <img id="ad-image" src="./assets/images/ad-early-bird.jpg" alt="Advertisement"
                      onerror="this.src='https://placehold.co/900x220/111/08CB00?text=Advertisement'">
@@ -55,8 +55,8 @@
         <!-- Carousel -->
          <div class="carousel">
             <div class="row-text">
-                <h1 class="green head-font">New Releases</h1>
-                <p class="text-font green">New and featured games</p>
+                <h1 class="green head-font" data-key="New Releases">New Releases</h1>
+                <p class="text-font green" data-key="New and featured games">New and featured games</p>
 </div>
 <div class="carousel-wrapper text-font">
     <div class="carousel-track" id="new-releases-track">
@@ -69,8 +69,8 @@
 
 <div class="top-sell text-font">
     <div class="row-text">
-        <h1 class="green head-font">Top Selling This Week !</h1>
-        <p class="green text-font">Recently Trending Games</p>
+        <h1 class="green head-font" data-key="Top Selling This Week !">Top Selling This Week !</h1>
+        <p class="green text-font" data-key="Recently Trending Games">Recently Trending Games</p>
     </div>
     <div class="carousel-wrapper">
         <div class="carousel-track" id="top-sellers-track">
@@ -79,8 +79,9 @@
     </div>
 </div>
 <footer>
-         <p class="head-font green">© 2026 GameGel. All rights reserved.</p>
+         <p class="head-font green"><span data-key="copyright_prefix">©</span> 2026 <span data-key="copyright_text">GameGel. All rights reserved.</span></p>
       </footer>
+      <script src="./assets/js/utils.js"></script>
       <script src="./assets/js/navbar.js"></script>
       <script src="./assets/js/search.js"></script>
       <script>

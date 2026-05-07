@@ -8,6 +8,7 @@
   "nav_register": "إنشاء حساب",
   "nav_blog": "المدونة",
   "nav_contact": "اتصل بنا",
+  "nav_lobby" : "اللوبي",
   "nav_forums": "المنتديات",
   "nav_livechat": "الدردشة المباشرة",
   "nav_events": "الأحداث",
@@ -29,6 +30,7 @@
 
   "Explore Games": "استكشف الألعاب",
   "Explore Deals": "استكشف العروض",
+  "join_lobby": "انضم إلى اللوبي",
 
   "New Releases": "الإصدارات الجديدة",
   "New and featured games": "ألعاب جديدة ومميزة",
