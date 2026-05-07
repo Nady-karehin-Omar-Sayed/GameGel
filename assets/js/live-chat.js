@@ -13,7 +13,7 @@ class LiveChat {
         };
         this.teamMembers = [
             { name: "Ali Ehab", initials: "AE", color: "#F8DE22", rank: "Elite", score: 450 },
-            { name: "Omar Sayed", initials: "OS", color: "#000000", rank: "Pro", score: 385 },
+            { name: "Omar Sayed", initials: "OS", color: "#fefffe", rank: "Pro", score: 385 },
             { name: "Omar Ahmed", initials: "OA", color: "#cd7f32", rank: "Expert", score: 320 },
             { name: "Fathy Hafez", initials: "FH", color: "#ec4899", rank: "Pro", score: 295 }
         ];

@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameGel: Events & Tournaments</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <style>
+        /* Events & Tournaments Specific Styles */
+        .events-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* Header */
+        .events-header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .events-header h1 {
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            text-shadow: 0 0 20px rgba(58, 160, 255, 0.3);
+        }
+
+        .events-header p {
+            font-size: 1.1rem;
+            margin: 0 0 25px 0;
+            color: #3aa0ff;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Filter Buttons */
+        .events-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #3aa0ff;
+            border: 2px solid #3aa0ff;
+            color: #000000;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: monospace;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #3aa0ff;
+            color: black;
+            border-color: #3aa0ff;
+            transform: translateY(-3px);
+        }
+
+        /* Events Grid */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .event-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            border: 2px solid #253900;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            animation: slideUp 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .event-card:nth-child(1) { animation-delay: 0.1s; }
+        .event-card:nth-child(2) { animation-delay: 0.2s; }
+        .event-card:nth-child(3) { animation-delay: 0.3s; }
+        .event-card:nth-child(4) { animation-delay: 0.4s; }
+        .event-card:nth-child(5) { animation-delay: 0.5s; }
+        .event-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .event-card:hover {
+            border-color: #3aa0ff;
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(58, 160, 255, 0.2);
+        }
+
+        .event-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #0b258e  0%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border-bottom: 2px solid #253900;
+            position: relative;
+        }
+
+        .event-status-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #2dff03;
+            color: black;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            font-family: monospace;
+        }
+
+        .event-status-badge.live {
+            background: #FF4444;
+            animation: pulse 1.5s infinite;
+        }
+
+        .event-status-badge.upcoming {
+            background: #3aa0ff;
+            color: black;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .event-content {
+            padding: 20px;
+        }
+
+        .event-title {
+            margin: 0 0 8px 0;
+            font-size: 1.2rem;
+            color: #0b258e ;
+            font-family: 'Bungee', sans-serif;
+        }
+
+        .event-game {
+            color: #ffffff;
+            font-size: 0.9rem;
+            margin: 0 0 12px 0;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        .event-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #253900;
+        }
+
+        .event-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #3aa0ff;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+
+        .event-meta-item strong {
+            color: #ffffff;
+        }
+
+        .event-prize {
+            color: #F8DE22;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .event-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .event-count {
+            color: #888;
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .event-btn {
+            background: #3aa0ff;
+            color: black;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: monospace;
+            transition: all 0.3s ease;
+        }
+
+        .event-btn:hover {
+            background: #0b258e;
+            transform: scale(1.05);
+        }
+
+        /* Featured Tournament */
+        .featured-tournament {
+            margin-bottom: 50px;
+        }
+
+        .tournament-banner {
+            background: linear-gradient(135deg, #0b258e   0%, #1a1a1a 100%);
+            border: 2px solid #3aa0ff;
+            border-radius: 12px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tournament-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top right, rgba(58, 160, 255, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .tournament-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tournament-badge {
+            display: inline-block;
+            background: #3aa0ff;
+            color: black;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-family: monospace;
+        }
+
+        .tournament-content h2 {
+            font-size: 2.2rem;
+            margin: 0 0 10px 0;
+            color: #3aa0ff;
+        }
+
+        .tournament-content > p {
+            font-size: 1.3rem;
+            margin: 0 0 25px 0;
+            color: #ffffff;
+        }
+
+        .tournament-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(8, 203, 0, 0.2);
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .detail-label {
+            color: #888;
+            font-size: 0.85rem;
+            font-family: monospace;
+            text-transform: uppercase;
+        }
+
+        .detail-value {
+            color: #fafafa;
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        .tournament-status {
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .tournament-status.live {
+            background: rgba(255, 68, 68, 0.2);
+            color: #FF4444;
+            animation: pulse 1.5s infinite;
+        }
+
+        .tournament-btn {
+            padding: 15px 40px;
+            font-size: 1rem;
+        }
+
+        /* Upcoming Events */
+        .upcoming-section {
+            margin-bottom: 50px;
+        }
+
+        .upcoming-section h2 {
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+        }
+
+        .upcoming-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .upcoming-card {
+            background: linear-gradient(135deg, #0b258e 0%, #0f0f0f 100%);
+            border: 2px solid #253900;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .upcoming-card:hover {
+            border-color: #0b258e;
+            transform: translateX(8px);
+        }
+
+        .upcoming-icon {
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+
+        .upcoming-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .upcoming-card h3 {
+            margin: 0 0 8px 0;
+            color: #0b258e;
+            font-size: 1.1rem;
+        }
+
+        .upcoming-card > .text-font {
+            margin: 0 0 10px 0;
+            color: #0b258e;
+        }
+
+        .event-meta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            color: #888;
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .join-btn {
+            background: #3aa0ff;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: monospace;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .join-btn:hover {
+            background: #0b258e;
+            transform: scale(1.05);
+        }
+
+        /* Your Events Section */
+        .your-events-section {
+            background: linear-gradient(135deg, #0b258e 0%, #0f0f0f 100%);
+            border: 2px solid #253900;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .your-events-section h2 {
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .your-events-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .registered-event {
+            background: #0a0a0a;
+            border: 1px solid #253900;
+            border-radius: 8px;
+            padding: 15px;
+            position: relative;
+        }
+
+        .registered-event h3 {
+            margin: 0 0 8px 0;
+            color: #F8DE22;
+        }
+
+        .registered-event p {
+            margin: 0 0 8px 0;
+            color: #08CB00;
+            font-size: 0.9rem;
+        }
+
+        /* Modals */
+        .event-modal,
+        .create-event-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .event-modal.show,
+        .create-event-modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            border: 2px solid #08CB00;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .create-modal {
+            max-width: 600px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #08CB00;
+            color: black;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #F8DE22;
+        }
+
+        .modal-content h2 {
+            margin: 0 0 20px 0;
+            font-size: 1.5rem;
+        }
+
+        .modal-body {
+            color: #08CB00;
+            font-family: monospace;
+        }
+
+        .modal-body p {
+            margin: 12px 0;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .events-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tournament-banner {
+                padding: 25px;
+            }
+
+            .tournament-banner h2 {
+                font-size: 1.8rem;
+            }
+
+            .tournament-details {
+                grid-template-columns: 1fr;
+            }
+
+            .upcoming-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .join-btn {
+                width: 100%;
+            }
+
+            .event-footer {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .modal-content {
+                max-width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1 class="logo"><span style="color: rgb(229, 255, 0);">G</span>ame<span style="color: rgb(229, 255, 0);">G</span>el</h1>
+        <div class="search-wrapper">
+            <input type="text" id="searchInput" placeholder="Search games..." class="search-input">
+        </div>
+        <ul class="head-font green">
+            <a href="../index.html"><li>Home</li></a>
+            <a href="./games.html"><li>Games</li></a>
+            <a href="./cart.html"><li>Cart</li></a>
+            <a href="./dashboard.html"><li>Dashboard</li></a>
+            <a href="./leaderboard.html"><li>Leaderboard</li></a>
+            <a href="./login.html"><li>Login</li></a>
+            <a href="./register.html"><li>Register</li></a>
+            <a href="./blog.html"><li>Check Our Blog</li></a>
+            <a href="./contact.html"><li>Contact Us</li></a>
+            <a href="./forums.html"><li>Forums</li></a>
+            <a href="./live-chat.html"><li>Live Chat</li></a>
+            <a href="./events.html"><li>Events</li></a>
+        </ul>
+    </div>
+
+    <!-- Main Container -->
+    <div class="events-container">
+        <!-- Header Section -->
+        <div class="events-header">
+            <h1 class="head-font green">Gaming Events & Tournaments</h1>
+            <p class="text-font green">Compete, Win, and Earn Amazing Prizes! 🏆</p>
+            <button class="btn head-font yellow" id="createEventBtn">Create Event</button>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="events-filter">
+            <button class="filter-btn active" data-filter="all">All Events</button>
+            <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+            <button class="filter-btn" data-filter="live">Live Now</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+
+        <!-- Events Grid -->
+        <div class="events-grid" id="eventsGrid">
+            <!-- Event Cards will be loaded here -->
+        </div>
+
+        <!-- Featured Tournament Section -->
+        <div class="featured-tournament">
+            <div class="tournament-banner">
+                <div class="tournament-content">
+                    <span class="tournament-badge">Featured Tournament</span>
+                    <h2 class="head-font yellow">Esports Championship 2026</h2>
+                    <p class="text-font green">$50,000 Prize Pool</p>
+                    <div class="tournament-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Date</span>
+                            <span class="detail-value">May 15-20, 2026</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Players</span>
+                            <span class="detail-value">256 Participants</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Status</span>
+                            <span class="detail-value tournament-status live">🔴 LIVE</span>
+                        </div>
+                    </div>
+                    <button class="btn head-font yellow tournament-btn">Register Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming Events Section -->
+        <div class="upcoming-section">
+            <h2 class="head-font green">Upcoming Events</h2>
+            <div class="upcoming-list">
+                <div class="upcoming-card">
+                    <div class="upcoming-icon">🎮</div>
+                    <div class="upcoming-info">
+                        <h3 class="head-font yellow">League of Legends Pro Series</h3>
+                        <p class="text-font green">Starts in 2 days</p>
+                        <div class="event-meta">
+                            <span class="meta-item">💰 $20,000 Prize</span>
+                            <span class="meta-item">👥 128 Players</span>
+                        </div>
+                    </div>
+                    <button class="join-btn">Join</button>
+                </div>
+
+                <div class="upcoming-card">
+                    <div class="upcoming-icon">🎯</div>
+                    <div class="upcoming-info">
+                        <h3 class="head-font yellow">Counter-Strike Tournament</h3>
+                        <p class="text-font green">Starts in 4 days</p>
+                        <div class="event-meta">
+                            <span class="meta-item">💰 $15,000 Prize</span>
+                            <span class="meta-item">👥 64 Teams</span>
+                        </div>
+                    </div>
+                    <button class="join-btn">Join</button>
+                </div>
+
+                <div class="upcoming-card">
+                    <div class="upcoming-icon">⚡</div>
+                    <div class="upcoming-info">
+                        <h3 class="head-font yellow">Rocket League Championship</h3>
+                        <p class="text-font green">Starts in 6 days</p>
+                        <div class="event-meta">
+                            <span class="meta-item">💰 $10,000 Prize</span>
+                            <span class="meta-item">👥 32 Teams</span>
+                        </div>
+                    </div>
+                    <button class="join-btn">Join</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Your Events Section -->
+        <div class="your-events-section">
+            <h2 class="head-font green">Your Registered Events</h2>
+            <div class="your-events-list" id="yourEventsList">
+                <p class="text-font green">You haven't registered for any events yet. <a href="#" style="color: #F8DE22;">Browse events</a> to get started!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Modal -->
+    <div class="event-modal" id="eventModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="head-font yellow">Event Details</h2>
+            <div class="modal-body" id="modalBody">
+                <!-- Event details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Event Modal -->
+    <div class="create-event-modal" id="createEventModal">
+        <div class="modal-content create-modal">
+            <span class="close-btn">&times;</span>
+            <h2 class="head-font yellow">Create New Event</h2>
+            <form id="createEventForm">
+                <div class="form-group">
+                    <label class="head-font green">Event Name</label>
+                    <input type="text" id="eventName" placeholder="Enter event name" required>
+                </div>
+                <div class="form-group">
+                    <label class="head-font green">Game</label>
+                    <select id="eventGame" required>
+                        <option value="">Select a game</option>
+                        <option value="League of Legends">League of Legends</option>
+                        <option value="Counter-Strike 2">Counter-Strike 2</option>
+                        <option value="Valorant">Valorant</option>
+                        <option value="Dota 2">Dota 2</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="head-font green">Date</label>
+                    <input type="date" id="eventDate" required>
+                </div>
+                <div class="form-group">
+                    <label class="head-font green">Prize Pool</label>
+                    <input type="text" id="eventPrize" placeholder="$5,000" required>
+                </div>
+                <div class="form-group">
+                    <label class="head-font green">Description</label>
+                    <textarea id="eventDescription" placeholder="Describe your event..." rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn head-font yellow">Create Event</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p class="head-font green">© 2026 GameGel. All rights reserved.</p>
+    </footer>
+        <script src="../assets/js/event.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+</body>
+</html>
