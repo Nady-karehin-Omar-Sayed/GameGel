@@ -989,7 +989,7 @@ footer{
 }
 
 .lang-btn {
-    background: linear-gradient(135deg, #08CB00, #00ff88);
+    background: linear-gradient(135deg, #ffffff, #ffffff);
     color: #0a0a0a;
     border: 2px solid #08CB00;
     padding: 8px 16px;
@@ -1003,7 +1003,7 @@ footer{
 
 .lang-btn:hover {
     background: transparent;
-    color: #08CB00;
+    color: #fafffa;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(8, 203, 0, 0.4);
 }

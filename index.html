@@ -1,139 +1,89 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width= , initial-scale=1.0">
     <title>GameGel</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/variables.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
-    <script src="./assets/js/utils.js" defer></script>
 </head>
 <body>
-
     <!-- Navbar -->
     <div class="navbar">
-        <h1 class="logo">
-            <span style="color: rgb(229, 255, 0);">G</span>ame
-            <span style="color: rgb(229, 255, 0);">G</span>el
-        </h1>
+<h1 class="logo"><span style="color: rgb(229, 255, 0);">G</span>ame<span style="color: rgb(229, 255, 0);">G</span>el</h1>
+     <div class="search-wrapper">
+         <input type="text" id="searchInput" placeholder="Search games..." class="search-input">
+     </div>
+       <ul class="head-font green">
+         <a href="./index.html"><li>Home</li></a>
+         <a href="./pages/games.html"><li>Games</li></a>
+         <a href="./pages/cart.html"><li>Cart</li></a>
+         <a href="./pages/dashboard.html"><li>Dashboard</li></a>
+         <a href="./pages/leaderboard.html"><li>Leaderboard</li></a>
+         <a href="./pages/login.html"><li>Login</li></a>
+         <a href="./pages/register.html"><li>Register</li></a>
+         <a href="./pages/blog.html"><li>Check Our Blog</li></a>
+         <a href="./pages/contact.html"><li>Contact Us</li></a>
+         <a href="./pages/forums.html"><li>Forums</li></a>
+         <a href="./pages/live-chat.html"><li>Live Chat</li></a>
+         <a href="./pages/events.html"><li>Events</li></a>
+       </ul>
+     </div>
+        <div class="container">
+            <h1 class="head-font green">Welcome to GameGel !</h1>
+            <p class="text-font green">Your <span class="yellow">ultimate destination</span> for gaming news, reviews, and community.</p>
+            <a href="./pages/games.html" class="btn head-font yellow">Explore Games</a>
 
-        <div class="search-wrapper">
-            <input type="text" id="searchInput"
-                   data-key="Search games..."
-                   placeholder="Search games..."
-                   class="search-input">
         </div>
 
-        <ul class="head-font green">
-    <a href="./index.html"><li data-key="nav_home">Home</li></a>
-    <a href="./pages/games.html"><li data-key="nav_games">Games</li></a>
-    <a href="./pages/cart.html"><li data-key="nav_cart">Cart</li></a>
-    <a href="./pages/dashboard.html"><li data-key="nav_dashboard">Dashboard</li></a>
-    <a href="./pages/leaderboard.html"><li data-key="nav_leaderboard">Leaderboard</li></a>
-    <a href="./pages/login.html"><li data-key="nav_login">Login</li></a>
-    <a href="./pages/register.html"><li data-key="nav_register">Register</li></a>
-    <a href="./pages/blog.html"><li data-key="nav_blog">Check Our Blog</li></a>
-    <a href="./pages/contact.html"><li data-key="nav_contact">Contact Us</li></a>
-    <a href="./pages/forums.html"><li data-key="nav_forums">Forums</li></a>
-    <a href="./pages/live-chat.html"><li data-key="nav_live_chat">Live Chat</li></a>
-</ul>
+        <!-- Ad Banner -->
+        <div class="ad-section">
+            <p class="ad-label">◆ Explore Deals ◆</p>
+            <div class="ad-banner">
+                <img id="ad-image" src="./assets/images/ad-early-bird.jpg" alt="Advertisement"
+                     onerror="this.src='https://placehold.co/900x220/111/08CB00?text=Advertisement'">
+            </div>
+        </div>
 
-        <div class="lang-switcher" style="display: flex; gap: 10px; margin-right: 20px;">
-        <button onclick="setLanguage('en')" 
-                style="background: #08CB00; color: #0a0a0a; border: 2px solid #08CB00; 
-                       padding: 8px 16px; border-radius: 5px; cursor: pointer; 
-                       font-weight: bold; font-size: 14px; transition: all 0.3s ease;"
-                onmouseover="this.style.background='transparent'; this.style.color='#08CB00'"
-                onmouseout="this.style.background='#08CB00'; this.style.color='#0a0a0a'">
-            EN
-        </button>
-        <button onclick="setLanguage('ar')" 
-                style="background: #e5ff00; color: #0a0a0a; border: 2px solid #e5ff00; 
-                       padding: 8px 16px; border-radius: 5px; cursor: pointer; 
-                       font-weight: bold; font-size: 14px; transition: all 0.3s ease;"
-                onmouseover="this.style.background='transparent'; this.style.color='#e5ff00'"
-                onmouseout="this.style.background='#e5ff00'; this.style.color='#0a0a0a'">
-            AR
-        </button>
+        <!-- Carousel -->
+         <div class="carousel">
+            <div class="row-text">
+                <h1 class="green head-font">New Releases</h1>
+                <p class="text-font green">New and featured games</p>
+</div>
+<div class="carousel-wrapper text-font">
+    <div class="carousel-track" id="new-releases-track">
+      <!-- Games will be loaded dynamically -->
+    </div>
+  </div>
+
+        </div>
+<!--  -->
+
+<div class="top-sell text-font">
+    <div class="row-text">
+        <h1 class="green head-font">Top Selling This Week !</h1>
+        <p class="green text-font">Recently Trending Games</p>
+    </div>
+    <div class="carousel-wrapper">
+        <div class="carousel-track" id="top-sellers-track">
+          <!-- Games will be loaded dynamically -->
+        </div>
     </div>
 </div>
-    </div>
-
-    <!-- Hero Section -->
-    <div class="container">
-        <h1 class="head-font green" data-key="welcome"></h1>
-
-        <p class="text-font green">
-            <span data-key="hero_prefix">Your</span>
-            <span class="yellow" data-key="hero_highlight">ultimate destination</span>
-            <span data-key="hero_suffix">for gaming news, reviews, and community.</span>
-        </p>
-
-        <a href="./pages/games.html"
-           class="btn head-font yellow"
-           data-key="Explore Games">
-           Explore Games
-        </a>
-    </div>
-
-    <!-- Ad Banner -->
-    <div class="ad-section">
-        <p class="ad-label" data-key="Explore Deals">◆ Explore Deals ◆</p>
-        <div class="ad-banner">
-            <img id="ad-image" src="./assets/images/ad-early-bird.jpg" alt="Advertisement"
-                 onerror="this.src='https://placehold.co/900x220/111/08CB00?text=Advertisement'">
-        </div>
-    </div>
-
-    <!-- Carousel -->
-    <div class="carousel">
-        <div class="row-text">
-            <h1 class="green head-font" data-key="New Releases">New Releases</h1>
-            <p class="text-font green" data-key="New and featured games">New and featured games</p>
-        </div>
-
-        <div class="carousel-wrapper text-font">
-            <div class="carousel-track" id="new-releases-track"></div>
-        </div>
-    </div>
-
-    <!-- Top Sell -->
-    <div class="top-sell text-font">
-        <div class="row-text">
-            <h1 class="green head-font" data-key="Top Selling This Week !">Top Selling This Week !</h1>
-            <p class="green text-font" data-key="Recently Trending Games">Recently Trending Games</p>
-        </div>
-
-        <div class="carousel-wrapper">
-            <div class="carousel-track" id="top-sellers-track"></div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p class="head-font green">
-            <span data-key="copyright_prefix">©</span>
-            <span>2026</span>
-            <span data-key="copyright_text">GameGel. All rights reserved.</span>
-        </p>
-    </footer>
-
-    <script src="./assets/js/search.js"></script>
-
-    <script>
+<footer>
+         <p class="head-font green">© 2026 GameGel. All rights reserved.</p>
+      </footer>
+      <script src="./assets/js/search.js"></script>
+      <script>
         document.addEventListener('DOMContentLoaded', async () => {
-
-            if (typeof initLanguage === 'function') {
-                initLanguage();
-            }
-
             const response = await fetch('./assets/js/games.json');
             const allGames = await response.json();
-
             Search.init('#searchInput', allGames, null, { showDropdown: true });
             Search.fullGamesList = allGames;
 
+            // Populate carousels with games
             const newReleasesTrack = document.getElementById('new-releases-track');
             const topSellersTrack = document.getElementById('top-sellers-track');
 
@@ -141,25 +91,26 @@
                 return `
                     <a href="./pages/game-details.html?game=${encodeURIComponent(game.title)}" class="carousel-slide">
                         <img src="${game.lsimg}" alt="${game.title}" onerror="this.src='https://placehold.co/280x180/111/08CB00?text=No+Image'">
-                        <span class="slide-label" data-key="${game.title}">${game.title}</span>
+                        <span class="slide-label">${game.title}</span>
                     </a>
                 `;
             }
 
             if (newReleasesTrack) {
                 const newReleases = allGames.slice(0, 6);
-                const trackContent = newReleases.map(createCarouselSlide).join('') +
-                                     newReleases.map(createCarouselSlide).join('');
+                const trackContent = newReleases.map(game => createCarouselSlide(game)).join('') +
+                                     newReleases.map(game => createCarouselSlide(game)).join('');
                 newReleasesTrack.innerHTML = trackContent;
             }
 
             if (topSellersTrack) {
                 const topSellers = allGames.slice(6, 9);
-                const trackContent = topSellers.map(createCarouselSlide).join('') +
-                                     topSellers.map(createCarouselSlide).join('');
+                const trackContent = topSellers.map(game => createCarouselSlide(game)).join('') +
+                                     topSellers.map(game => createCarouselSlide(game)).join('');
                 topSellersTrack.innerHTML = trackContent;
             }
 
+            // Ad banner setup
             const adImages = [
                 './assets/images/ad-early-bird.jpg',
                 './assets/images/ad-big-games.jpg',
@@ -189,6 +140,7 @@
             showAd(0);
             startAdRotation();
 
+            // Clicking any game card shows a random ad
             document.querySelectorAll('.carousel-wrapper').forEach(wrapper => {
                 wrapper.addEventListener('click', () => {
                     const randomIndex = Math.floor(Math.random() * adImages.length);
@@ -196,69 +148,7 @@
                     startAdRotation();
                 });
             });
-
         });
-    </script>
-
-    <script src="./assets/js/navbar.js"></script>
-    <script>
-function addLanguageButtons() {
-  const navbar = document.querySelector('.navbar');
-  if (!navbar) return;
-  if (navbar.querySelector('.lang-switcher')) return;
-  const langSwitcher = document.createElement('div');
-  langSwitcher.className = 'lang-switcher';
-  langSwitcher.style.cssText = `
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-right: 20px;
-  `;
-  
-  langSwitcher.innerHTML = `
-    <button onclick="setLanguage('en')" class="lang-btn" 
-      style="background: #08CB00; color: #0a0a0a; border: 2px solid #08CB00; 
-             padding: 8px 16px; border-radius: 5px; cursor: pointer; 
-             font-weight: bold; font-size: 14px; transition: all 0.3s ease;">
-      EN
-    </button>
-    <button onclick="setLanguage('ar')" class="lang-btn"
-      style="background: #e5ff00; color: #0a0a0a; border: 2px solid #e5ff00; 
-             padding: 8px 16px; border-radius: 5px; cursor: pointer; 
-             font-weight: bold; font-size: 14px; transition: all 0.3s ease;">
-      AR
-    </button>
-  `;
-  
-  navbar.appendChild(langSwitcher);
-  
-  setTimeout(() => {
-    if (typeof initLanguage === 'function') {
-      initLanguage();
-    }
-  }, 50);
-}
-setTimeout(addLanguageButtons, 100);
-const observer = new MutationObserver((mutations) => {
-  mutations.forEach((mutation) => {
-    if (mutation.addedNodes.length > 0 || mutation.removedNodes.length > 0) {
-      setTimeout(addLanguageButtons, 50);
-    }
-  });
-});
-setTimeout(() => {
-  const navbar = document.querySelector('.navbar');
-  if (navbar) {
-    observer.observe(navbar, { 
-      childList: true, 
-      subtree: true 
-    });
-  }
-}, 200);
-window.addEventListener('load', () => {
-  setTimeout(addLanguageButtons, 150);
-});
-</script>
-
+      </script>
 </body>
 </html>
