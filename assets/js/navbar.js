@@ -1,18 +1,5 @@
 (() => {
   const navLinks = [
-<<<<<<< HEAD
-    { href: "index.html", label: "Home" },
-    { href: "pages/games.html", label: "Games" },
-    { href: "pages/cart.html", label: "Cart" },
-    { href: "pages/dashboard.html", label: "Dashboard" },
-    { href: "pages/leaderboard.html", label: "Leaderboard" },
-    { href: "pages/login.html", label: "Login" },
-    { href: "pages/register.html", label: "Register" },
-    { href: "pages/blog.html", label: "Check Our Blog" },
-    { href: "pages/lobby.html", label: "Lobby" },
-    { href: "pages/contact.html", label: "Contact Us" },
-    { href: "pages/forums.html", label: "Forums" },
-=======
     { href: "index.html", label: "Home", dataKey: "nav_home" },
     { href: "pages/games.html", label: "Games", dataKey: "nav_games" },
     { href: "pages/cart.html", label: "Cart", dataKey: "nav_cart" },
@@ -23,7 +10,7 @@
     { href: "pages/blog.html", label: "Check Our Blog", dataKey: "nav_blog" },
     { href: "pages/contact.html", label: "Contact Us", dataKey: "nav_contact" },
     { href: "pages/forums.html", label: "Forums", dataKey: "nav_forums" },
->>>>>>> 8a7b50caaf3345d421433fef77255796b4f828b3
+    { href: "pages/lobby.html", label: "Lobby", dataKey: "nav_lobby" },
   ];
 
   function isInPagesDir() {

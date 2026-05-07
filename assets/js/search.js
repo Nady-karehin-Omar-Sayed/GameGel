@@ -243,23 +243,32 @@ const Search = {
 
   handleSearch() {
     const query = this.input.value.toLowerCase().trim();
-    if (!query) {
+    const gamesToSearch = this.fullGamesList || this.games;
+    const hasFilters = this.selectedFilters.genre.length > 0 ||
+                       this.selectedFilters.developer.length > 0 ||
+                       this.selectedFilters.platform.length > 0;
+
+    if (!query && !hasFilters) {
       this.resultsContainer.classList.remove('active');
       this.resultsContainer.innerHTML = '';
       this.currentResults = [];
       this.activeIndex = -1;
+      this.renderGames(gamesToSearch);
       return;
     }
 
-    const gamesToSearch = this.fullGamesList || this.games;
-    this.currentResults = gamesToSearch.filter(game => 
-      game.title.toLowerCase().includes(query) ||
-      game.genres.toLowerCase().includes(query) ||
-      game.developer.toLowerCase().includes(query)
-    );
+    this.currentResults = gamesToSearch.filter(game => {
+      const matchesText = !query ||
+        game.title.toLowerCase().includes(query) ||
+        game.genres.toLowerCase().includes(query) ||
+        game.developer.toLowerCase().includes(query);
+      const matchesFilter = this.matchesFilters(game);
+      return matchesText && matchesFilter;
+    });
 
     this.activeIndex = this.currentResults.length > 0 ? 0 : -1;
     this.renderResults(this.currentResults);
+    this.renderGames(this.currentResults);
   },
 
   selectGame(game) {

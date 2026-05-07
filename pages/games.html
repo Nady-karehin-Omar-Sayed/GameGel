@@ -29,10 +29,10 @@
      </div>
 
 
-<!-- Search bar' -->
-<!--EDITED HERE-->
-<div class="search-container" style="position: relative; display: flex; justify-content: center; align-items: center; gap: 10px;">
-<input type="text" id="searchInput" placeholder="Search games..." class="search-input">
+
+<div class="category-filter-wrapper">
+  <label class="category-label" for="genreFilter">Category:</label>
+  <select id="genreFilter" class="category-select"></select>
 </div>
 <!-- Games -->
 <div class="games" id="gameDiv">
@@ -65,7 +65,36 @@
     Search.init('#searchInput', games, '#gameDiv');
     Search.fullGamesList = allGames;
     Search.renderGames(games);
+    renderCategoryFilters(allGames);
   }
+
+  function renderCategoryFilters(allGames) {
+    const genres = new Set();
+    allGames.forEach(game => {
+      game.genres.split(',').map(g => g.trim()).forEach(g => genres.add(g));
+    });
+
+    const select = document.getElementById('genreFilter');
+
+    const allOption = document.createElement('option');
+    allOption.value = '';
+    allOption.textContent = 'All';
+    select.appendChild(allOption);
+
+    Array.from(genres).sort().forEach(genre => {
+      const option = document.createElement('option');
+      option.value = genre;
+      option.textContent = genre;
+      select.appendChild(option);
+    });
+
+    select.addEventListener('change', () => {
+      const value = select.value;
+      Search.selectedFilters.genre = value ? [value] : [];
+      Search.handleSearch();
+    });
+  }
+
   initSearch();
 </script>
     <script src="../assets/js/navbar.js"></script>
