@@ -8,6 +8,7 @@
     { href: "pages/login.html", label: "Login" },
     { href: "pages/register.html", label: "Register" },
     { href: "pages/blog.html", label: "Check Our Blog" },
+    { href: "pages/lobby.html", label: "Lobby" },
     { href: "pages/contact.html", label: "Contact Us" },
     { href: "pages/forums.html", label: "Forums" },
   ];

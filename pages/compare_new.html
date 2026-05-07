@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Games - GameGel</title>
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <style>
+        .compare-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+        }
+
+        .compare-page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .compare-page-header h1 {
+            font-family: var(--main-font);
+            font-size: 2.8rem;
+            color: var(--accent-blue);
+            margin: 0 0 15px 0;
+            letter-spacing: 3px;
+            text-shadow: 0 0 24px rgba(58,160,255,0.35);
+        }
+
+        .compare-page-header p {
+            color: #aaa;
+            font-size: 0.95rem;
+            font-family: var(--mono-font);
+            margin: 0;
+        }
+
+        .compare-selector-section {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: end;
+            margin-bottom: 50px;
+            background: var(--surface-bg-soft);
+            padding: 35px;
+            border-radius: 12px;
+            border: 1.5px solid var(--accent-blue-deep);
+        }
+
+        .compare-select-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .compare-select-group label {
+            font-family: var(--main-font);
+            color: #F8DE22;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        .compare-select-group select {
+            background: var(--base-bg);
+            border: 1.5px solid var(--accent-blue);
+            color: #eee;
+            padding: 12px 14px;
+            border-radius: 8px;
+            font-family: var(--mono-font);
+            font-size: 0.95rem;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .compare-select-group select:focus {
+            border-color: #F8DE22;
+            box-shadow: 0 0 12px rgba(248, 222, 34, 0.4);
+        }
+
+        .compare-vs-badge {
+            font-family: var(--main-font);
+            font-size: 2rem;
+            color: #F8DE22;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1;
+        }
+
+        .compare-btn-wrapper {
+            grid-column: 1 / -1;
+        }
+
+        .compare-btn {
+            width: 100%;
+            background: var(--accent-blue);
+            color: #000;
+            border: none;
+            padding: 15px 32px;
+            border-radius: 8px;
+            font-family: var(--main-font);
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.2s;
+        }
+
+        .compare-btn:hover {
+            background: #F8DE22;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(58, 160, 255, 0.5);
+        }
+
+        .compare-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .compare-results {
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .compare-empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: #666;
+            font-family: var(--mono-font);
+        }
+
+        .compare-empty-state .icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            opacity: 0.6;
+        }
+
+        .compare-empty-state p {
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .compare-cards-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .compare-card {
+            background: linear-gradient(135deg, var(--surface-bg-soft), #0a1420);
+            border: 1.5px solid var(--accent-blue);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .compare-card:hover {
+            box-shadow: 0 8px 32px rgba(58, 160, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .compare-card-image {
+            width: 100%;
+            height: 300px;
+            background: var(--base-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .compare-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .compare-card-body {
+            padding: 28px;
+        }
+
+        .compare-card-title {
+            font-family: var(--main-font);
+            font-size: 1.7rem;
+            color: var(--accent-blue);
+            margin: 0 0 10px 0;
+            line-height: 1.2;
+        }
+
+        .compare-card-dev {
+            font-family: var(--mono-font);
+            color: #aaa;
+            font-size: 0.9rem;
+            margin: 0 0 15px 0;
+        }
+
+        .compare-card-genre {
+            display: inline-block;
+            background: rgba(58, 160, 255, 0.15);
+            color: var(--accent-blue);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(58, 160, 255, 0.3);
+        }
+
+        .compare-metrics-table {
+            background: var(--surface-bg-soft);
+            border: 1.5px solid var(--accent-blue);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .compare-metric-row {
+            display: grid;
+            grid-template-columns: 200px 1fr 1fr;
+            border-bottom: 1px solid var(--accent-blue-deep);
+            padding: 18px 22px;
+            align-items: center;
+        }
+
+        .compare-metric-row:last-child {
+            border-bottom: none;
+        }
+
+        .compare-metric-row:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .compare-metric-label {
+            font-family: var(--main-font);
+            color: #F8DE22;
+            font-size: 0.92rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .compare-metric-value {
+            font-family: var(--mono-font);
+            color: #ddd;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        .compare-metric-value.winner {
+            color: #F8DE22;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .compare-metric-value.winner::before {
+            content: "🏆 ";
+            margin-right: 5px;
+        }
+
+        .compare-verdict {
+            background: linear-gradient(135deg, rgba(58, 160, 255, 0.12), rgba(248, 222, 34, 0.08));
+            border: 1.5px solid rgba(58, 160, 255, 0.35);
+            border-radius: 12px;
+            padding: 32px 28px;
+            text-align: center;
+        }
+
+        .compare-verdict-title {
+            font-family: var(--main-font);
+            font-size: 1.5rem;
+            color: #F8DE22;
+            margin: 0 0 12px 0;
+        }
+
+        .compare-verdict-text {
+            color: #ddd;
+            font-family: var(--mono-font);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .compare-selector-section {
+                grid-template-columns: 1fr;
+            }
+
+            .compare-vs-badge {
+                order: -1;
+                margin-bottom: 0;
+            }
+
+            .compare-cards-section {
+                grid-template-columns: 1fr;
+            }
+
+            .compare-metric-row {
+                grid-template-columns: 120px 1fr 1fr;
+                font-size: 0.9rem;
+            }
+
+            .compare-page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1 class="logo"><span style="color: rgb(229, 255, 0);">G</span>ame<span style="color: rgb(229, 255, 0);">G</span>el</h1>
+        <ul class="head-font green">
+            <a href="../index.html"><li>Home</li></a>
+            <a href="./games.html"><li>Games</li></a>
+            <a href="./cart.html"><li>Cart</li></a>
+            <a href="./dashboard.html"><li>Dashboard</li></a>
+            <a href="./leaderboard.html"><li>Leaderboard</li></a>
+            <a href="./login.html"><li>Login</li></a>
+            <a href="./register.html"><li>Register</li></a>
+            <a href="./blog.html"><li>Check Our Blog</li></a>
+            <a href="./contact.html"><li>Contact Us</li></a>
+            <a href="./forums.html"><li>Forums</li></a>
+            <a href="./compare.html"><li>Compare</li></a>
+            <a href="./lobby.html"><li>Multiplayer Lobby</li></a>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="compare-container">
+        <!-- Page Header -->
+        <div class="compare-page-header">
+            <h1>Compare Games</h1>
+            <p>Select two games and compare them side-by-side</p>
+        </div>
+
+        <!-- Selector -->
+        <div class="compare-selector-section">
+            <div class="compare-select-group">
+                <label>Game 1</label>
+                <select id="game1-select">
+                    <option value="">Select a game...</option>
+                </select>
+            </div>
+            <div class="compare-vs-badge">VS</div>
+            <div class="compare-select-group">
+                <label>Game 2</label>
+                <select id="game2-select">
+                    <option value="">Select a game...</option>
+                </select>
+            </div>
+            <div class="compare-btn-wrapper">
+                <button class="compare-btn" onclick="performComparison()">Compare Now</button>
+            </div>
+        </div>
+
+        <!-- Results Area -->
+        <div id="compare-results">
+            <div class="compare-empty-state">
+                <div class="icon">🎮</div>
+                <p>Select two games and click "Compare Now" to begin</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="head-font green">© 2026 GameGel. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+    <script>
+        let allGames = [];
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('../assets/js/games.json');
+                allGames = await response.json();
+                populateSelects();
+            } catch (error) {
+                console.error('Error loading games:', error);
+                document.getElementById('compare-results').innerHTML = '<div class="compare-empty-state"><p>Error loading games data</p></div>';
+            }
+        });
+
+        function populateSelects() {
+            const select1 = document.getElementById('game1-select');
+            const select2 = document.getElementById('game2-select');
+
+            allGames.forEach((game, index) => {
+                const opt1 = document.createElement('option');
+                opt1.value = index;
+                opt1.textContent = game.title;
+                select1.appendChild(opt1);
+
+                const opt2 = document.createElement('option');
+                opt2.value = index;
+                opt2.textContent = game.title;
+                select2.appendChild(opt2);
+            });
+
+            if (allGames.length >= 2) {
+                select1.value = 0;
+                select2.value = 1;
+            }
+        }
+
+        function performComparison() {
+            const idx1 = parseInt(document.getElementById('game1-select').value);
+            const idx2 = parseInt(document.getElementById('game2-select').value);
+
+            if (isNaN(idx1) || isNaN(idx2)) {
+                alert('Please select both games');
+                return;
+            }
+
+            if (idx1 === idx2) {
+                alert('Please select two different games');
+                return;
+            }
+
+            const game1 = allGames[idx1];
+            const game2 = allGames[idx2];
+
+            const resultsDiv = document.getElementById('compare-results');
+            resultsDiv.innerHTML = generateComparisonHTML(game1, game2);
+            resultsDiv.className = 'compare-results';
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function generateComparisonHTML(game1, game2) {
+            const img1 = game1.lsimg || game1.image || 'https://placehold.co/400x300/111/3aa0ff?text=' + encodeURIComponent(game1.title);
+            const img2 = game2.lsimg || game2.image || 'https://placehold.co/400x300/111/3aa0ff?text=' + encodeURIComponent(game2.title);
+
+            const rating1 = parseFloat(game1.rating) || 7.5;
+            const rating2 = parseFloat(game2.rating) || 7.5;
+
+            const price1 = parsePrice(game1.price);
+            const price2 = parsePrice(game2.price);
+
+            const metrics = [
+                { label: 'Rating', v1: rating1.toFixed(1) + '/10', v2: rating2.toFixed(1) + '/10', winner: rating1 > rating2 ? 1 : rating2 > rating1 ? 2 : 0 },
+                { label: 'Price', v1: game1.price || 'N/A', v2: game2.price || 'N/A', winner: price1 < price2 && price1 > 0 ? 1 : price2 < price1 && price2 > 0 ? 2 : 0 },
+                { label: 'Platforms', v1: game1.platforms || 'N/A', v2: game2.platforms || 'N/A', winner: 0 },
+                { label: 'Genres', v1: game1.genres || 'N/A', v2: game2.genres || 'N/A', winner: 0 },
+                { label: 'Developer', v1: game1.developer || 'N/A', v2: game2.developer || 'N/A', winner: 0 },
+            ];
+
+            const winner = rating1 > rating2 ? game1 : rating2 > rating1 ? game2 : null;
+
+            return `
+                <div class="compare-cards-section">
+                    <div class="compare-card">
+                        <div class="compare-card-image">
+                            <img src="${img1}" alt="${game1.title}" onerror="this.src='https://placehold.co/400x300/111/3aa0ff?text=No+Image'">
+                        </div>
+                        <div class="compare-card-body">
+                            <h2 class="compare-card-title">${game1.title}</h2>
+                            <p class="compare-card-dev">${game1.developer || 'Unknown Developer'}</p>
+                            <span class="compare-card-genre">${(game1.genres || 'N/A').split(',')[0]}</span>
+                        </div>
+                    </div>
+                    <div class="compare-card">
+                        <div class="compare-card-image">
+                            <img src="${img2}" alt="${game2.title}" onerror="this.src='https://placehold.co/400x300/111/3aa0ff?text=No+Image'">
+                        </div>
+                        <div class="compare-card-body">
+                            <h2 class="compare-card-title">${game2.title}</h2>
+                            <p class="compare-card-dev">${game2.developer || 'Unknown Developer'}</p>
+                            <span class="compare-card-genre">${(game2.genres || 'N/A').split(',')[0]}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="compare-metrics-table">
+                    ${metrics.map(m => `
+                        <div class="compare-metric-row">
+                            <div class="compare-metric-label">${m.label}</div>
+                            <div class="compare-metric-value ${m.winner === 1 ? 'winner' : ''}">${m.v1}</div>
+                            <div class="compare-metric-value ${m.winner === 2 ? 'winner' : ''}">${m.v2}</div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="compare-verdict">
+                    <h3 class="compare-verdict-title">
+                        ${winner ? `🏆 ${winner.title} Wins!` : '🤝 Equally Rated!'}
+                    </h3>
+                    <p class="compare-verdict-text">
+                        ${winner 
+                            ? `${winner.title} has a higher rating (${(winner === game1 ? rating1 : rating2).toFixed(1)}/10) based on community reviews.`
+                            : 'Both games have the same rating. Choose based on your genre and platform preferences!'
+                        }
+                    </p>
+                </div>
+            `;
+        }
+
+        function parsePrice(priceStr) {
+            if (!priceStr || priceStr === 'N/A') return 999;
+            const match = priceStr.match(/[\d.]+/);
+            return match ? parseFloat(match[0]) : 999;
+        }
+    </script>
+</body>
+</html>

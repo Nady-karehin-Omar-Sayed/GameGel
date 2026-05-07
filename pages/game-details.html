@@ -200,7 +200,8 @@
             gap: 8px;
             margin-top: 15px;
         }
-        .sidebar-actions button {
+        .sidebar-actions button,
+        .sidebar-actions a {
             flex: 1;
             padding: 10px;
             font-family: var(--mono-font);
@@ -211,8 +212,14 @@
             border-radius: 6px;
             cursor: pointer;
             transition: background 0.2s;
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .sidebar-actions button:hover {
+        .sidebar-actions button:hover,
+        .sidebar-actions a:hover {
             background: rgba(58, 160, 255, 0.1);
         }
         .sidebar-actions button.wishlisted {
@@ -614,6 +621,8 @@
             <a href="./register.html"><li>Register</li></a>
             <a href="./blog.html"><li>Check Our Blog</li></a>
             <a href="./contact.html"><li>Contact Us</li></a>
+            <a href="./compare.html"><li>Compare</li></a>
+            <a href="./lobby.html"><li>Multiplayer Lobby</li></a>
         </ul>
     </div>
 
@@ -956,7 +965,7 @@
 
                             <div class="sidebar-actions">
                                 <button id="btn-wishlist" onclick="toggleWishlist('${game.title.replace(/'/g, "\\'")}')">Wishlist</button>
-                                <button onclick="addToCompare('${game.title.replace(/'/g, "\\'")}')">Compare</button>
+                                <a href="./compare.html" class="btn-compare">Compare</a>
                             </div>
 
                             <div class="sidebar-info">
