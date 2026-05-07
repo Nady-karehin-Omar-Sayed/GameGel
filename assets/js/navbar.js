@@ -11,7 +11,13 @@
     { href: "pages/contact.html", label: "Contact Us", dataKey: "nav_contact" },
     { href: "pages/forums.html", label: "Forums", dataKey: "nav_forums" },
     { href: "pages/lobby.html", label: "Lobby", dataKey: "nav_lobby" },
+    { href: "pages/live-chat.html", label: "Live Chat", dataKey: "nav_livechat" },
+    { href: "pages/event.html", label: "Events", dataKey: "nav_events" },
   ];
+
+  function langToggleLabel() {
+    return (localStorage.getItem('lang') || 'en') === 'en' ? 'AR' : 'EN';
+  }
 
   function isInPagesDir() {
     return window.location.pathname.includes("/pages/");
@@ -40,6 +46,9 @@
       <div class="search-wrapper">
         <input type="text" id="searchInput" data-key="search_placeholder" placeholder="Search games..." class="search-input">
       </div>
+      <div class="lang-switcher">
+        <button class="lang-btn" id="langToggle">${langToggleLabel()}</button>
+      </div>
       <button class="menu-toggle head-font" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
       ${navListMarkup("desktop-nav")}
     `;
@@ -58,6 +67,9 @@
           <button class="mobile-nav-close" type="button" aria-label="Close menu">x</button>
         </div>
         ${navListMarkup("mobile-nav-list")}
+        <div class="lang-switcher" style="padding: 15px 20px;">
+          <button class="lang-btn" id="mobileLangToggle">${langToggleLabel()}</button>
+        </div>
       </aside>
     `;
     document.body.appendChild(overlay);
@@ -109,6 +121,23 @@
       window.location.href = `${gamesPath}?search=${encodeURIComponent(query)}`;
     });
   }
+  function initLangToggle() {
+    document.addEventListener('click', (e) => {
+      if (e.target.id === 'langToggle' || e.target.id === 'mobileLangToggle') {
+        const newLang = localStorage.getItem('lang') === 'ar' ? 'en' : 'ar';
+        setLanguage(newLang);
+      }
+    });
+
+    document.addEventListener('languageChanged', (e) => {
+      const label = e.detail.lang === 'en' ? 'AR' : 'EN';
+      const dt = document.getElementById('langToggle');
+      const mt = document.getElementById('mobileLangToggle');
+      if (dt) dt.textContent = label;
+      if (mt) mt.textContent = label;
+    });
+  }
+
   let initialized = false;
   function initNavbar() {
     if (initialized) return;
@@ -118,6 +147,7 @@
     buildNavbar(navbar);
     initDrawer(navbar);
     initSearchFallback();
+    initLangToggle();
     setTimeout(() => {
       if (typeof setLanguage === 'function') {
         setLanguage(localStorage.getItem('lang') || 'en');
