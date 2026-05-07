@@ -1,5 +1,119 @@
-[
+[   {
+        "title": "Resident Evil Requiem",
+        "description": "A new era of survival horror arrives with Resident Evil Requiem, the latest and most immersive entry yet in the iconic Resident Evil series. Experience terrifying survival horror with FBI analyst Grace Ashcroft, and dive into pulse-pounding action with legendary agent Leon S. Kennedy. Both of their journeys and unique gameplay styles intertwine into a heart-stopping, emotional experience that will chill you to your core.",
+        "developer": "CAPCOM Co., Ltd.",
+        "platforms": "PlayStation 5, Xbox , Windows PC",
+        "genres": "Survival Horror ,Zombies ,Horror ,Third-Person Shooter , Action",
+        "price": "$52.99 on Steam",
+        "image": "../assets/images/Resident Evil Requiem.jpg",
+        "lsimg": "./assets/images/Resident Evil Requiem.jpg",
+        "buyLink": "https://store.steampowered.com/app/3764200/Resident_Evil_Requiem/"
+    },   
+    {
+        "title": "MOUSE: P.I. For Hire",
+        "description": "MOUSE: P.I. For Hire is an action-packed first-person shooter that draws inspiration from the classic cartoons of the 1930s. Its black and white rubber hose visuals are drawn by hand, frame by frame, delivering a striking vintage aesthetic. Unravel layers of corruption with a thrilling noir-fueled detective story, lively environments to explore, an original big band jazz soundtrack, and a fully-loaded arsenal of cartoon weapons and devastating power-ups.",
+        "developer": "Fumi Games.",
+        "platforms": " Windows PC",
+        "genres": "Action ,Cartoony ,Boomer Shooter",
+        "price": "$14.99 on Steam",
+        "image": "../assets/images/MOUSE.jpg",
+        "lsimg": "./assets/images/MOUSE.jpg",
+        "buyLink": "https://store.steampowered.com/app/2416450/MOUSE_PI_For_Hire/"
+    }, 
+    {
+        "title": "Detroit: Become Human",
+        "description": "Detroit 2038. Technology has evolved to a point where human like androids are everywhere. They speak, move and behave like human beings, but they are only machines serving humans.",
+        "developer": "Quantic Dream",
+        "platforms": "PlayStation 4, Xbox, Windows PC",
+        "genres": "Choices Matter ,Story Rich ,Multiple Endings ,Cinematic ",
+        "price": "$31.99 on Steam",
+        "image": "../assets/images/Detroit Become Human.jpg",
+        "lsimg": "./assets/images/Detroit Become Human.jpg",
+        "buyLink": "https://store.steampowered.com/app/1222140/Detroit_Become_Human/"
+    },
+     {
+        "title": "Metro 2033 Redux",
+        "description": "In 2013 the world was devastated by an apocalyptic event, annihilating almost all mankind and turning the Earth's surface into a poisonous wasteland. A handful of survivors took refuge in the depths of the Moscow underground, and human civilization entered a new Dark Age.",
+        "developer": "4A Games",
+        "platforms": "PlayStation 4, Xbox , Windows PC",
+        "genres": "Post-apocalyptic ,FPS ,Atmospheric ,Story ,RichFirst-Person",
+        "price": "$14.99 on Steam",
+        "image": "../assets/images/Metro 2033 Redux.jpg",
+        "lsimg": "./assets/images/Metro 2033 Redux.jpg",
+        "buyLink": "https://store.steampowered.com/app/286690/Metro_2033_Redux/"
+    },
+    {
+        "title": "The Last of Us™ Part I",
+        "description": "Players use weapons such as pistols, rifles, and crafted explosives as well as melee attacks with chokeholds, bats, and metal pipes to defend themselves from the infected and other human survivors. Players can also engage in stealth combat sequences involving a close-up camera view. Weapon and explosive attacks can result in decapitation and/or dismemberment. Scenes depict intense acts of violence, including themes of suicide and torture. During the game, a character makes sexual remarks about an adult magazine and a young character is shown drinking alcohol. Strong language is used frequently in dialogue.",
+        "developer": "Naughty Dog LLD .",
+        "platforms": "PlayStation 4, Xbox , Windows PC",
+        "genres": "Story Rich ,Post-apocalyptic, Zombies ",
+        "price": "$59.99 on Steam",
+        "image": "../assets/images/header.jpg",
+        "lsimg":"../assets/images/header.jpg",
+        "buyLink": "https://store.steampowered.com/app/1888930/The_Last_of_Us_Part_I/"
+    },
+     {
+        "title": "A Plague Tale: Innocence",
+        "description": "In 14th century France, Amicia and her little brother Hugo are on the run from the Inquisition's soldiers during their emotional journey against unstoppable swarms of rats from the Black Plague.",
+        "developer": "Asobo Studio ",
+        "platforms": "PlayStation 4, Xbox , Windows PC",
+        "genres": "Story Rich ,Adventure ,Female Protagonist",
+        "price": "$27.99 on Steam",
+        "image": "../assets/images/A Plague Tale Innocence.jpg",
+        "lsimg": "./assets/images/A Plague Tale Innocence.jpg",
+        "buyLink": "https://store.steampowered.com/app/752590/A_Plague_Tale_Innocence/"
+    },
+     {
+        "title": "ARC Raiders",
+        "description": "In ARC Raiders, gameplay flows between the surface ruled by lethal machines, and the vibrant underground society of Speranza. Craft, repair, and upgrade your gear in the safety of your own workshop, before venturing topside to scavenge the remnants of a devastated but beautiful world. Play solo or in parties up to three, navigating the constant threat of ARC's machines and the unpredictable choices of fellow survivors. In the end, only you decide what kind of Raider you are - and how far you’ll go to prevail.",
+        "developer": " Embark Studios",
+        "platforms": "Windows PC",
+        "genres": "Extraction Shooter ,Multiplayer ,PvP ",
+        "price": "$39.99 on Steam",
+        "image": "../assets/images/ARC Raiders.jpg",
+        "lsimg": "./assets/images/ARC Raiders.jpg",
+        "buyLink": "https://store.steampowered.com/app/1808500/ARC_Raiders/"
+    },
+  
+      {
+        "title": "Phasmophobia",
+        "description": "Phasmophobia is a 4-player, online co-op, psychological horror game. You and your team of paranormal investigators will enter haunted locations filled with paranormal activity and try to gather as much evidence as you can. Use your ghost-hunting equipment to find and record evidence to sell on to a ghost removal team.",
+        "developer": "Kinetic Games.",
+        "platforms": "PlayStation 4, Xbox One, Windows PC",
+        "genres": "Online Co-Op ,Horror ,Multiplayer , Dark",
+        "price": "$9.49 on Steam",
+        "image": "../assets/images/Phasmophobia.jpg",
+        "lsimg": "./assets/images/Phasmophobia.jpg",
+        "buyLink": "https://store.steampowered.com/app/739630/Phasmophobia/"
+    },
+ 
         {
+        "title": "UNCHARTED™: Legacy of Thieves Collection",
+        "description": "Seek your fortune and leave your mark on the map in the UNCHARTED: Legacy of Thieves Collection. Uncover the thrilling cinematic storytelling and the largest blockbuster action set pieces in the UNCHARTED franchise, packed with all the wit, cunning, and over the top moments of the beloved thieves – Nathan Drake and Chloe Frazer.",
+        "developer": "Naughty Dog LLC, Iron Galaxy Studios.",
+        "platforms": "PlayStation 4, Xbox One, Windows PC",
+        "genres": "Adventure ,Action-Adventure ,Action",
+        "price": "$49.99 on Steam",
+        "image": "../assets/images/UNCHARTED.jpg",
+        "lsimg": "./assets/images/UNCHARTED.jpg",
+        "buyLink": "https://store.steampowered.com/app/1659420/UNCHARTED_Legacy_of_Thieves_Collection/"
+    },
+
+      {
+         "title": "The Walking Dead",
+        "description": "The Walking Dead is a five-part game series set in the same universe as Robert Kirkman’s award-winning comic book series. Play as Lee Everett, a convicted criminal, who has been given a second chance at life in a world devastated by the undead. With corpses returning to life and survivors stopping at nothing to maintain their own safety, protecting an orphaned girl named Clementine may offer him redemption in a world gone to hell..",
+        "developer": "Talltale Games.",
+        "platforms": "PlayStation 4, Xbox One, Windows PC",
+        "genres": "Zombies , Story Rish , Horro",
+        "price": "$7.99 on Steam",
+        "image": "../assets/images/walking_dead_season.jpg",
+        "lsimg": "../assets/images/walking_dead_season.jpg",
+        "buyLink": "https://store.steampowered.com/app/207610/The_Walking_Dead/"
+    },
+
+        
+    {
             "title": "Fallout 4 : Game Of The Year Edition",
             "description": "Fallout 4 is a 2015 action role-playing game developed by Bethesda Game Studios and published by Bethesda Softworks.",
             "developer": "Bethesda Game Studios",
@@ -256,5 +370,4 @@
         "lsimg": "./assets/images/dark_souls_3.jpg",
         "buyLink": "https://store.steampowered.com/app/374320/DARK_SOULS_III/"
     }
-
     ]

@@ -1,5 +1,6 @@
 (() => {
   const navLinks = [
+<<<<<<< HEAD
     { href: "index.html", label: "Home" },
     { href: "pages/games.html", label: "Games" },
     { href: "pages/cart.html", label: "Cart" },
@@ -11,6 +12,18 @@
     { href: "pages/lobby.html", label: "Lobby" },
     { href: "pages/contact.html", label: "Contact Us" },
     { href: "pages/forums.html", label: "Forums" },
+=======
+    { href: "index.html", label: "Home", dataKey: "nav_home" },
+    { href: "pages/games.html", label: "Games", dataKey: "nav_games" },
+    { href: "pages/cart.html", label: "Cart", dataKey: "nav_cart" },
+    { href: "pages/dashboard.html", label: "Dashboard", dataKey: "nav_dashboard" },
+    { href: "pages/leaderboard.html", label: "Leaderboard", dataKey: "nav_leaderboard" },
+    { href: "pages/login.html", label: "Login", dataKey: "nav_login" },
+    { href: "pages/register.html", label: "Register", dataKey: "nav_register" },
+    { href: "pages/blog.html", label: "Check Our Blog", dataKey: "nav_blog" },
+    { href: "pages/contact.html", label: "Contact Us", dataKey: "nav_contact" },
+    { href: "pages/forums.html", label: "Forums", dataKey: "nav_forums" },
+>>>>>>> 8a7b50caaf3345d421433fef77255796b4f828b3
   ];
 
   function isInPagesDir() {
@@ -27,7 +40,7 @@
 
   function navListMarkup(listClass = "") {
     const items = navLinks
-      .map((link) => `<a href="${pathFor(link.href)}"><li>${link.label}</li></a>`)
+      .map((link) => `<a href="${pathFor(link.href)}"><li data-key="${link.dataKey}">${link.label}</li></a>`)
       .join("");
     return `<ul class="head-font green ${listClass}">${items}</ul>`;
   }
@@ -38,7 +51,7 @@
         <h1 class="logo"><span style="color: rgb(229, 255, 0);">G</span>ame<span style="color: rgb(229, 255, 0);">G</span>el</h1>
       </a>
       <div class="search-wrapper">
-        <input type="text" id="searchInput" placeholder="Search games..." class="search-input">
+        <input type="text" id="searchInput" data-key="search_placeholder" placeholder="Search games..." class="search-input">
       </div>
       <button class="menu-toggle head-font" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
       ${navListMarkup("desktop-nav")}
@@ -109,9 +122,7 @@
       window.location.href = `${gamesPath}?search=${encodeURIComponent(query)}`;
     });
   }
-
   let initialized = false;
-
   function initNavbar() {
     if (initialized) return;
     const navbar = document.querySelector(".navbar");
@@ -120,13 +131,15 @@
     buildNavbar(navbar);
     initDrawer(navbar);
     initSearchFallback();
+    setTimeout(() => {
+      if (typeof setLanguage === 'function') {
+        setLanguage(localStorage.getItem('lang') || 'en');
+      }
+    }, 50);
+    
     initialized = true;
   }
-
-  // Run immediately so other page scripts bind to the final navbar DOM.
   initNavbar();
-
-  // Fallback for edge cases where script executes before navbar exists.
   if (!initialized) {
     document.addEventListener("DOMContentLoaded", initNavbar, { once: true });
   }

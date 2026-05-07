@@ -1,0 +1,64 @@
+{
+  "nav_home": "Home",
+  "nav_games": "Games",
+  "nav_cart": "Cart",
+  "nav_dashboard": "Dashboard",
+  "nav_leaderboard": "Leaderboard",
+  "nav_login": "Login",
+  "nav_register": "Register",
+  "nav_blog": "Blog",
+  "nav_contact": "Contact Us",
+  "nav_forums": "Forums",
+
+  "search_placeholder": "Search games...",
+
+  "Home": "Home",
+  "Games": "Games",
+  "Cart": "Cart",
+  "Dashboard": "Dashboard",
+  "Leaderboard": "Leaderboard",
+  "Login": "Login",
+  "Register": "Register",
+  "Check Our Blog": "Check Our Blog",
+  "Contact Us": "Contact Us",
+  "Forums": "Forums",
+
+  "welcome": "Welcome to our gaming platform",
+
+  "Explore Games": "Explore Games",
+  "Explore Deals": "Explore Deals",
+
+  "New Releases": "New Releases",
+  "New and featured games": "New and featured games",
+
+  "Top Selling This Week !": "Top Selling This Week !",
+  "Recently Trending Games": "Recently Trending Games",
+
+  "blog_welcome": "Welcome to the GameGel Blog!",
+  "blog_subtitle": "Stay tuned for the latest gaming news, reviews, and updates.",
+
+  "post1_title": "Why Retro Games Still Matter",
+  "post1_content": "In an age of 4K graphics and ray tracing, there's something magical about pixelated adventures. Games like Stardew Valley and Celeste prove that gameplay > graphics. Sometimes less is more.",
+
+  "post2_title": "The 30-Minute Rule",
+  "post2_content": "Can't decide if a game is worth it? Give it 30 minutes. If you're not hooked by then, it's okay to drop it. Life's too short for games that feel like chores. Your time is valuable!",
+
+  "post3_title": "Hidden Gem Alert: Hollow Knight",
+  "post3_content": "If you haven't played Hollow Knight yet, what are you waiting for? Beautiful art, challenging combat, and a world that begs to be explored. All for $15. Absolute steal. ",
+
+  "post4_title": "Why I Keep Coming Back to Skyrim",
+  "post4_content": "It's been 12+ years and I'm STILL finding new things in Skyrim. Mod it, replay it, break it – it never gets old. Some games are timeless. What's yours?",
+
+  "post5_title": "Indie Games Are Where Innovation Lives",
+  "post5_content": "While AAA studios play it safe, indie devs take risks. Undertale, Hades, Among Us – all indie, all revolutionary. Support small developers. They're the future. ",
+
+  "post6_title": "My Co-op Partner Made the Game",
+  "post6_content": "Played It Takes Two solo with a friend online. Laughed, argued, celebrated. The game was great, but the memories? Priceless. Gaming is better together.",
+
+  "copyright_prefix": "©",
+  "copyright_text": "GameGel. All rights reserved.",
+
+  "hero_prefix": "Your",
+  "hero_highlight": "ultimate destination",
+  "hero_suffix": "for gaming news, reviews, and community."
+}
