@@ -92,7 +92,7 @@
         }
 
         .room-item.active {
-            background: r#0b258e;
+            background: #0b258e;
             border-left-color: #fcfffc;
         }
 
@@ -186,7 +186,7 @@
 
         .chat-header {
             padding: 15px 20px;
-            border-bottom: 1px solid #253900;
+            border-bottom: 1px solid #000b39;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -199,7 +199,7 @@
 
         .chat-header-actions {
             display: flex;
-            gap: 10px;
+            gap: 20px;
         }
 
         .info-btn {
@@ -231,14 +231,61 @@
             display: flex;
             margin-bottom: 5px;
             animation: slideIn 0.3s ease;
+            gap: 12px;
         }
 
         .message.user-message {
             justify-content: flex-end;
         }
 
+        .message.user-message .message-sender {
+            order: 2;
+        }
+
+        .message.user-message .message-content {
+            order: 1;
+        }
+
         .message.bot-message {
             justify-content: flex-start;
+        }
+
+        .message-sender {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 120px;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #000;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+
+        .message-sender-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 0;
+        }
+
+        .message-sender-name {
+            font-weight: bold;
+            color: #ffffff;
+            font-size: 0.9rem;
+        }
+
+        .message-sender-rank {
+            color: #999;
+            font-size: 0.75rem;
         }
 
         .message-content {
@@ -250,35 +297,43 @@
             gap: 5px;
         }
 
-        .user-message .message-content {
-            background: #fcfffc;
-            color: black;
+        .message.user-message .message-content {
+            background: #3aa0ff;
+            color: #000;
         }
 
-        .bot-message .message-content {
-            background: #000b39;
-            border: 1px solid #000000 ;
-            color: #f2f3f2;
+        .message.bot-message .message-content {
+            background: #1a3a5c;
+            color: #ffffff;
         }
 
         .message-text {
             margin: 0;
-            font-family: monospace;
-            font-weight: bold;
             word-wrap: break-word;
+            line-height: 1.4;
         }
 
         .message-time {
             font-size: 0.75rem;
             opacity: 0.7;
-            font-family: monospace;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Input Area */
         .chat-input-area {
             padding: 15px 20px;
-            border-top: 1px solid #000000;
-            background: #000000;
+            border-top: 1px solid #000b39;
+            background: #0a0a0a;
         }
 
         .input-wrapper {
@@ -289,20 +344,20 @@
 
         .message-input {
             flex: 1;
-            background: #000b39;
-            border: 1px solid #000000;
+            padding: 12px 16px;
+            background: #1a1a1a;
+            border: 1px solid #253900;
+            border-radius: 8px;
             color: #ffffff;
-            padding: 12px 15px;
-            border-radius: 6px;
+            font-size: 0.95rem;
             font-family: monospace;
-            font-weight: bold;
-            outline: none;
             transition: all 0.3s ease;
         }
 
         .message-input:focus {
-            border-color: #ffffff;
-            box-shadow: 0 0 10px rgba(8, 203, 0, 0.3);
+            outline: none;
+            border-color: #3aa0ff;
+            background: #0a0a0a;
         }
 
         .message-input::placeholder {
@@ -311,84 +366,89 @@
 
         .emoji-btn,
         .send-btn {
-            background: #3aa0ff;
-            border: none;
-            color: black;
-            padding: 10px 16px;
+            background: #1a1a1a;
+            border: 1px solid #253900;
+            color: #ffffff;
+            padding: 10px 15px;
             border-radius: 6px;
             cursor: pointer;
-            font-weight: bold;
-            font-family: monospace;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .emoji-btn:hover,
         .send-btn:hover {
-            background: #0b258e;
-            transform: translateY(-2px);
-        }
-
-        .send-btn {
-            min-width: 80px;
+            background: #3aa0ff;
+            border-color: #3aa0ff;
+            color: #000;
         }
 
         /* Typing Indicator */
         .typing-indicator {
-            display: none;
-            color: #888;
-            font-size: 0.8rem;
-            padding: 5px 0;
-            font-family: monospace;
-        }
-
-        .typing-indicator.show {
             display: flex;
             align-items: center;
             gap: 4px;
+            color: #999;
+            font-size: 0.85rem;
+            height: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding-top: 10px;
         }
 
-        .typing-indicator .dot {
-            width: 8px;
-            height: 8px;
-            background: #3aa0ff;
+        .typing-indicator.show {
+            opacity: 1;
+        }
+
+        .dot {
+            width: 4px;
+            height: 4px;
             border-radius: 50%;
-            animation: typing 1.4s infinite;
+            background: #999;
+            animation: bounce 1.4s infinite;
         }
 
-        .typing-indicator .dot:nth-child(2) {
+        .dot:nth-child(2) {
             animation-delay: 0.2s;
         }
 
-        .typing-indicator .dot:nth-child(3) {
+        .dot:nth-child(3) {
             animation-delay: 0.4s;
         }
 
-        @keyframes typing {
+        .dot:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes bounce {
             0%, 60%, 100% {
-                opacity: 0.3;
+                transform: translateY(0);
             }
             30% {
-                opacity: 1;
+                transform: translateY(-10px);
             }
         }
 
         /* Emoji Modal */
         .emoji-modal {
-            display: none;
             position: fixed;
-            bottom: 80px;
-            right: 30px;
+            bottom: 100px;
+            right: 20px;
             background: #1a1a1a;
-            border: 2px solid #000b39;
+            border: 2px solid #253900;
             border-radius: 12px;
             padding: 15px;
             z-index: 1000;
-            box-shadow: 0 0 20px rgba(8, 203, 0, 0.3);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            transform: scale(0.95);
         }
 
         .emoji-modal.show {
-            display: block;
+            opacity: 1;
+            pointer-events: all;
+            transform: scale(1);
         }
 
         .emoji-picker {
@@ -443,6 +503,116 @@
             transform: scale(1.2);
         }
 
+        /* User Switcher Styles */
+        .user-switcher {
+            padding: 15px;
+            border-right: 2px solid #253900;
+            background: #0a0a0a;
+            max-width: 250px;
+            overflow-y: auto;
+        }
+
+        .user-switcher-header {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #253900;
+        }
+
+        .user-switcher-header h3 {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .user-switcher-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .user-switch-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: #1a1a1a;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .user-switch-item:hover {
+            background: #2a2a2a;
+            border-color: #3aa0ff;
+        }
+
+        .user-switch-item.active {
+            background: #0b258e;
+            border-color: #3aa0ff;
+            box-shadow: 0 0 10px rgba(58, 160, 255, 0.3);
+        }
+
+        .user-switch-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #000;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .user-switch-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 0;
+        }
+
+        .user-switch-name {
+            font-weight: bold;
+            color: #ffffff;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .user-switch-rank {
+            color: #999;
+            font-size: 0.7rem;
+        }
+
+        .user-switch-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: transparent;
+            flex-shrink: 0;
+        }
+
+        .user-switch-item.active .user-switch-indicator {
+            background: #3aa0ff;
+        }
+
+        /* Current User Display */
+        #currentUserDisplay {
+            padding: 15px;
+            background: #1a1a1a;
+            border: 2px solid #3aa0ff;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .chat-wrapper {
@@ -455,6 +625,10 @@
                 max-height: 300px;
                 border-right: none;
                 border-bottom: 2px solid #253900;
+            }
+
+            .user-switcher {
+                display: none;
             }
 
             .message-content {
@@ -504,6 +678,11 @@
     <!-- Main Container -->
     <div class="chat-main-container">
         <div class="chat-wrapper">
+            <!-- User Switcher -->
+            <div class="user-switcher" id="userSwitcher">
+                <!-- User switcher will be populated by JavaScript -->
+            </div>
+
             <!-- Sidebar with Chat Rooms -->
             <div class="chat-sidebar">
                 <div class="sidebar-header">
@@ -569,20 +748,10 @@
                     </div>
                 </div>
 
+                <div id="currentUserDisplay"></div>
+
                 <div class="chat-messages" id="chatMessages">
                     <!-- Messages will be loaded dynamically -->
-                    <div class="message bot-message">
-                        <div class="message-content">
-                            <p class="message-text">Welcome to GameGel Live Chat! 🎮</p>
-                            <span class="message-time">10:30 AM</span>
-                        </div>
-                    </div>
-                    <div class="message bot-message">
-                        <div class="message-content">
-                            <p class="message-text">Have fun chatting with other gamers! Remember to follow the community guidelines.</p>
-                            <span class="message-time">10:31 AM</span>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="chat-input-area">
