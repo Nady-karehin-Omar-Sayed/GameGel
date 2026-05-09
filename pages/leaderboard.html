@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../assets/css/responsive.css">
 </head>
 <body>
-    <!-- Navbar -->
+    
     <div class="navbar">
         <h1 class="logo"><span style="color: rgb(229, 255, 0);">G</span>ame<span style="color: rgb(229, 255, 0);">G</span>el</h1>
         <ul class="head-font green">
@@ -28,17 +28,11 @@
             <a href="./lobby.html"><li>Multiplayer Lobby</li></a>
         </ul>
     </div>
-
-    <!-- Page Header -->
     <div class="lb-page-header">
         <h1 class="head-font green lb-title">&#127942; Leaderboard</h1>
         <p class="text-font" style="color: #aaa; margin: 6px 0 0;">Top players ranked by total badges earned across all categories</p>
     </div>
-
-    <!-- Top 3 Podium -->
     <div class="lb-podium" id="lb-podium"></div>
-
-    <!-- Controls -->
     <div class="lb-controls">
         <input type="text" id="lb-search" class="lb-search-input" placeholder="Search players...">
         <div class="lb-sort-group text-font">
@@ -49,10 +43,7 @@
             <button class="lb-sort-btn" data-sort="skill">Skill</button>
         </div>
     </div>
-
-    <!-- Leaderboard Table -->
     <div class="lb-container">
-        <!-- Table Header -->
         <div class="lb-table-header text-font">
             <div class="lb-col-rank">Rank</div>
             <div class="lb-col-name">Name</div>
@@ -70,14 +61,10 @@
             </div>
             <div class="lb-col-total">&#11088; Total Badges</div>
         </div>
-
-        <!-- Rows rendered by JS -->
         <div id="lb-rows"></div>
 
         <div id="lb-empty" class="lb-empty text-font" style="display:none;">No players match your search.</div>
     </div>
-
-    <!-- Footer -->
     <footer class="text-font" style="text-align:center; padding:24px; color:var(--green); border-top:1px solid var(--green); margin-top:48px; font-size:0.85rem;">
         &copy; 2026 GameGel. All rights reserved.
     </footer>
