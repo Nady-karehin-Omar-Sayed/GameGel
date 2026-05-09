@@ -1,3 +1,11 @@
+function cartT(key, fallback) {
+  if (typeof window.getGamegelTranslation === "function") {
+    const s = window.getGamegelTranslation(key);
+    return s !== key ? s : fallback;
+  }
+  return fallback;
+}
+
 const Cart = {
   getCart() {
     return JSON.parse(localStorage.getItem('gamegel_cart') || '[]');
@@ -27,7 +35,7 @@ const Cart = {
 
   addToCart(game) {
     if (this.isInCart(game.title)) {
-      this.showToast('Already in cart!');
+      this.showToast(cartT('toast_already_cart', 'Already in cart!'));
       return;
     }
     const cart = this.getCart();
@@ -38,7 +46,7 @@ const Cart = {
       addedAt: new Date().toISOString()
     });
     this.saveCart(cart);
-    this.showToast('Added to cart!');
+    this.showToast(cartT('toast_added_cart', 'Added to cart!'));
   },
 
   parsePrice(priceString) {

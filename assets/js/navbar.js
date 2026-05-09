@@ -10,6 +10,7 @@
     { href: "pages/blog.html", label: "Check Our Blog", dataKey: "nav_blog" },
     { href: "pages/contact.html", label: "Contact Us", dataKey: "nav_contact" },
     { href: "pages/forums.html", label: "Forums", dataKey: "nav_forums" },
+    { href: "pages/compare.html", label: "Compare", dataKey: "nav_compare" },
     { href: "pages/lobby.html", label: "Lobby", dataKey: "nav_lobby" },
     { href: "pages/live-chat.html", label: "Live Chat", dataKey: "nav_livechat" },
     { href: "pages/event.html", label: "Events", dataKey: "nav_events" },
@@ -63,7 +64,7 @@
     overlay.innerHTML = `
       <aside class="mobile-nav-drawer">
         <div class="mobile-nav-header">
-          <span class="head-font">Menu</span>
+          <span class="head-font" data-key="mobile_menu">Menu</span>
           <button class="mobile-nav-close" type="button" aria-label="Close menu">x</button>
         </div>
         ${navListMarkup("mobile-nav-list")}

@@ -8,39 +8,6 @@
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/components.css">
   <link rel="stylesheet" href="../assets/css/responsive.css">
-  <style>
-    .compare-container { max-width: 1200px; margin: 0 auto; padding: 100px 20px 60px; }
-    .compare-header { text-align: center; margin-bottom: 32px; }
-    .compare-header h1 { font-size: clamp(2rem, 4vw, 3rem); color: var(--accent-blue); margin-bottom: 10px; }
-    .compare-header p { font-family: var(--mono-font); color: #c7d3e8; line-height: 1.8; }
-    .compare-selector { display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: end; background: rgba(10, 20, 40, 0.9); border: 1px solid rgba(58, 160, 255, 0.18); border-radius: 18px; padding: 28px; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18); }
-    .compare-select-box { display: flex; flex-direction: column; gap: 10px; }
-    .compare-select-box label { font-family: var(--main-font); color: var(--yellow); font-size: .82rem; text-transform: uppercase; letter-spacing: 1px; }
-    .compare-select-box select { appearance: none; background: var(--base-bg); border: 1px solid rgba(58, 160, 255, 0.2); color: #eee; padding: 14px 16px; border-radius: 12px; font-family: var(--mono-font); font-size: .95rem; }
-    .compare-vs-badge { font-family: var(--main-font); color: var(--yellow); font-size: 1.25rem; }
-    .compare-btn-container { grid-column: 1 / -1; display: flex; justify-content: center; }
-    .compare-btn { width: 100%; max-width: 240px; background: var(--accent-blue); color: var(--base-bg); border: none; border-radius: 14px; padding: 16px 18px; font-family: var(--main-font); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: transform .2s ease, background .2s ease; }
-    .compare-btn:hover { background: #F8DE22; color: #000; transform: translateY(-2px); }
-    .compare-games-section { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
-    .compare-game-card { background: rgba(10, 20, 40, 0.94); border: 1px solid rgba(58, 160, 255, 0.18); border-radius: 18px; overflow: hidden; }
-    .compare-game-image { width: 100%; height: 240px; overflow: hidden; }
-    .compare-game-image img { width: 100%; height: 100%; object-fit: cover; }
-    .compare-game-info { padding: 24px; }
-    .compare-game-title { font-family: var(--main-font); font-size: 1.4rem; margin-bottom: 8px; color: var(--accent-blue); }
-    .compare-game-developer, .compare-game-genre { font-family: var(--mono-font); color: #cbd6ef; font-size: .95rem; }
-    .compare-game-genre { display: inline-flex; margin-top: 10px; padding: 6px 12px; border-radius: 999px; background: rgba(58, 160, 255, 0.12); border: 1px solid rgba(58, 160, 255, 0.16); }
-    .compare-metrics { background: rgba(10, 20, 40, 0.92); border: 1px solid rgba(58, 160, 255, 0.18); border-radius: 18px; overflow: hidden; }
-    .compare-metric-row { display: grid; grid-template-columns: 220px 1fr 1fr; gap: 0; padding: 18px 22px; border-bottom: 1px solid rgba(58, 160, 255, 0.08); align-items: center; }
-    .compare-metric-row:last-child { border-bottom: none; }
-    .compare-metric-label { font-family: var(--main-font); color: var(--yellow); text-transform: uppercase; letter-spacing: 1px; font-size: .82rem; }
-    .compare-metric-value { font-family: var(--mono-font); color: #e6f2ff; text-align: center; }
-    .compare-metric-value.winner { color: var(--accent-blue); font-weight: 700; }
-    .compare-summary { background: linear-gradient(135deg, rgba(58, 160, 255, 0.1), rgba(248, 222, 34, 0.07)); border: 1px solid rgba(58, 160, 255, 0.16); border-radius: 18px; padding: 26px; text-align: center; }
-    .compare-summary h2 { font-family: var(--main-font); color: var(--yellow); margin-bottom: 10px; }
-    .compare-summary p { font-family: var(--mono-font); color: #d8e1f3; line-height: 1.7; }
-    .empty-state { padding: 48px 26px; text-align: center; border-radius: 18px; background: rgba(255,255,255,.03); border: 1px dashed rgba(58, 160, 255, 0.18); color: #a5b5d7; font-family: var(--mono-font); }
-    @media (max-width: 900px) { .compare-selector, .compare-games-section, .compare-metric-row { grid-template-columns: 1fr; } .compare-metric-row { gap: 12px; } .compare-metric-label, .compare-metric-value { text-align: left; } }
-  </style>
 </head>
 <body>
     <div class="navbar"></div>

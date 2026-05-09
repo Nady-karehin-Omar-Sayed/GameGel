@@ -49,8 +49,8 @@
         "platforms": "PlayStation 4, Xbox , Windows PC",
         "genres": "Story Rich ,Post-apocalyptic, Zombies ",
         "price": "$59.99 on Steam",
-        "image": "../assets/images/header.jpg",
-        "lsimg":"../assets/images/header.jpg",
+        "image": "../assets/images/lastofus.jpg",
+        "lsimg":"./assets/images/lastofus.jpg",
         "buyLink": "https://store.steampowered.com/app/1888930/The_Last_of_Us_Part_I/"
     },
      {

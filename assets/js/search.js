@@ -1,4 +1,11 @@
 // MADE SEARCH LOGIC
+/** @returns {string} */
+function tg(key) {
+  return typeof window.getGamegelTranslation === "function"
+    ? window.getGamegelTranslation(key)
+    : key;
+}
+
 const Search = {
   activeIndex: -1,
 
@@ -67,8 +74,8 @@ const Search = {
       <button class="filter-icon" id="filterToggle" title="Filter">☰</button>
       <div class="filter-dropdown" id="filterDropdown">
         <div class="filter-section">
-          <div class="filter-category" data-category="genre">
-            <div class="filter-header">Genre</div>
+            <div class="filter-category" data-category="genre">
+            <div class="filter-header" data-key="detail_filter_genre">Genre</div>
             <div class="filter-options">
               ${this.filters.genre.map(g => `
                 <label><input type="checkbox" value="${g}" data-filter="genre"> ${g}</label>
@@ -76,7 +83,7 @@ const Search = {
             </div>
           </div>
           <div class="filter-category" data-category="developer">
-            <div class="filter-header">Developer</div>
+            <div class="filter-header" data-key="detail_filter_dev">Developer</div>
             <div class="filter-options">
               ${this.filters.developer.map(d => `
                 <label><input type="checkbox" value="${d}" data-filter="developer"> ${d}</label>
@@ -84,7 +91,7 @@ const Search = {
             </div>
           </div>
           <div class="filter-category" data-category="platform">
-            <div class="filter-header">Platform</div>
+            <div class="filter-header" data-key="detail_filter_platform">Platform</div>
             <div class="filter-options">
               ${this.filters.platform.map(p => `
                 <label><input type="checkbox" value="${p}" data-filter="platform"> ${p}</label>
@@ -92,7 +99,7 @@ const Search = {
             </div>
           </div>
         </div>
-        <button class="apply-btn" id="applyFilter">Apply</button>
+        <button class="apply-btn" id="applyFilter" type="button" data-key="filter_apply">Apply</button>
       </div>
     `;
     this.input.parentNode.appendChild(this.filterContainer);
@@ -183,7 +190,7 @@ const Search = {
     if (!this.container) return;
     
     if (games.length === 0) {
-      this.container.innerHTML = '<p class="green text-font">No games found</p>';
+      this.container.innerHTML = `<p class="green text-font">${tg('no_games_found')}</p>`;
       return;
     }
 // Cards
@@ -194,15 +201,15 @@ const Search = {
           <div class="game-text">
             <h1 class="green">${game.title}</h1>
             <p class="green text-font">${game.description}</p>
-            <p class="green text-font">Developer : <span class="yellow">${game.developer}</span></p>
-            <p class="green text-font">Platforms : <span class="yellow">${game.platforms}</span></p>
-            <p class="green text-font">Genres : <span class="yellow">${game.genres}</span></p>
-            <p class="green text-font">Price : <span class="yellow">${game.price}</span></p>
+            <p class="green text-font"><span data-key="lbl_developer"></span>: <span class="yellow">${game.developer}</span></p>
+            <p class="green text-font"><span data-key="lbl_platforms"></span>: <span class="yellow">${game.platforms}</span></p>
+            <p class="green text-font"><span data-key="lbl_genres"></span>: <span class="yellow">${game.genres}</span></p>
+            <p class="green text-font"><span data-key="lbl_price"></span>: <span class="yellow">${game.price}</span></p>
+            <div class="game-actions">
+              <a class="btn-buy-card" target="_blank" href="${game.buyLink}" data-key="btn_buy"></a>
+              <a class="btn-details-card" href="./game-details.html?game=${encodeURIComponent(game.title)}" data-key="btn_view_details"></a>
+            </div>
           </div>
-        </div>
-        <div class="price head-font" style="display:flex;gap:10px;align-items:center;">
-          <a class="btn-buy-card" target="_blank" href="${game.buyLink}">BUY</a>
-          <a href="./game-details.html?game=${encodeURIComponent(game.title)}" style="color:#F8DE22;font-size:0.8rem;padding:4px 10px;border:1px solid #F8DE22;border-radius:4px;">View Details</a>
         </div>
       </div>
     `).join('');

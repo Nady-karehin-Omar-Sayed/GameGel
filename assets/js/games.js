@@ -21,21 +21,26 @@ document.addEventListener("DOMContentLoaded", async () => {
         const safeId = `game-${game.title.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase()}`;
         return `
         <div class="game-box" id="${safeId}">
+
             <div class="game-content">
+
                 <img src="${game.image}" alt="${game.title}" width="200">
                 <div class="game-text">
                     <h1 class="green">${game.title}</h1>
-                    <p class="green text-font">${game.description}</p>
-                    <p class="green text-font">Developer : <span class="yellow">${game.developer}</span></p>
-                    <p class="green text-font">Platforms : <span class="yellow">${game.platforms}</span></p>
-                    <p class="green text-font">Genres : <span class="yellow">${game.genres}</span></p>
-                    <p class="green text-font">Price : <span class="yellow">${game.price}</span></p>
+                    <p class="green gbFont">${game.description}</p>
+                    <p class="yellow gbFont">Developer : <span class="green">${game.developer}</span></p>
+                    <p class="yellow gbFont">Platforms : <span class="green">${game.platforms}</span></p>
+                    <p class="yellow gbFont">Genres : <span class="green">${game.genres}</span></p>
+                    <p class="yellow gbFont">Price : <span class="green">${game.price}</span></p>
+                    <div class="game-actions">
+                        <a class="btn-buy-card" target="_blank" href="${game.buyLink}">BUY</a>
+                        <a class="btn-details-card" href="./game-details.html?game=${encodeURIComponent(game.title)}">View Details</a>
+                    </div>
+
                 </div>
+            
             </div>
-            <div class="price head-font" style="display:flex;gap:10px;align-items:center;">
-                <a class="btn-buy-card" target="_blank" href="${game.buyLink}">BUY</a>
-                <a href="./game-details.html?game=${encodeURIComponent(game.title)}" style="color:#F8DE22;font-size:0.8rem;padding:4px 10px;border:1px solid #F8DE22;border-radius:4px;">View Details</a>
-            </div>
+            
         </div>
         `;
     }
